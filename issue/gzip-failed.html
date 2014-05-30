@@ -1,0 +1,1332 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="robots" content="NONE,NOARCHIVE" />
+  <title>&lt;class &#39;requests.packages.urllib3.exceptions.DecodeError&#39;&gt; at /preview</title>
+  <style type="text/css">
+    html * { padding:0; margin:0; }
+    body * { padding:10px 20px; }
+    body * * { padding:0; }
+    body { font:small sans-serif; }
+    body>div { border-bottom:1px solid #ddd; }
+    h1 { font-weight:normal; }
+    h2 { margin-bottom:.8em; }
+    h2 span { font-size:80%; color:#666; font-weight:normal; }
+    h3 { margin:1em 0 .5em 0; }
+    h4 { margin:0 0 .5em 0; font-weight: normal; }
+    table { 
+        border:1px solid #ccc; border-collapse: collapse; background:white; }
+    tbody td, tbody th { vertical-align:top; padding:2px 3px; }
+    thead th { 
+        padding:1px 6px 1px 3px; background:#fefefe; text-align:left; 
+        font-weight:normal; font-size:11px; border:1px solid #ddd; }
+    tbody th { text-align:right; color:#666; padding-right:.5em; }
+    table.vars { margin:5px 0 2px 40px; }
+    table.vars td, table.req td { font-family:monospace; }
+    table td.code { width:100%;}
+    table td.code div { overflow:hidden; }
+    table.source th { color:#666; }
+    table.source td { 
+        font-family:monospace; white-space:pre; border-bottom:1px solid #eee; }
+    ul.traceback { list-style-type:none; }
+    ul.traceback li.frame { margin-bottom:1em; }
+    div.context { margin: 10px 0; }
+    div.context ol { 
+        padding-left:30px; margin:0 10px; list-style-position: inside; }
+    div.context ol li { 
+        font-family:monospace; white-space:pre; color:#666; cursor:pointer; }
+    div.context ol.context-line li { color:black; background-color:#ccc; }
+    div.context ol.context-line li span { float: right; }
+    div.commands { margin-left: 40px; }
+    div.commands a { color:black; text-decoration:none; }
+    #summary { background: #ffc; }
+    #summary h2 { font-weight: normal; color: #666; }
+    #explanation { background:#eee; }
+    #template, #template-not-exist { background:#f6f6f6; }
+    #template-not-exist ul { margin: 0 0 0 20px; }
+    #traceback { background:#eee; }
+    #requestinfo { background:#f6f6f6; padding-left:120px; }
+    #summary table { border:none; background:transparent; }
+    #requestinfo h2, #requestinfo h3 { position:relative; margin-left:-100px; }
+    #requestinfo h3 { margin-bottom:-1em; }
+    .error { background: #ffc; }
+    .specific { color:#cc3300; font-weight:bold; }
+  </style>
+  <script type="text/javascript">
+  //<!--
+    function getElementsByClassName(oElm, strTagName, strClassName){
+        // Written by Jonathan Snook, http://www.snook.ca/jon; 
+        // Add-ons by Robert Nyman, http://www.robertnyman.com
+        var arrElements = (strTagName == "*" && document.all)? document.all :
+        oElm.getElementsByTagName(strTagName);
+        var arrReturnElements = new Array();
+        strClassName = strClassName.replace(/\-/g, "\-");
+        var oRegExp = new RegExp("(^|\s)" + strClassName + "(\s|$)");
+        var oElement;
+        for(var i=0; i<arrElements.length; i++){
+            oElement = arrElements[i];
+            if(oRegExp.test(oElement.className)){
+                arrReturnElements.push(oElement);
+            }
+        }
+        return (arrReturnElements)
+    }
+    function hideAll(elems) {
+      for (var e = 0; e < elems.length; e++) {
+        elems[e].style.display = 'none';
+      }
+    }
+    window.onload = function() {
+      hideAll(getElementsByClassName(document, 'table', 'vars'));
+      hideAll(getElementsByClassName(document, 'ol', 'pre-context'));
+      hideAll(getElementsByClassName(document, 'ol', 'post-context'));
+    }
+    function toggle() {
+      for (var i = 0; i < arguments.length; i++) {
+        var e = document.getElementById(arguments[i]);
+        if (e) {
+          e.style.display = e.style.display == 'none' ? 'block' : 'none';
+        }
+      }
+      return false;
+    }
+    function varToggle(link, id) {
+      toggle('v' + id);
+      var s = link.getElementsByTagName('span')[0];
+      var uarr = String.fromCharCode(0x25b6);
+      var darr = String.fromCharCode(0x25bc);
+      s.innerHTML = s.innerHTML == uarr ? darr : uarr;
+      return false;
+    }
+    //-->
+  </script>
+</head>
+<body>
+
+<div id="summary">
+  <h1>&lt;class &#39;requests.packages.urllib3.exceptions.DecodeError&#39;&gt; at /preview</h1>
+  <h2>(&#39;Received response with content-encoding: gzip, but failed to decode it.&#39;, error(&#39;Error -3 while decompressing: incorrect data check&#39;,))</h2>
+  <table><tr>
+    <th>Python</th>
+    <td>/usr/local/lib/python2.7/site-packages/requests/packages/urllib3/response.py in read, line 203</td>
+  </tr><tr>
+    <th>Web</th>
+    <td>GET http://192.168.0.22:8080/preview</td>
+  </tr></table>
+</div>
+<div id="traceback">
+<h2>Traceback <span>(innermost first)</span></h2>
+<ul class="traceback">
+<li class="frame">
+<code>/usr/local/lib/python2.7/site-packages/requests/packages/urllib3/response.py</code> in <code>read</code>
+<div class="context" id="c139635834470272">
+<ol start="196" class="pre-context" id="pre139635834470272">
+<li onclick="toggle('pre139635834470272', 'post139635834470272')">            try:</li>
+<li onclick="toggle('pre139635834470272', 'post139635834470272')">                if decode_content and self._decoder:</li>
+<li onclick="toggle('pre139635834470272', 'post139635834470272')">                    data = self._decoder.decompress(data)</li>
+<li onclick="toggle('pre139635834470272', 'post139635834470272')">            except (IOError, zlib.error) as e:</li>
+<li onclick="toggle('pre139635834470272', 'post139635834470272')">                raise DecodeError(</li>
+<li onclick="toggle('pre139635834470272', 'post139635834470272')">                    &quot;Received response with content-encoding: %s, but &quot;</li>
+<li onclick="toggle('pre139635834470272', 'post139635834470272')">                    &quot;failed to decode it.&quot; % content_encoding,</li>
+</ol>
+<ol start="203" class="context-line"><li onclick="toggle('pre139635834470272', 'post139635834470272')">                    e) <span>...</span></li></ol>
+<ol start='204' class="post-context" id="post139635834470272">
+<li onclick="toggle('pre139635834470272', 'post139635834470272')"></li>
+<li onclick="toggle('pre139635834470272', 'post139635834470272')">            if flush_decoder and decode_content and self._decoder:</li>
+<li onclick="toggle('pre139635834470272', 'post139635834470272')">                buf = self._decoder.decompress(binary_type())</li>
+<li onclick="toggle('pre139635834470272', 'post139635834470272')">                data += buf + self._decoder.flush()</li>
+<li onclick="toggle('pre139635834470272', 'post139635834470272')"></li>
+<li onclick="toggle('pre139635834470272', 'post139635834470272')">            if cache_content:</li>
+</ol>
+  </div>
+
+<div class="commands">
+<a href='#' onclick="return varToggle(this, '139635834470272')"><span>&#x25b6;</span> Local vars</a>
+
+</div>
+
+<table class="vars"
+id="v139635834470272"
+><thead><tr><th>Variable</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>amt</td><td class="code"><div>10240</div></td></tr>
+<tr><td>cache_content</td><td class="code"><div>False</div></td></tr>
+<tr><td>content_encoding</td><td class="code"><div>&#39;gzip&#39;</div></td></tr>
+<tr><td>data</td><td class="code"><div>&#39;\x1f\x8b\x08\x00\x00\x00\x00\x00x\xda\xed&lt;\xf9s\xdaH\xba?\xbf\xad\xda\xff\xa1K\xa9\xc9\xb1e@\x9c\xb1\xc1\x90\x87\rv\xd8\xf5\xb56\x89\&#39;\xb3\xb5\xe5j\xa4\x06i\xackt\x980\x99\xfc\xef\xef\xfb\xfa\x10B\x08\x1f\xb1g\xe275vb\xa0\xd5\xfd\xddW_\xecZ\xb1\xeb\xf4\xfe\xfe\xb7]\x8bQ\x13_]\x16Sb\xc5qPb\xbf$\xf6MW\xdb\xf7\xbd\x98yqi\xbc\x08\x98F\x0c\xf1\xa9\xab\xc5\xecs\\\xc1\xc1\x1dbX4\x8cX\xdc\xb5#\xbf\xb4\xbd\xdd\xdc)U\xb5\x14\x92G]\xd6\xd5B\x7f\xe2\xc7Qf\xb4\xed\x99\xec\xf3\xd6\xd4w\x1c\x7f\x9e\xef\x1c\xdb\xb1\x93\xc54\xb0\xa9\xf7\xd9&amp;cF\xc9%\x9bDv\xccH\x89\xac7\xe6\xc1\x98,2B;\x88m\xdf\xbb\x1d\x98l\x8a\x19\xfd\xed\x92E1\x0b=\xde\x84\rd.\xfa\xfc\xf6)\xf1&lt;h\n\x92\x12\x0b-\xde\x958\xb6gPoF~#\x03\xea\xd8\xf0\xb2G\xfd\xc8\x82N\xd0\xc0,\x9f?\xb9\xb0]\xea\xc3\xeb\x8fvd%\xd0yB\x01\x0c|&gt;\xa7s\x05\x0b&gt;\xd8\x01S\x9fJ\xe4\xcc\x9f\xb3\x90\x99d\xb2\x80\xd11\x1bz3\xdb[\xe3\xed\x9a-\xe6~hF\xeb\x8c=\x0b.r\x84\x03\x8ek\x122\xa7\xabE\x96\x1f\xc6F\x12\x13\xdb@\xadX!\x9bv\xb5)\xbd\xc1\x8fe\xf8\x93\xe7\xf3\x90y,\xa4\xb1\x1ff\x18\xdd\xf3\xafi\x1e\x037\x99\x1e(u?q\xe2$d\xa5\xf7\xfe\x9c\xc4&gt;q\xe95\xcb\xb0[zFB*\x95\x94\xa6\xf7\xb2\x9a\xde\xad\x08^\x80\xa9(^\xf07{\xa7\x83O\xe4\xcb\x14\xf8/M\xa9k;\x8b6\xf9\xc8B\x93z\xb4Cxkd\xff\xca\xda\xa4Z\x0b&gt;\x83/\xfa\x8e\x1f\xb6\xc9\x8bF\xadY\xdb\xd1;\x0e\x8b\x81\xcbR\x14P\xc3\xf6fm\xa2C\x1f\xe0\x86\x95,f\xcf\xac\xb8]m\xea?t\xd0\x95K\xc0\xd8\xcck\x13\x03d\xcc\xc2\xce\x84\x1a\xd7\xb3\xd0O&lt;\xb3$ \xbe\x18\xea\xf8\x9b}\x00\x0c\xcf\x00o\x12:\xaf\xb5\x8aIcZ\x89\xaem/\xaa0o\xe6\x80\x10*\xfcyT\x99\xcc\xca3{\xaa\xbd\xf9J\xfamn\t\xdf\xc8\n\xe1d\x9a\xcc\xf0\xc1&quot;\xc0\xa9\xdb\xc4\xf3=\x86PolT\x9c\xf9\xf4\x80-\xff\x86\x85\x0f\x06\xab\xebo\x1b\x13\xa3\x00,\x08\x8d\x85(}\x84\xdd7b\xfb\x86=\x18\xf8t\xba\xb3\xa3\xeb\x9d\xaf\xa4\xec\xd2\x10\x0c\x86|\t\xa8ir\xddB?h\x8e\xe9\xc4\x01\xb0s\xdb\x8c\xad\xf6\xdb\x9dm\x18\xbc\xae\xcc\x03\xfe\xd3\x99@\x0c\x01\xebp\xd84.\x89\x01\xa4\x89\xfd3\xcd\xdc\x08\xdb$\xf2\x1d\xdb\\y\x90\xe1\xb6\xde\x1a\xa8G!ZU\x01,\xd1^\x04L&lt;Y\x85\xa6\xd8\xa8*&gt;v\xb6\x7f\xb8\x8b\x0b\x18\xbc\xd3\xda\x19\xec5I5\xf8,P(0\xb5\xa7\x01S\xbf\x1d\x8c\x18\xa6:7\xc8\x97\xbb\xba43\xf0T[+mk=\x86\xd4\xb7E\xd8\xef;x\xfbV\xd2=\x88\xd6\x9b\xac\xf6\xe0\xf4d\\\xba\x1c\x8e\x0e\xdf\x8f\xdbd\xe2;f\&#39;k\x9c\x9d\xbcQ+\xa5\xd7\xea\xf5j\xabU\xc0\xee\xa4e\xd4L\xda\x91\xb1\xaa\x86\xf6\x94\x89U&quot;T\xa5$\x9d\xf5\x07\x83\xd1\xc9a\xe9hx0\x16\xb6\xa7Z\xce\x05A\xcdUW\x10\xe1\x0b\xa3\xd7-\xc1\x0bA\x97\x7f\x0efo$\x9a\t\r\x9f\x07\xf3\xe8\x83\x9d\xbd\xd3\xf3\xc1\xf0\xbc\xb4w:\x1e\x9f\x1e\x17k\x14\x89\xae\xfe&gt;$g)\xbb\&#39;%\xb5\xef(\xbc{\x928\xe3\xc1z\xc5\x05\x1ef)\x1d\xa2&lt;,\x05\xad\x90er\x04d\x9e\xd6v\x87H.K\xb1\x1f\x00\xa7:s;dnA2\xe3\x19\x1b\xb85\xed\x9b\xb4S\x9b\xd4\x95(\xa4\xfc\x94\xf8\x96\xe2\xe1\xd2\x11\x11\xa4\xaaCjO\x05\x90\xb5\x1d\x1er\xbf\x96qT&amp;}47\x00\xcf&amp;#\x0e~\xff\xf4\xe8\xf4&lt;Sb\xe4\xcb\x89|\xcdQ]\xb7\\\x905\xd6G\x98\\\xd7u\xa7\xeb\xf5\xfa\xfe&gt;F\xa3067\x072\xe8`{\x01\xd4\x92_\xa4f\xa5\x9b\xaf)\xb6Cd\x87\xf1\xe9Y\xe1cn|\x17\xa3\x9f\x86m\xb2\x13\xc4\xd0\xbd\xbf\xff\xaf\xc3\xf3\xd3\x0f\&#39;\x83\x92\xe0U\x85N\x89_\xd5\r\x12\xac\x088\x9b\xd1\xdebq(\x16\x1aB\xf1\xf9X\x1e\x1eKJ\xa1\xe6\xf3\x8a_e?\xabwRk(%\xe7\xeb\xa8[\xb2Xa)\xa9\xfcI\x89\x06\x8b\xc77\xd9\xbe!\x0b\x18\x05\x94\xe25\xfb$\xf0\xa1\x0eD\xc4hbP\xfe\x07*\x88\x88&quot;\xa3M\xb0\x18RM\xd8G\xb4`\x917\x85yhi\xd1\xa6I\xecg\xdcG\x99X\xb5(\xbb\xc8&quot;\xa7Z\xc5\x9aZ\xc9\xa1\xba\x93\xd6&lt;Pl?8\xdd$\x11LI`\xe6s%\x8af\xcc:r\xde\xb3\x1a8\x8b4\x84\x1a \xc5\xb5=\xce\xb6=\x88\x02\xcc\xfdJ8C[\x11s\x98\xf1\xff\xdau\xca!5m?\xcf\x01\xc6\x9a\x15\x9ay\xc3\x93P\x99\x05\xad\xe8\xaa\xf2\x92\xdb\xf0M\x96\x8dSX\xa6\xb7\xf0\xb70\x15PJ\xb3s\x05\xfc\xc9\xe5\x81\xea\x1di\x80[\xdc=\xf2\xc02\xf8C\xa41\xef\xb6\xa0Z~rX\xc6\x91\xe5\xd8\xdcT@\xe4\xd3r\x81\xabo\xe3\xaf\x80R\xfbv(B;8\xe9a^R\x9c3\xde\x1af\xab\xf3;\xf8K\x19\x17\xc6\xd6f\x81cj\xf9.\xdd\xbas\xc2\x96\x9a\x12\x7f&gt;\x97Q\xc2\xf3C\x97:`\x1d\xeb\x9c\xb6\xf0Wziy\x92\xc41\xd6&quot;\x9b\xca\x1fi=k`\xc8\xfdB\xac\x00/\x03lA\xcdr\x80\xbf\x9d&quot;\x9dm)\xfe\xfb\xa1\r\x8cdk5^\xa4\x18I\x18\x01\x1d\x81o\xf3\xd5\x04\x98\xefr\xcd\xe1\xf4\x7f9[Wu\x84\xf2\x81\xf1\xf0\xc7qi0\xdc?=\xef\x8fG\xa7\&#39;\xe94\xfcI\x86\x8a\x95\x87L \x10Zz8 \xb9&amp;\xb0\xa1c9J&amp;\xe4\xcb`tqv\xd4\xff$\x13 \xb6\xfaIh0\x11\&#39;\xf6\x8f\x86\xfds,rc+\x8d\&#39;*\xfen\x1b\xd4\x98L\xb8\x12L\x1aY\x0c&quot;an\x12\xa3\x97\x9b\x18\x1dV\xc2\xf2-\xa3D\xe8\x92\x83\xf2aPuR\xd1Lv;\xee\x9f\x1f\x8eNd\x98!\xa7\x1f\x87\xe7\x07G\xa7\x97m\xc2\x93c.r\x17\xa0\x96&quot;\x9d8`{\x1dr\t\xddK{\xe7\xc3\xfe\xbf\xda\xe4\x9a\xb1\x00\x8a@g\x89\x99\xd3\xbf\xcaR\x1a\xf2\x0b@s\x06\x0e\xfa\xc7\xa3#\x90\xad\xb6\x0fB\xb5A\x17\&#39;l\xaem\x11\xf9i\x8b\xb8\xbe\xe7\xf3\xb0\t\xc8\xdf\x8f\xc6\xc3\xd2\xc5Y\x7f\x7f\xb8t\xba\xb5\xe0\x0f\xd1\xfa\xedtgJ%\xb1\x97\xe7\xfd3\xd5\x9b\xc7\x137\xa0\xde\x82\xaf\xca\x15\x07\x95\xf5\xb9KV\xd25.\xc5\xa3\xd1\xc9\xb0\xf4^\xf6Q\x94\x88^\xe3OG\xc3\\\xdb\xc7\xfe\xf9\xa8\x7f\xb2\xec\x99\xaf{\xf94\xbd0.\xdd\x7f\xd1\xab h\x88I\x13YEP}\xf8\xfa\x97\x9c\xdb\xdc\x8aa\xea\x87\x89\xabX\xd88\x7fS\xd1]@\xccN\xfb;\n\x86Ac6\xf3\xc3E\x11\x94\xbd\xd6~m\xd0\xef\xe4\x08\x93i\x84/F\x01w*\xf2\xc9\xcaC.K\xa9\xea\x0e\x19\x93M\xabQ7\xc3\xde\xbe\xcaA&lt;\x86d\xc1\xd7\xbe\x01|\x9a\xec^\xb8\xd4\xf6p\xf7\x05^PJ$3\xaf#b\xf5\xaf\xadK\xaf\xcc\xaf\x0c\x80\x88\xad\xc6\x97\xb4\x17\xa2\xf9J\x02\xd5\xc0\xcb\x8c\xa6h\xac\xfc\x83\x8c-;&quot;\xf0/\xb6\x18\x10\xf3\x19^i\x8c\x9f\x03\xa8\xbf=,\xa4\xf9\x133\xa43\xbe\xb6\x08!\xd8\x8d\xc8?*\x10\xd6\xc08\x9d~\x18\xdb\x86\xc3\xb6\xca\x13{&amp;\xdf\x03\xadPPC\x91.h\x91&quot;\xc8\xa4\x16\x1ek7\xe6\xf9\xb4\xd2\xe1f%I\x16%|5\xd3\x02\x114\xf6]\xd1\xe9\xeb*1\xc4vg+\x04\xc1\xe7\x1cQ+8\xf2\xc3\xcb\x1c\xdb\x08\xd3\xe4\n\x98L{\n\x8e7\xad\x81P\xdajl\xff\xc0\x9f-\x81\xa8\&#39;;;\xe2\t4\xd1\xf0\x0b\xe1/m\x91\x15@\xf7!\x94\xe7\x14&amp;\x07l\xa3(M`\x1fr\xe1\x8b\x03\x94%h\xf1\x1c7\x8d\xf8c\xd4M\xa1p9d\x98v\xb0\x10\xa7I\xc74\xbcf\x80\x19\xc6\x0e|\xefU\x8c\xfbx\x1e0\x86\xca\x0e\x13\x87E\xe0\xe2!\xff\x94\x1b\x82\xf0\x05\x0f\\x\xe9\xb4\x8bN@\xbdI\x0c\x81\xd7\xb4\xa3\xc0\xa1\x8b6\xcf\x7f\x05HQ\x1f\xdf\x888+\r\x00\x8cV9\x08\xfd\xe0\x18\xd2\xf2\x11](~\x94\xad:\xd8DJ\xe4\xc4\x8f\x89\xc7@B\xf6\x94,\xfc\xe4U\xc8H\x12\x81\xfa\xc9\xabT\xd0\xaf s@~\x06\x14w2\xb4\xc1\xa0\xa7\xb6\x03\x91\xa9M\x9d\xc0\xa2\xaf}\\\xfe\x88\x17\xdd\xa6\xfe\x86\xab\x07\x8aK&quot;\xdb\xc8\x16\xb1\xcb\xacL\xe2\x90z\x11w2c\x81x\xe5\xe36$\xc4\xfb\x0e\xf9J\xfe\xfe\xb7\xdd\x8a\xda)\xda\x15;\x9e$^\x04L\xee\xd0\xfeLo\xa8h\xd5H\x14\x1a]\xb9S\xf3sT\x11\xadQ\xf9\xe7H\xeb\xed\xcaOK\x18\xf0\xee\x7f\xe6P\x07\xfb\xf32\xb0\x1c\x86\xa0\x90.\x99&amp;\x9e\x81\x82y\xfd\xe6K\xc8\xe2$\xf4\x80\x9e\x04\n\x9c\x0e\&#39;&quot;\x85PQ{\xc9\x13\xdf\\\x10Bl\xb3\xab\x19&quot;\x8eid2\xe3\xf6\xd8\xd5\xe4\x8e\x92\x961\xd5\xee=\xf6\x91\x08\xaa^D\x80\xae\x06\xa3!\x94e&gt;\x89\xb7\xdc83\x9fE\x81\xcf\x1b\xb8\xa8\xba\x9a\x9a\xf3\xb7-\xdb\x84Z?\xbf\x06\xa0\x11 \x1fE;\xee\xef\x1d\r\xc17i\x14u\xc5\xce\x8a\xc1\x1c\xe7B,muu\xfe\xe9LD\x92\xae\x8e,\x8fq\xb7\x8e\xbf9W\xb8T\xda\x87\xc2\x98oV\x8e\x07 \x04\x9e3\xbab\xbf\xc3\x04\xf9\x8f\x07\xf8\xe7\x1c\xffp\x08\xf0\x8a\xa8{\x8f\xa4A\xe2\x13\x02\xa9\xee\xe8\xbd\xdd\xd1\xf1!\xa1\x0e\x08c\xc5\x1e\x92\x00\xdc\xca\xac\x04\x96\x1f\xfb\x15\xc7\x9f\x81\&#39;D\x90L\xae\xa6\xcdxv&lt;\xc6uMMZ=\xa0\xe0\xd4r\xc0\x19\xf26\x93$\xb1k\x98\xb84\xc2\x93TW$\xf1%\xc8;$\xa7\xa3\xe8\xb8|\x8a\x9f\xd7R\xd1\xf6v\xf7x\xa73\x89\x08\xad\xa5\xb7\x0b%\xe0\x89\x1a\xb4:\x07\x88sU\xe5\x9e\xef_\xbb\xd4#\xa7\x8eI.p\x00\xe0\xbd\x18\x9f\x9f\x9e\x1c\xf6Vv\x8cw+\xb2\x15\xde\x00\xf0\xdekl\xed\x8a\xbd\xe37\xe4i\x10\xae@Ik\xd5)V\x19\x1anvK\xd4\xea C\x9e\xa4\x97\xde$\n:\xe4&gt;\x1a\x8f\xad\xc4\x9dD\x15\xdc\x86\xbfr\xa8\x1f$W\xbfl\xef5\xff=\x16\x1e\xb7T&lt;\xc8\x96\xff\xaf\x9ceL\xf6\x16\x95\xfd\x9eF\xb2b\xdaZ\x03\x86\xf5v\xfb\xf2H\x01?^R\x0e\xac\xe0\x1d\&#39;\x0b\x02PU\xdbd\xfa&quot;\xd8\x18\x16\x14Y\x11S\xc1f6\xa9\xd5\xab\xb5&lt;\xfb\x95~\x8f&lt;\x04\x8a\x8c`k`\x94\xfb(\xe2[\x9c\xf8\xfb\xca\xa8^\xd3o\x93\xc9\xc1\xe9\xf91\xa1&lt;Nw+\x11\x14\x15\x86\x85\x92 .\x8b-\xdf\xecBr\x8b%v!e^\xbf\x08\xe1\xc88Ymmd0\x17\x93\xa1\x06\xd1\xf5\x9a\x94\x93\x0c2\xadBN\xb3\xb8.8Qk\x0f]\x08\xc5\x90\xc6\xb2\x94\xd4$\x05*\x058\xd4\xbb^A\x96\xb3\xcd\xd1\xc9\xd9\x87\xb1\x0c\x95bs@\x9a\xe5\xe5h0~\x8f\xfe\x07U/f\x85\xcfG\xc0\x89\xa0\x96\x9f4\x11r\xc235\xa8a\x0e\x85\&#39;Q\x91\x1e\x08Ns\xbaU\x9d\xdcP\&#39;a]\x8f\xcd\xa3\xec0\xec\xb9\x89\xd7\x02`\x02\x88Z\xa7\xe2p\xa6\x0e\x9d\x15&quot;\x16}\xa9yC=\x03\xaa\x17\xdeY\xe86\xed.9\\]I\xd0\xf3\xeb\xa0\xd9\x06\xb9(\x80-R.\xf5Z\xc1\xe2&amp;\xef\xa0\xfc\x19\xa7\xb1\x9a \x8d+\xe3N\xd3\xe0\xe2\xd7\xf5\xaaP\x97\xe0\xe3\xf0t\xa3\x98\x94\xe7f,\xf6\x9d4b\xc5\xfd\xcb\xa5\xb4\xbb\x1aw\xc6o\x18\x85\xc6uO\xd2\x8b\xdc_F=\xf4\xb1\xe2|\xbd9\x93\x7f\xcb\x93\x87f\xff\x8d\tU\x8c\x17\xd5\x90\x14\xbf\xb2\x9b\x82\xe5\x10\xfe\xa3\xfdA\xc9\xbdZP\x16\xed0c\xc7x\x8b+\n\x80\xd6\xeb\xd6\xef\xca6\xb8\xfd\xa4\xad\xd6:y`+qE/\xc8\x84!s\xfd\x98UjP\x92\xe9\xdb\xfav\xa5V\xab\xeb\xcdjmS\xb8Y\xda\xf1\x9a \xe5*\xebz^\xb8\xaa*\x13\xc3\x15\x02\xbe[\xac\xad\x06\xbfL\xe5&quot;\x1d\xa3\xa8\x06\x10+\r\x1a\x84\x805\xfd@\x95\x8eenFG\xb2E\xcd\r\xf9\xa7\xden\x1c\xc2\x7fsUa\x9e?\x0fi\xb0\xb9\xfdnc\xb8=U\xfb\x9e\xeb\&#39;\x11\xc3Z\xbb\xab\x1d\x1f_E\x96?\x7fo\x9bb\xde\x16\xbd~\xc5\&#39;k\xd5W[\xaf\xe0\x1f&gt;{\x05\xd2Qc\x92\xf8\xce!\x102\x19\x0e\xf1\xfcK \xf7\x11IE\xe4\x92\xber\x1a\xb9\xf2\xabB\xcdzmQ{\xc9\x0b\x0c\x12\x83{\xb1\xb8{\x151g*\x15\x97\x03\xb1A\x8f\xef}\x97\x05@\x8c,\xdc\xd2@\xb3\x9e\x1d\xd3$+\xab\xbb]\x98\x0cz\x12\x0b.\xc8\xf5~\x83\x89\x184\xa5\xc5\xdf\xaa\xdf|GE\xf0=Y\xe5\xd05$d0\xfa\x88SC1\xb28\x8d\xa9\xb5\xb6\xb5m\xbd\x95\x07?\x95F\&#39;\x83\xe1\x8fm\x02\xd3\xe6\x8f\xa3\x8b\xd1\xde\xe8h4\x86\xd2Z\xce\xedrK\xd6\x05 \xd35\xe7\xec\xb3\xb3\xd3\x8b\x91X\xda_.\x03\xa8x\xd3\xe4\xb9Q\x1e\x99D\xce6\x04\xcb\xea\xc6`\xa9e\xc5\x92\xba\r\xe8k\xe9:\xebi\x02$vk\x1a\x89\xcd\xef\xed\xbc\xfa\xb7X\x8d\xfe&lt;\x1cX\x7f\x8c\x0b\xefR\t\x1e\x8f\xce\xb7+\x95\xf9|^6\xf9i\xe3\x98Q\xdcD\xd8\x8c\xb6\x99\xa2\xd58^\x00\x96\xf1j\x85\xb8\xb7\xcb\xcf\xeb\x18j\xdd\x00\x7fp\x12H.\xa8\x03\x81\x83J\xbf\xdf\xad\xf00\xf0\xbc&quot;\xc9\xd3[\xc5\x1d\xd1D\xff+\x9e\xfcI\xe2I\xed[,\xa7\xf6&lt;\xe2I\xed\x11\xf1\x04=\xfb\x90\xf93 \xdcZ&lt;3o~r\x9d\xdc\xe5\xcd\xb5\xbf\xbc\xf9\xcf\xe1\xcd\xf5o\xb1\x9c\xfa\xf3\xf0\xe6\xfa#\xbdY^Mzf\xbe\xfc\xe4\x1a\xb9\xcb\x97\xeb\x7f\xf9\xf2\x9f\xc3\x97\x1b\xdfb9\x8d\xe7\xe1\xcb\x8dG\xfa\xf2^H=\xf3\x99y\xf2\x93\xeb\xe3.On\xfc\xe5\xc9O\xe4\xc9\xf2O\x88\x7fp\x89\x17aJ\xdb:[\xdf.\xfaC\x966\xffdk\xad\xd5\xa2\xc5\xd6\r\xfb\xabb\xf1{\xe3\x16\xae\x1e\x80\xe5H\x7fVZ\x92/\xcfKQ\x99\x85\xf5\x02\xb1)F\x0b\x17\xd9\xef\xbfCA\x9ej\x8bBRz\xd3\xe7\x1a\x8a\xfd`ma|\rM\xf5\x16\xbfm&lt;`\x0f\xf9A\x1b\x1d;\xdb\x0f\xda\x9fVa3;B\x9dQx\xdf\xe8\x15\xdfS\xdf\xad\xc0#\x02V\xb0S\xd2\xb7KzUX\xdb\xfa\xdf\x8f6\x9bG\xa0\xe8f\xb3\xd9&quot;\xd9\x07\xe4\xe1[7\x0fT\x0b\xdf\x9dH!\xa0L\xa0\xfc\xa0a\xb0\xca\xaf\xd8\xc3\xc8Rvg@\xe4G\x0c\xfa\x17\xc34A\xf3\xa4\xbfT\x914e\xfe\xa1t\xd4\xfft\xfa\x01L}j\x7ff\xa6\x96V\r\xba~_M\x16s+q\xac\xef\x93\x8a\xb3\x97\x99c\xc2\x93\x90\xd1\xeb\x12\xee\x1bk\x19\x19)!\x08[U;\xbd\x909\xf1HVo\xf7t\xef\x9f\xc3\xfd1\xc1\xe3\xe0{4b\xe9\x9a\xa1\xe9\xcf=\x0c\x03e\x97\x1a\xa1\xef2\xd3\x16+\x87A2\xa9@\xfe6\xae\xe7\xf4\x86U\x0cHm\x95)@\xb6*\xd1\x9c\xbf\x96\xa1\xe9\xe5\x8bj\xbd\x03\x7f\xf4\xce\x0b\xa8\x13&quot;\xdc\x01mm\xe9[\xb5\x9d-=\x95K]W\xbc7PBH\x1c\xd0d8\xf0\xb7=\xa8\xbd\xdd\x1f\xec\xb5\x86\xa5\xfe\xb05(U\xab\xc6\xb4\xb4\xd3\xda\xdb.5\x1a\x8df\xb3\xdel\xf0\xe5\xc6\xdd\xb3\xfey\xff\x98\x9c\xf4\x8f\x87]\xed\xca\xf8\xac\x91\x8f\xfd\xa3\x0fC4\xa1\xe6v]\xcb?_\xa4\xcf\xdf\xee\xd4\xb7s\x8f\x0f\x90\xf2\x8f4\x8c\xd2N\xb9\x0e\xc7\xfe\x8d\xcd\xd2\x87\x05\x87V\xa6\xceM\x19$\xf0\xee\xc6\xa0Q\x1c^Mm\xd0YA7\xf4\xad+\\\x84\x85\xbe9\x14\x17\xa1\xf1\xfb&quot;\xb8&lt;\x06\x1d\xa7(.\xf9y\xba\\\x973\xa8\xa6\xd2\x1e\xf8\xcd)+O\x8f|?\xd8\xfc\xf4\xdf\t\xb8Y\xbc\x1c\xfe\x1e\xd4\x9cg\x91\x1b\xe5F\x19Cj\xdc\x0c\x1e\x8ds\xd3\xc8&gt;~s\xcb\x05?\xf2\xd77\x0c\x16mT\xe3\x85A\x9d%\x94\x0b(Cah\xae\xcf\x80\xdd\xd8\x06;\x00?I;\xea\xb9.Cw\xc2\xccU\x93\xc8w\xd9;\xe4\xc9v#!\x97\xe7&lt;\xbb\xdejo\x03\xd0\xeeF\x00\x8c\xba\x0ep:\xa6\x93\t\x04\x92\xa5\xf1\xe75\x1a\xfah*\x1b\xe9\x94\xcf\xfb\xa6\x19\xde&quot;7\xd9\xeb\xcc\x0f7\x0b\x85+\xe1\x84\xc5\x10\x7f\xae\xb3\x14\xd15\t\xf3\x9e\x07\t\xc4D#dli\x0fx~\x93\x07A\x86\xf2\x85\xb4\xb1\xe9\x84\xd8\xb7\xf8\x02\x80\xa3\x88w\nx#\x8eW&quot;$\xbf\x08\xc3\x85\xc8\x87\x16\x0b\xfd\x02\&#39;\x99\xd9x\xb2u\xc6V\xb6Pr\x91p\xe6W \&#39;\xf0\xa0\x17\xf0Y\x08\x8e\x15G;h\x108\xb6\xc1/\x9eV&gt;\x97\xd2pY\xe2\x9d\xb5\xe51\xb1e8\xd4\xea|\xe3\xa6\xc2Y\x87W\x11\x96\xd3Cn\x03\xb0\x16\x0fx\x15\xf7\xc1\xfd)&amp;i\xdcN_\xa6\xe92I\x0f\xc4\xc9\xff\xc5\xe9\xfc]\xda\xe5\x1eG\xf1\xb8\x04\xc5Y\xad\xab#\xe7\xc3l`\xe6O_\x02\xa0j\x99|\x88\x18\xff\xda\x9ak\xcf\x9e2D\n\x82!-2\x0b\xa9\x1b\xf1\x07S\x10\x1c\x7fc 5x\xa0\x1a\xdeOB\xdb\xb8&amp;,6\xcad\x0f\xca4\n\xf3\xe4\xc4\x81\xd4\xcdO\xf9[I\x18\xe3\xe9\xe8\x90X0\xbd\x8d\xca\xf7$\x19f\xd0N\xc5\xa2\xf6\x9cz\x15\x87B\x837\xfb\xd5\xb2\xaf \x0boGV\x02\xa6r\xc3\x16\x0c\x02}\xf3\xeamM\xbf\xfa\xd4&lt;\xf8\xa9\xb6W\xc0\xd3\x13bjpL\xff&lt;4\xa6?}.\xc0T+\x93\xb3d),P-\x8a\xc6\xf6@\x04\x87\xd4&amp;\x970G\x17\xe2\n\xfc\xb8\xactW\x87Ax\xc5\x08,`\xe2\xdb\x0e\xbe\xce)\x96\x7f\x1b\xc6\x91\xd7\&#39;\x10lpB;C#p\x030\xa4$djPDl7\x00\xdf\xa6\xe2\x82\xc5\xd9\xd2\xa8\xde(\x8c\x8d%F\xfe\xfdDKlP\x10\x80\xad\x13#\tHl\x85~\x02\x18\xd0P\xf1\x9a\x08\xe0%\x17\xe01$`~\xe00Qt\x99\xfc\x94}\x02\x16\xb3\xec6\x82\xb9=\x10\x8cV\x03\x8d I\x00\x1e\x83o\xb3%\x01\xcd2\x19[\x0c\x8a\xab0\x02&quot;\xe7&gt; \x9f&amp;XZD\x04\x0c\x87[\r\xc04\x91~\x13\xc8\xbc.\x93K\xc6\xb1\xc4\x16s\xb1u\x0e\xae\xc7iw\x18\xb8&quot;\x8c\xf2LB\xe7`\x8e\x1e?\xdd\xcf]H\xdc\x00\x98\xfaX\xec\xe1\x98\x00\xed/\xc7/0\x1a\x11v\x03\xc3\xec)\x993&quot;\xf8\x918?\xf9\t\xe7$r\xc1:8\\\xde=\xf2\t\x8d\x10\xe0\x941\xd1L\xc1!(\x9f\xf9\x03T\x02\x1a\x89\x17\xbck\xaa\xe2\x16H\x05%\x82\xdf9\xe5le\xedc\xe9\xcb\x1c\x15\x84\x94\x18j\xc1R\xb5\x99\x11\t\xdeY\x90$\xbd\xbeKl\xb6g8\x89\x89\x176\x98AQb\xabLq\x01.\xf5\xd0\xe7|,a\x16b\xddZ\xc2\xe0\x17\x1d@\x93,\xe0\xb6c\xbbl\x951.{\xcb\x0e\xcd\x14\xce\x12\x0c\&#39;Q\x18\x04JIXD*\xe3\x9f\x13S\xde\xd3@Q\xd0\x18\xc1D)\x942\xe9OQg\x1b\xe8[H P\x87\xafR\xc7;]\xab\x06\x8e1\x1bT\xc7v\x00\x93\x9c\x81=\x9d2~\x1fIX\xb6\x08\xb2HJD\xddl\xb4%\x13\xf0m4&amp;3\x1d!\xb9\xb8\xf0S\x1a\xe2p\x91y&gt;\xa7\x8bH\x85P~\t\x8aEr\x10\x1f\xe0\xd8\xd7,\x13\xeb\xef\\\xd2Y}\x9e\x9d\x0cfV\xf8\xc8\xe69\xf6\x9dS\xd3\xfcTWMhv\x1evt:?\xc1\xce\xcf\xdb$\&#39;+\xb31\xbe\\\xfa\x9f\xe5\xc1K\xc8\xca.\xe0\x8a\xf8*\xab\xeb\x9b\x89#\xce\xc7\xe2:k\xbd\xf9vy\xb6A\xce\xe3D@\xda\x97\xa3p\xed\xf4\xbf\xd9\xe9a\x06\xb2kGF\xf6@\xe7\x94\xde\xf8\xa1\x1d\xb3\xe8e\x11\x9a\x1e\x94S\xdc\xdbU\xaf\x87\x80\x0e\x99`\xc3\\\x01\xcd\xaf|v!\xa5\xffP\xd3c\x1f\xfe\xa0\xc5\xc1\x8b05ldt\x89\xff\\\xc1\xb8\x05\xf1\xf22N[\xde\xad\t\xc05\xe2\xd7o:Z\xef\x0c\xdf=h\xac\xe1@B|\xfdF\xeb\xed\xe3\x9b\xcc\xd0\xff\xa4\x87Q*\xfc\x8a$WN\xe6\x90\t\xd7\x84\xd6\x1b\x80\x14\x92\x08\x04E{\xff-^y^1\x90s(\x84\xbcY[\xdf\x15K&lt;\xd2\xb4\xd4aC\xf9m/\xe9gy\xbd\x8e\x7f\x16`4a\x93\x1a\x1ed\t]uB\xbd@\x19\x14ktyZ]\xc3\xe3\xeaX\xa0\x92\xc2\x9f\xdd8\xccC\xdf\xd4\x15;\x9bx\x0e\x99\xf7\x16w\x07S\xd2\xb8\xbd\xdf6\x16F\xe3\x15\xc2\xd5\xdd\x08\x98\xa9gO\x08\x0bV\xf1\x1b\n\xa9\xa9V\x08o\xa1\x06\x17}o%\xf6\x0er\xf8\xf1vQ\xfb\xf2\xaf\xc2\xd0\xe4r\x83\xfa$\xbfy\x93kM\x1d\xc0\x86\xb9\n\xf1!\xf7@\x11\x08\xa58\xc4n\xbcC\xeb\xe2\xa5u\xd7\x16fx\x1b\xce\xea\xf7\xa1\xb9\xf6\x18\x9ak\xdf\x87\xe6\xfach\xae\x7f\x1f\x9a\x1b\x8f\xa1\xb9\xf1}hn&gt;\x86\xe6\xe6\xdd4\xab\x00\xc1\xf7\x8b\xf2\xd1C\xed\x02\xacE\x86\x99\xefo\x08\r\x87\xf0D\xeb\xdd\x8a\x97o\x04\x15?T\xdbC\x1b\x9efE(\xf6\xd1\x94\xd4lsi\x99&lt;[!\x84[\xfa\x8b4\x98\x8e\xc1t(\xc7\x88\xad*\x942\xbf\xe9\xc9IUd}\xd3\xdd\x87\xa7\xdc&lt;\x90\x13\xfb\xc6\x1fp\xa3bu\xa5\xf8\xe3\xf0|&lt;\xda\xef\x1f\x95\xfaG\xa3\xc3\x936^J\xd5\n\xce\xf2gv\x7f\xb6\xeb\xf7\xbc\x93\x07\xd3\xf8\xd9\x15\x9a\xdfU\x7f\xfc!\t\xe4]L\xb9\x17T\xd3%\x02\\\x98\xcf\xec\x0b\x9dm\xda\x91\xee\xf1\xef\x130p\xe2F~#iq1K\xa0\xe2\x9d\xf8\xfe\xf5\xeaf\xb9\xd6;\xc4\x07\x04\x9f\xf0mn\xb1\xd9\xbev\xd0\x15o\x1f2\xfe\xf5\xb5e\x8f\xc5\xf9\x92\x0fG-\xbf\xd5\xb8T*\xbd\x9c\xc5\x1d\xfc\xbf\xf2\xb5\xb7\x12\xba\xbc\xc2\xb8\xfe5\xcd\xe9\xedF\xb2\xef\x07\x0b\xb1\xfd\x80#6\xed\x8d,\x99s#\xcfv\xdb\x86E\xe3w\x86\xe0\xbek1/\\\xfc\x8a\xb7\xce\xb7\xb7\xff\x17\x9e\xe3\xe2\x92\xd6{\xc0MI\x18sUk]\xcdO\r\xf3\xac_tOh\xc3\xee\xe1\xf6\xda\xfdO(\x85a*\x7fAa\xaet|\xa1\xf5\x00p1\x17\xd15\xf8i\x9b\xd3|\xb5H&lt;\x8b\xda\xef\x0c\xb1\xcew\x7f\xaa9\x0c\x97!\xe5\x8d\x93\xc5/q\xe3a\x94k=\x0e \xb7\xeb\x99\xd1\xda\xad\x17V\x87.\xb5\x1d9\xa8\xbd\xbc\xab\x9aj\t\x9e\xc6\xfe\n\x83/_\xb4\x1a\x9d\x05\xb5|\xff\xe5\x8bF\xab\x03:\x12\xaf\x9e\xd6\xbbW7q_3C\x9f\\rM\x91\xb7\xe5w=\xf3\xe5\x06\xcbwXD\xf9\xc42\xbcf\xf1\x16\xb9N&lt;\x17b\xc0\x16\xd9\xb7l\x8f\n@k;\xd1wy\xbe\xb8\x7f|\x7f\x15qw\xe7\xd6}ub}\xdc_\\\xaf\xdd\xbd&gt;+\x9e)f\xf7q\xd3\x99\xea\xeft\xab\xfcIn\xb6\xf3|V\xd0\xfe\x7f\x92^\x00\x00&#39;</div></td></tr>
+<tr><td>decode_content</td><td class="code"><div>True</div></td></tr>
+<tr><td>e</td><td class="code"><div>error(&#39;Error -3 while decompressing: incorrect data check&#39;,)</div></td></tr>
+<tr><td>flush_decoder</td><td class="code"><div>False</div></td></tr>
+<tr><td>self</td><td class="code"><div>&lt;requests.packages.urllib3.response.HTTPResponse object at 0x7eff802db950&gt;</div></td></tr>
+</tbody>
+</table>
+
+
+
+  </li>
+<li class="frame">
+<code>/usr/local/lib/python2.7/site-packages/requests/packages/urllib3/response.py</code> in <code>stream</code>
+<div class="context" id="c139635834467104">
+<ol start="228" class="pre-context" id="pre139635834467104">
+<li onclick="toggle('pre139635834467104', 'post139635834467104')">            never be returned.</li>
+<li onclick="toggle('pre139635834467104', 'post139635834467104')"></li>
+<li onclick="toggle('pre139635834467104', 'post139635834467104')">        :param decode_content:</li>
+<li onclick="toggle('pre139635834467104', 'post139635834467104')">            If True, will attempt to decode the body based on the</li>
+<li onclick="toggle('pre139635834467104', 'post139635834467104')">            &#39;content-encoding&#39; header.</li>
+<li onclick="toggle('pre139635834467104', 'post139635834467104')">        &quot;&quot;&quot;</li>
+<li onclick="toggle('pre139635834467104', 'post139635834467104')">        while not is_fp_closed(self._fp):</li>
+</ol>
+<ol start="235" class="context-line"><li onclick="toggle('pre139635834467104', 'post139635834467104')">            data = self.read(amt=amt, decode_content=decode_content) <span>...</span></li></ol>
+<ol start='236' class="post-context" id="post139635834467104">
+<li onclick="toggle('pre139635834467104', 'post139635834467104')"></li>
+<li onclick="toggle('pre139635834467104', 'post139635834467104')">            if data:</li>
+<li onclick="toggle('pre139635834467104', 'post139635834467104')">                yield data</li>
+<li onclick="toggle('pre139635834467104', 'post139635834467104')"></li>
+<li onclick="toggle('pre139635834467104', 'post139635834467104')"></li>
+<li onclick="toggle('pre139635834467104', 'post139635834467104')">    @classmethod</li>
+</ol>
+  </div>
+
+<div class="commands">
+<a href='#' onclick="return varToggle(this, '139635834467104')"><span>&#x25b6;</span> Local vars</a>
+
+</div>
+
+<table class="vars"
+id="v139635834467104"
+><thead><tr><th>Variable</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>amt</td><td class="code"><div>10240</div></td></tr>
+<tr><td>decode_content</td><td class="code"><div>True</div></td></tr>
+<tr><td>self</td><td class="code"><div>&lt;requests.packages.urllib3.response.HTTPResponse object at 0x7eff802db950&gt;</div></td></tr>
+</tbody>
+</table>
+
+
+
+  </li>
+<li class="frame">
+<code>/usr/local/lib/python2.7/site-packages/requests/models.py</code> in <code>generate</code>
+<div class="context" id="c139635834467392">
+<ol start="607" class="pre-context" id="pre139635834467392">
+<li onclick="toggle('pre139635834467392', 'post139635834467392')">            return iter_slices(self._content, chunk_size)</li>
+<li onclick="toggle('pre139635834467392', 'post139635834467392')"></li>
+<li onclick="toggle('pre139635834467392', 'post139635834467392')">        def generate():</li>
+<li onclick="toggle('pre139635834467392', 'post139635834467392')">            try:</li>
+<li onclick="toggle('pre139635834467392', 'post139635834467392')">                # Special case for urllib3.</li>
+<li onclick="toggle('pre139635834467392', 'post139635834467392')">                try:</li>
+<li onclick="toggle('pre139635834467392', 'post139635834467392')">                    for chunk in self.raw.stream(chunk_size,</li>
+</ol>
+<ol start="614" class="context-line"><li onclick="toggle('pre139635834467392', 'post139635834467392')">                                                 decode_content=True): <span>...</span></li></ol>
+<ol start='615' class="post-context" id="post139635834467392">
+<li onclick="toggle('pre139635834467392', 'post139635834467392')">                        yield chunk</li>
+<li onclick="toggle('pre139635834467392', 'post139635834467392')">                except IncompleteRead as e:</li>
+<li onclick="toggle('pre139635834467392', 'post139635834467392')">                    raise ChunkedEncodingError(e)</li>
+<li onclick="toggle('pre139635834467392', 'post139635834467392')">            except AttributeError:</li>
+<li onclick="toggle('pre139635834467392', 'post139635834467392')">                # Standard file-like object.</li>
+<li onclick="toggle('pre139635834467392', 'post139635834467392')">                while True:</li>
+</ol>
+  </div>
+
+<div class="commands">
+<a href='#' onclick="return varToggle(this, '139635834467392')"><span>&#x25b6;</span> Local vars</a>
+
+</div>
+
+<table class="vars"
+id="v139635834467392"
+><thead><tr><th>Variable</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>chunk_size</td><td class="code"><div>10240</div></td></tr>
+<tr><td>self</td><td class="code"><div>&lt;Response [200]&gt;</div></td></tr>
+</tbody>
+</table>
+
+
+
+  </li>
+<li class="frame">
+<code>/usr/local/lib/python2.7/site-packages/requests/models.py</code> in <code>content</code>
+<div class="context" id="c139635834470056">
+<ol start="668" class="pre-context" id="pre139635834470056">
+<li onclick="toggle('pre139635834470056', 'post139635834470056')">                if self._content_consumed:</li>
+<li onclick="toggle('pre139635834470056', 'post139635834470056')">                    raise RuntimeError(</li>
+<li onclick="toggle('pre139635834470056', 'post139635834470056')">                        &#39;The content for this response was already consumed&#39;)</li>
+<li onclick="toggle('pre139635834470056', 'post139635834470056')"></li>
+<li onclick="toggle('pre139635834470056', 'post139635834470056')">                if self.status_code == 0:</li>
+<li onclick="toggle('pre139635834470056', 'post139635834470056')">                    self._content = None</li>
+<li onclick="toggle('pre139635834470056', 'post139635834470056')">                else:</li>
+</ol>
+<ol start="675" class="context-line"><li onclick="toggle('pre139635834470056', 'post139635834470056')">                    self._content = bytes().join(self.iter_content(CONTENT_CHUNK_SIZE)) or bytes() <span>...</span></li></ol>
+<ol start='676' class="post-context" id="post139635834470056">
+<li onclick="toggle('pre139635834470056', 'post139635834470056')"></li>
+<li onclick="toggle('pre139635834470056', 'post139635834470056')">            except AttributeError:</li>
+<li onclick="toggle('pre139635834470056', 'post139635834470056')">                self._content = None</li>
+<li onclick="toggle('pre139635834470056', 'post139635834470056')"></li>
+<li onclick="toggle('pre139635834470056', 'post139635834470056')">        self._content_consumed = True</li>
+<li onclick="toggle('pre139635834470056', 'post139635834470056')">        # don&#39;t need to release the connection; that&#39;s been handled by urllib3</li>
+</ol>
+  </div>
+
+<div class="commands">
+<a href='#' onclick="return varToggle(this, '139635834470056')"><span>&#x25b6;</span> Local vars</a>
+
+</div>
+
+<table class="vars"
+id="v139635834470056"
+><thead><tr><th>Variable</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>self</td><td class="code"><div>&lt;Response [200]&gt;</div></td></tr>
+</tbody>
+</table>
+
+
+
+  </li>
+<li class="frame">
+<code>/usr/local/lib/python2.7/site-packages/requests/adapters.py</code> in <code>send</code>
+<div class="context" id="c139635834469840">
+<ol start="380" class="pre-context" id="pre139635834469840">
+<li onclick="toggle('pre139635834469840', 'post139635834469840')">                raise Timeout(e)</li>
+<li onclick="toggle('pre139635834469840', 'post139635834469840')">            else:</li>
+<li onclick="toggle('pre139635834469840', 'post139635834469840')">                raise</li>
+<li onclick="toggle('pre139635834469840', 'post139635834469840')"></li>
+<li onclick="toggle('pre139635834469840', 'post139635834469840')">        r = self.build_response(request, resp)</li>
+<li onclick="toggle('pre139635834469840', 'post139635834469840')"></li>
+<li onclick="toggle('pre139635834469840', 'post139635834469840')">        if not stream:</li>
+</ol>
+<ol start="387" class="context-line"><li onclick="toggle('pre139635834469840', 'post139635834469840')">            r.content <span>...</span></li></ol>
+<ol start='388' class="post-context" id="post139635834469840">
+<li onclick="toggle('pre139635834469840', 'post139635834469840')"></li>
+<li onclick="toggle('pre139635834469840', 'post139635834469840')">        return r</li>
+</ol>
+  </div>
+
+<div class="commands">
+<a href='#' onclick="return varToggle(this, '139635834469840')"><span>&#x25b6;</span> Local vars</a>
+
+</div>
+
+<table class="vars"
+id="v139635834469840"
+><thead><tr><th>Variable</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>cert</td><td class="code"><div>None</div></td></tr>
+<tr><td>chunked</td><td class="code"><div>False</div></td></tr>
+<tr><td>conn</td><td class="code"><div>&lt;requests.packages.urllib3.connectionpool.HTTPConnectionPool object at 0x7eff80349250&gt;</div></td></tr>
+<tr><td>proxies</td><td class="code"><div>OrderedDict()</div></td></tr>
+<tr><td>r</td><td class="code"><div>&lt;Response [200]&gt;</div></td></tr>
+<tr><td>request</td><td class="code"><div>&lt;PreparedRequest [GET]&gt;</div></td></tr>
+<tr><td>resp</td><td class="code"><div>&lt;requests.packages.urllib3.response.HTTPResponse object at 0x7eff802db950&gt;</div></td></tr>
+<tr><td>self</td><td class="code"><div>&lt;requests.adapters.HTTPAdapter object at 0x7eff80349850&gt;</div></td></tr>
+<tr><td>stream</td><td class="code"><div>False</div></td></tr>
+<tr><td>timeout</td><td class="code"><div>&lt;requests.packages.urllib3.util.Timeout object at 0x7eff802dbf50&gt;</div></td></tr>
+<tr><td>url</td><td class="code"><div>&#39;/news.php?styleid=2&amp;id=3575&#39;</div></td></tr>
+<tr><td>verify</td><td class="code"><div>True</div></td></tr>
+</tbody>
+</table>
+
+
+
+  </li>
+<li class="frame">
+<code>/usr/local/lib/python2.7/site-packages/requests/sessions.py</code> in <code>send</code>
+<div class="context" id="c139635834469984">
+<ol start="477" class="pre-context" id="pre139635834469984">
+<li onclick="toggle('pre139635834469984', 'post139635834469984')"></li>
+<li onclick="toggle('pre139635834469984', 'post139635834469984')">        # Get the appropriate adapter to use</li>
+<li onclick="toggle('pre139635834469984', 'post139635834469984')">        adapter = self.get_adapter(url=request.url)</li>
+<li onclick="toggle('pre139635834469984', 'post139635834469984')"></li>
+<li onclick="toggle('pre139635834469984', 'post139635834469984')">        # Start time (approximately) of the request</li>
+<li onclick="toggle('pre139635834469984', 'post139635834469984')">        start = datetime.utcnow()</li>
+<li onclick="toggle('pre139635834469984', 'post139635834469984')">        # Send the request</li>
+</ol>
+<ol start="484" class="context-line"><li onclick="toggle('pre139635834469984', 'post139635834469984')">        r = adapter.send(request, **kwargs) <span>...</span></li></ol>
+<ol start='485' class="post-context" id="post139635834469984">
+<li onclick="toggle('pre139635834469984', 'post139635834469984')">        # Total elapsed time of the request (approximately)</li>
+<li onclick="toggle('pre139635834469984', 'post139635834469984')">        r.elapsed = datetime.utcnow() - start</li>
+<li onclick="toggle('pre139635834469984', 'post139635834469984')"></li>
+<li onclick="toggle('pre139635834469984', 'post139635834469984')">        # Response manipulation hooks</li>
+<li onclick="toggle('pre139635834469984', 'post139635834469984')">        r = dispatch_hook(&#39;response&#39;, hooks, r, **kwargs)</li>
+<li onclick="toggle('pre139635834469984', 'post139635834469984')"></li>
+</ol>
+  </div>
+
+<div class="commands">
+<a href='#' onclick="return varToggle(this, '139635834469984')"><span>&#x25b6;</span> Local vars</a>
+
+</div>
+
+<table class="vars"
+id="v139635834469984"
+><thead><tr><th>Variable</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>adapter</td><td class="code"><div>&lt;requests.adapters.HTTPAdapter object at 0x7eff80349850&gt;</div></td></tr>
+<tr><td>allow_redirects</td><td class="code"><div>True</div></td></tr>
+<tr><td>cert</td><td class="code"><div>None</div></td></tr>
+<tr><td>hooks</td><td class="code"><div>{&#39;response&#39;: []}</div></td></tr>
+<tr><td>kwargs</td><td class="code"><div>{&#39;cert&#39;: None,
+ &#39;proxies&#39;: OrderedDict(),
+ &#39;stream&#39;: False,
+ &#39;timeout&#39;: None,
+ &#39;verify&#39;: True}</div></td></tr>
+<tr><td>proxies</td><td class="code"><div>OrderedDict()</div></td></tr>
+<tr><td>request</td><td class="code"><div>&lt;PreparedRequest [GET]&gt;</div></td></tr>
+<tr><td>self</td><td class="code"><div>&lt;requests.sessions.Session object at 0x189d190&gt;</div></td></tr>
+<tr><td>start</td><td class="code"><div>datetime.datetime(2014, 5, 30, 4, 39, 55, 379473)</div></td></tr>
+<tr><td>stream</td><td class="code"><div>False</div></td></tr>
+<tr><td>timeout</td><td class="code"><div>None</div></td></tr>
+<tr><td>verify</td><td class="code"><div>True</div></td></tr>
+</tbody>
+</table>
+
+
+
+  </li>
+<li class="frame">
+<code>/usr/local/lib/python2.7/site-packages/requests/sessions.py</code> in <code>request</code>
+<div class="context" id="c139635834470128">
+<ol start="374" class="pre-context" id="pre139635834470128">
+<li onclick="toggle('pre139635834470128', 'post139635834470128')">            &#39;stream&#39;: stream,</li>
+<li onclick="toggle('pre139635834470128', 'post139635834470128')">            &#39;timeout&#39;: timeout,</li>
+<li onclick="toggle('pre139635834470128', 'post139635834470128')">            &#39;verify&#39;: verify,</li>
+<li onclick="toggle('pre139635834470128', 'post139635834470128')">            &#39;cert&#39;: cert,</li>
+<li onclick="toggle('pre139635834470128', 'post139635834470128')">            &#39;proxies&#39;: proxies,</li>
+<li onclick="toggle('pre139635834470128', 'post139635834470128')">            &#39;allow_redirects&#39;: allow_redirects,</li>
+<li onclick="toggle('pre139635834470128', 'post139635834470128')">        }</li>
+</ol>
+<ol start="381" class="context-line"><li onclick="toggle('pre139635834470128', 'post139635834470128')">        resp = self.send(prep, **send_kwargs) <span>...</span></li></ol>
+<ol start='382' class="post-context" id="post139635834470128">
+<li onclick="toggle('pre139635834470128', 'post139635834470128')"></li>
+<li onclick="toggle('pre139635834470128', 'post139635834470128')">        return resp</li>
+<li onclick="toggle('pre139635834470128', 'post139635834470128')"></li>
+<li onclick="toggle('pre139635834470128', 'post139635834470128')">    def get(self, url, **kwargs):</li>
+<li onclick="toggle('pre139635834470128', 'post139635834470128')">        &quot;&quot;&quot;Sends a GET request. Returns :class:`Response` object.</li>
+<li onclick="toggle('pre139635834470128', 'post139635834470128')"></li>
+</ol>
+  </div>
+
+<div class="commands">
+<a href='#' onclick="return varToggle(this, '139635834470128')"><span>&#x25b6;</span> Local vars</a>
+
+</div>
+
+<table class="vars"
+id="v139635834470128"
+><thead><tr><th>Variable</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>allow_redirects</td><td class="code"><div>True</div></td></tr>
+<tr><td>auth</td><td class="code"><div>None</div></td></tr>
+<tr><td>cert</td><td class="code"><div>None</div></td></tr>
+<tr><td>cookies</td><td class="code"><div>None</div></td></tr>
+<tr><td>data</td><td class="code"><div>None</div></td></tr>
+<tr><td>env_proxies</td><td class="code"><div>{}</div></td></tr>
+<tr><td>files</td><td class="code"><div>None</div></td></tr>
+<tr><td>headers</td><td class="code"><div>None</div></td></tr>
+<tr><td>hooks</td><td class="code"><div>None</div></td></tr>
+<tr><td>method</td><td class="code"><div>&#39;get&#39;</div></td></tr>
+<tr><td>params</td><td class="code"><div>None</div></td></tr>
+<tr><td>prep</td><td class="code"><div>&lt;PreparedRequest [GET]&gt;</div></td></tr>
+<tr><td>proxies</td><td class="code"><div>OrderedDict()</div></td></tr>
+<tr><td>req</td><td class="code"><div>&lt;Request [GET]&gt;</div></td></tr>
+<tr><td>self</td><td class="code"><div>&lt;requests.sessions.Session object at 0x189d190&gt;</div></td></tr>
+<tr><td>send_kwargs</td><td class="code"><div>{&#39;allow_redirects&#39;: True,
+ &#39;cert&#39;: None,
+ &#39;proxies&#39;: OrderedDict(),
+ &#39;stream&#39;: False,
+ &#39;timeout&#39;: None,
+ &#39;verify&#39;: True}</div></td></tr>
+<tr><td>stream</td><td class="code"><div>False</div></td></tr>
+<tr><td>timeout</td><td class="code"><div>None</div></td></tr>
+<tr><td>url</td><td class="code"><div>u&#39;http://www.dianxitea.com/news.php?styleid=2&amp;id=3575&#39;</div></td></tr>
+<tr><td>verify</td><td class="code"><div>True</div></td></tr>
+</tbody>
+</table>
+
+
+
+  </li>
+<li class="frame">
+<code>/usr/local/lib/python2.7/site-packages/requests/api.py</code> in <code>request</code>
+<div class="context" id="c139635834466456">
+<ol start="36" class="pre-context" id="pre139635834466456">
+<li onclick="toggle('pre139635834466456', 'post139635834466456')"></li>
+<li onclick="toggle('pre139635834466456', 'post139635834466456')">      &gt;&gt;&gt; import requests</li>
+<li onclick="toggle('pre139635834466456', 'post139635834466456')">      &gt;&gt;&gt; req = requests.request(&#39;GET&#39;, &#39;http://httpbin.org/get&#39;)</li>
+<li onclick="toggle('pre139635834466456', 'post139635834466456')">      &lt;Response [200]&gt;</li>
+<li onclick="toggle('pre139635834466456', 'post139635834466456')">    &quot;&quot;&quot;</li>
+<li onclick="toggle('pre139635834466456', 'post139635834466456')"></li>
+<li onclick="toggle('pre139635834466456', 'post139635834466456')">    session = sessions.Session()</li>
+</ol>
+<ol start="43" class="context-line"><li onclick="toggle('pre139635834466456', 'post139635834466456')">    return session.request(method=method, url=url, **kwargs) <span>...</span></li></ol>
+<ol start='44' class="post-context" id="post139635834466456">
+<li onclick="toggle('pre139635834466456', 'post139635834466456')"></li>
+<li onclick="toggle('pre139635834466456', 'post139635834466456')"></li>
+<li onclick="toggle('pre139635834466456', 'post139635834466456')">def get(url, **kwargs):</li>
+<li onclick="toggle('pre139635834466456', 'post139635834466456')">    &quot;&quot;&quot;Sends a GET request. Returns :class:`Response` object.</li>
+<li onclick="toggle('pre139635834466456', 'post139635834466456')"></li>
+<li onclick="toggle('pre139635834466456', 'post139635834466456')">    :param url: URL for the new :class:`Request` object.</li>
+</ol>
+  </div>
+
+<div class="commands">
+<a href='#' onclick="return varToggle(this, '139635834466456')"><span>&#x25b6;</span> Local vars</a>
+
+</div>
+
+<table class="vars"
+id="v139635834466456"
+><thead><tr><th>Variable</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>kwargs</td><td class="code"><div>{&#39;allow_redirects&#39;: True}</div></td></tr>
+<tr><td>method</td><td class="code"><div>&#39;get&#39;</div></td></tr>
+<tr><td>session</td><td class="code"><div>&lt;requests.sessions.Session object at 0x189d190&gt;</div></td></tr>
+<tr><td>url</td><td class="code"><div>u&#39;http://www.dianxitea.com/news.php?styleid=2&amp;id=3575&#39;</div></td></tr>
+</tbody>
+</table>
+
+
+
+  </li>
+<li class="frame">
+<code>/usr/local/lib/python2.7/site-packages/requests/api.py</code> in <code>get</code>
+<div class="context" id="c139635834469408">
+<ol start="47" class="pre-context" id="pre139635834469408">
+<li onclick="toggle('pre139635834469408', 'post139635834469408')">    &quot;&quot;&quot;Sends a GET request. Returns :class:`Response` object.</li>
+<li onclick="toggle('pre139635834469408', 'post139635834469408')"></li>
+<li onclick="toggle('pre139635834469408', 'post139635834469408')">    :param url: URL for the new :class:`Request` object.</li>
+<li onclick="toggle('pre139635834469408', 'post139635834469408')">    :param \*\*kwargs: Optional arguments that ``request`` takes.</li>
+<li onclick="toggle('pre139635834469408', 'post139635834469408')">    &quot;&quot;&quot;</li>
+<li onclick="toggle('pre139635834469408', 'post139635834469408')"></li>
+<li onclick="toggle('pre139635834469408', 'post139635834469408')">    kwargs.setdefault(&#39;allow_redirects&#39;, True)</li>
+</ol>
+<ol start="54" class="context-line"><li onclick="toggle('pre139635834469408', 'post139635834469408')">    return request(&#39;get&#39;, url, **kwargs) <span>...</span></li></ol>
+<ol start='55' class="post-context" id="post139635834469408">
+<li onclick="toggle('pre139635834469408', 'post139635834469408')"></li>
+<li onclick="toggle('pre139635834469408', 'post139635834469408')"></li>
+<li onclick="toggle('pre139635834469408', 'post139635834469408')">def options(url, **kwargs):</li>
+<li onclick="toggle('pre139635834469408', 'post139635834469408')">    &quot;&quot;&quot;Sends a OPTIONS request. Returns :class:`Response` object.</li>
+<li onclick="toggle('pre139635834469408', 'post139635834469408')"></li>
+<li onclick="toggle('pre139635834469408', 'post139635834469408')">    :param url: URL for the new :class:`Request` object.</li>
+</ol>
+  </div>
+
+<div class="commands">
+<a href='#' onclick="return varToggle(this, '139635834469408')"><span>&#x25b6;</span> Local vars</a>
+
+</div>
+
+<table class="vars"
+id="v139635834469408"
+><thead><tr><th>Variable</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>kwargs</td><td class="code"><div>{&#39;allow_redirects&#39;: True}</div></td></tr>
+<tr><td>url</td><td class="code"><div>u&#39;http://www.dianxitea.com/news.php?styleid=2&amp;id=3575&#39;</div></td></tr>
+</tbody>
+</table>
+
+
+
+  </li>
+<li class="frame">
+<code>/var/www/pin/ser.py</code> in <code>GET</code>
+<div class="context" id="c139635834470200">
+<ol start="1274" class="pre-context" id="pre139635834470200">
+<li onclick="toggle('pre139635834470200', 'post139635834470200')">                url = &#39;http:&#39; + url</li>
+<li onclick="toggle('pre139635834470200', 'post139635834470200')">            if not &#39;://&#39; in url:</li>
+<li onclick="toggle('pre139635834470200', 'post139635834470200')">                url = &#39;http://&#39; + url</li>
+<li onclick="toggle('pre139635834470200', 'post139635834470200')"></li>
+<li onclick="toggle('pre139635834470200', 'post139635834470200')">            info = {}</li>
+<li onclick="toggle('pre139635834470200', 'post139635834470200')"></li>
+<li onclick="toggle('pre139635834470200', 'post139635834470200')">            print url</li>
+</ol>
+<ol start="1281" class="context-line"><li onclick="toggle('pre139635834470200', 'post139635834470200')">            r = requests.get(url) <span>...</span></li></ol>
+<ol start='1282' class="post-context" id="post139635834470200">
+<li onclick="toggle('pre139635834470200', 'post139635834470200')">            if &#39;image&#39; in r.headers[&#39;content-type&#39;]:</li>
+<li onclick="toggle('pre139635834470200', 'post139635834470200')">                info = {&#39;images&#39;: [url]}</li>
+<li onclick="toggle('pre139635834470200', 'post139635834470200')">            else:</li>
+<li onclick="toggle('pre139635834470200', 'post139635834470200')">                base_url = get_base_url(url)</li>
+<li onclick="toggle('pre139635834470200', 'post139635834470200')">                info = get_url_info(r.text, base_url)</li>
+<li onclick="toggle('pre139635834470200', 'post139635834470200')"></li>
+</ol>
+  </div>
+
+<div class="commands">
+<a href='#' onclick="return varToggle(this, '139635834470200')"><span>&#x25b6;</span> Local vars</a>
+
+</div>
+
+<table class="vars"
+id="v139635834470200"
+><thead><tr><th>Variable</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>info</td><td class="code"><div>{}</div></td></tr>
+<tr><td>self</td><td class="code"><div>&lt;ser.PagePreview instance at 0x7eff804fbb48&gt;</div></td></tr>
+<tr><td>url</td><td class="code"><div>u&#39;http://www.dianxitea.com/news.php?styleid=2&amp;id=3575&#39;</div></td></tr>
+</tbody>
+</table>
+
+
+
+  </li>
+<li class="frame">
+<code>/usr/local/lib/python2.7/site-packages/web/application.py</code> in <code>handle_class</code>
+<div class="context" id="c139635834468400">
+<ol start="388" class="pre-context" id="pre139635834468400">
+<li onclick="toggle('pre139635834468400', 'post139635834468400')">        def handle_class(cls):</li>
+<li onclick="toggle('pre139635834468400', 'post139635834468400')">            meth = web.ctx.method</li>
+<li onclick="toggle('pre139635834468400', 'post139635834468400')">            if meth == &#39;HEAD&#39; and not hasattr(cls, meth):</li>
+<li onclick="toggle('pre139635834468400', 'post139635834468400')">                meth = &#39;GET&#39;</li>
+<li onclick="toggle('pre139635834468400', 'post139635834468400')">            if not hasattr(cls, meth):</li>
+<li onclick="toggle('pre139635834468400', 'post139635834468400')">                raise web.nomethod(cls)</li>
+<li onclick="toggle('pre139635834468400', 'post139635834468400')">            tocall = getattr(cls(), meth)</li>
+</ol>
+<ol start="395" class="context-line"><li onclick="toggle('pre139635834468400', 'post139635834468400')">            return tocall(*args) <span>...</span></li></ol>
+<ol start='396' class="post-context" id="post139635834468400">
+<li onclick="toggle('pre139635834468400', 'post139635834468400')">            </li>
+<li onclick="toggle('pre139635834468400', 'post139635834468400')">        def is_class(o): return isinstance(o, (types.ClassType, type))</li>
+<li onclick="toggle('pre139635834468400', 'post139635834468400')">            </li>
+<li onclick="toggle('pre139635834468400', 'post139635834468400')">        if f is None:</li>
+<li onclick="toggle('pre139635834468400', 'post139635834468400')">            raise web.notfound()</li>
+<li onclick="toggle('pre139635834468400', 'post139635834468400')">        elif isinstance(f, application):</li>
+</ol>
+  </div>
+
+<div class="commands">
+<a href='#' onclick="return varToggle(this, '139635834468400')"><span>&#x25b6;</span> Local vars</a>
+
+</div>
+
+<table class="vars"
+id="v139635834468400"
+><thead><tr><th>Variable</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>args</td><td class="code"><div>[]</div></td></tr>
+<tr><td>cls</td><td class="code"><div>&lt;class ser.PagePreview at 0x7eff800464c8&gt;</div></td></tr>
+<tr><td>meth</td><td class="code"><div>u&#39;GET&#39;</div></td></tr>
+<tr><td>tocall</td><td class="code"><div>&lt;bound method PagePreview.GET of &lt;ser.PagePreview instance at 0x7eff804fbb48&gt;&gt;</div></td></tr>
+</tbody>
+</table>
+
+
+
+  </li>
+<li class="frame">
+<code>/usr/local/lib/python2.7/site-packages/web/application.py</code> in <code>_delegate</code>
+<div class="context" id="c139635834467248">
+<ol start="412" class="pre-context" id="pre139635834467248">
+<li onclick="toggle('pre139635834467248', 'post139635834467248')">                raise web.redirect(url)</li>
+<li onclick="toggle('pre139635834467248', 'post139635834467248')">            elif &#39;.&#39; in f:</li>
+<li onclick="toggle('pre139635834467248', 'post139635834467248')">                mod, cls = f.rsplit(&#39;.&#39;, 1)</li>
+<li onclick="toggle('pre139635834467248', 'post139635834467248')">                mod = __import__(mod, None, None, [&#39;&#39;])</li>
+<li onclick="toggle('pre139635834467248', 'post139635834467248')">                cls = getattr(mod, cls)</li>
+<li onclick="toggle('pre139635834467248', 'post139635834467248')">            else:</li>
+<li onclick="toggle('pre139635834467248', 'post139635834467248')">                cls = fvars[f]</li>
+</ol>
+<ol start="419" class="context-line"><li onclick="toggle('pre139635834467248', 'post139635834467248')">            return handle_class(cls) <span>...</span></li></ol>
+<ol start='420' class="post-context" id="post139635834467248">
+<li onclick="toggle('pre139635834467248', 'post139635834467248')">        elif hasattr(f, &#39;__call__&#39;):</li>
+<li onclick="toggle('pre139635834467248', 'post139635834467248')">            return f()</li>
+<li onclick="toggle('pre139635834467248', 'post139635834467248')">        else:</li>
+<li onclick="toggle('pre139635834467248', 'post139635834467248')">            return web.notfound()</li>
+<li onclick="toggle('pre139635834467248', 'post139635834467248')"></li>
+<li onclick="toggle('pre139635834467248', 'post139635834467248')">    def _match(self, mapping, value):</li>
+</ol>
+  </div>
+
+<div class="commands">
+<a href='#' onclick="return varToggle(this, '139635834467248')"><span>&#x25b6;</span> Local vars</a>
+
+</div>
+
+<table class="vars"
+id="v139635834467248"
+><thead><tr><th>Variable</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>args</td><td class="code"><div>[]</div></td></tr>
+<tr><td>cls</td><td class="code"><div>&lt;class ser.PagePreview at 0x7eff800464c8&gt;</div></td></tr>
+<tr><td>f</td><td class="code"><div>u&#39;PagePreview&#39;</div></td></tr>
+<tr><td>fvars</td><td class="code"><div>{&#39;AttrDict&#39;: &lt;class &#39;ser.AttrDict&#39;&gt;,
+ &#39;BeautifulSoup&#39;: &lt;module &#39;BeautifulSoup&#39; from &#39;/usr/local/lib/python2.7/site-packages/BeautifulSoup.pyc&#39;&gt;,
+ &#39;GetUserPins&#39;: &lt;class ser.GetUserPins at 0x7eff800461f0&gt;,
+ &#39;HTMLParser&#39;: &lt;module &#39;HTMLParser&#39; from &#39;/usr/local/lib/python2.7/HTMLParser.pyc&#39;&gt;,
+ &#39;Image&#39;: &lt;module &#39;PIL.Image&#39; from &#39;/usr/local/lib/python2.7/site-packages/PIL/Image.pyc&#39;&gt;,
+ &#39;MAX_IMAGES&#39;: 100,
+ &#39;MyOpener&#39;: &lt;class ser.MyOpener at 0x7eff80030e20&gt;,
+ &#39;NewPageAddPin&#39;: &lt;class ser.NewPageAddPin at 0x7eff80030db8&gt;,
+ &#39;NewPageAddPinForm&#39;: &lt;class ser.NewPageAddPinForm at 0x7eff80030d50&gt;,
+ &#39;PIN_COUNT&#39;: 20,
+ &#39;PageAcceptFR&#39;: &lt;class ser.PageAcceptFR at 0x7eff800467a0&gt;,
+ &#39;PageActivate&#39;: &lt;class ser.PageActivate at 0x7eff80030b48&gt;,
+ &#39;PageAddFriend&#39;: &lt;class ser.PageAddFriend at 0x7eff80046328&gt;,
+ &#39;PageAddPinUrl&#39;: &lt;class ser.PageAddPinUrl at 0x7eff80030e88&gt;,
+ &#39;PageAlbum&#39;: &lt;class ser.PageAlbum at 0x7eff800469a8&gt;,
+ &#39;PageBoards&#39;: &lt;class ser.PageBoards at 0x7eff80030c80&gt;,
+ &#39;PageBrowse&#39;: &lt;class ser.PageBrowse at 0x7eff800491f0&gt;,
+ &#39;PageCategory&#39;: &lt;class ser.PageCategory at 0x7eff80049258&gt;,
+ &#39;PageChangeBG&#39;: &lt;class ser.PageChangeBG at 0x7eff80046e20&gt;,
+ &#39;PageChangeBGPos&#39;: &lt;class ser.PageChangeBGPos at 0x7eff80046ef0&gt;,
+ &#39;PageChangeProfile&#39;: &lt;class ser.PageChangeProfile at 0x7eff80046f58&gt;,
+ &#39;PageCheckEmail&#39;: &lt;class ser.PageCheckEmail at 0x7eff80030ae0&gt;,
+ &#39;PageCheckPassword&#39;: &lt;class ser.PageCheckPassword at 0x7eff80030a78&gt;,
+ &#39;PageCheckUsername&#39;: &lt;class ser.PageCheckUsername at 0x7eff80030a10&gt;,
+ &#39;PageConnect&#39;: &lt;class ser.PageConnect at 0x7eff80046050&gt;,
+ &#39;PageConnect2&#39;: &lt;class ser.PageConnect2 at 0x7eff80046188&gt;,
+ &#39;PageConvo&#39;: &lt;class ser.PageConvo at 0x7eff80046460&gt;,
+ &#39;PageDashboard&#39;: &lt;class ser.PageDashboard at 0x7eff80030c18&gt;,
+ &#39;PageDavid&#39;: &lt;class ser.PageDavid at 0x7eff800490b8&gt;,
+ &#39;PageDefaultPhoto&#39;: &lt;class ser.PageDefaultPhoto at 0x7eff80046b48&gt;,
+ &#39;PageFollow&#39;: &lt;class ser.PageFollow at 0x7eff800462c0&gt;,
+ &#39;PageFollowedBy&#39;: &lt;class ser.PageFollowedBy at 0x7eff80049188&gt;,
+ &#39;PageFollowing&#39;: &lt;class ser.PageFollowing at 0x7eff80049120&gt;,
+ &#39;PageHax&#39;: &lt;class ser.PageHax at 0x7eff80046870&gt;,
+ &#39;PageIndex&#39;: &lt;class ser.PageIndex at 0x7eff80030940&gt;,
+ &#39;PageLike&#39;: &lt;class ser.PageLike at 0x7eff80046530&gt;,
+ &#39;PageLogin&#39;: &lt;class ser.PageLogin at 0x7eff800309a8&gt;,
+ &#39;PageLogout&#39;: &lt;class ser.PageLogout at 0x7eff80030bb0&gt;,
+ &#39;PageMessages&#39;: &lt;class ser.PageMessages at 0x7eff80046390&gt;,
+ &#39;PageNewAlbum&#39;: &lt;class ser.PageNewAlbum at 0x7eff80046940&gt;,
+ &#39;PageNewBoard&#39;: &lt;class ser.PageNewBoard at 0x7eff80030ce8&gt;,
+ &#39;PageNewConvo&#39;: &lt;class ser.PageNewConvo at 0x7eff800463f8&gt;,
+ &#39;PageNewPicture&#39;: &lt;class ser.PageNewPicture at 0x7eff80046a10&gt;,
+ &#39;PageNotif&#39;: &lt;class ser.PageNotif at 0x7eff800466d0&gt;,
+ &#39;PageNotifications&#39;: &lt;class ser.PageNotifications at 0x7eff80046668&gt;,
+ &#39;PagePhoto&#39;: &lt;class ser.PagePhoto at 0x7eff80046a78&gt;,
+ &#39;PagePhotos&#39;: &lt;class ser.PagePhotos at 0x7eff800468d8&gt;,
+ &#39;PagePin&#39;: &lt;class ser.PagePin at 0x7eff800460b8&gt;,
+ &#39;PagePreview&#39;: &lt;class ser.PagePreview at 0x7eff800464c8&gt;,
+ &#39;PageProfile&#39;: &lt;class ser.PageProfile at 0x7eff80046120&gt;,
+ &#39;PageProfile2&#39;: &lt;class ser.PageProfile2 at 0x7eff80046258&gt;,
+ &#39;PageRemoveBg&#39;: &lt;class ser.PageRemoveBg at 0x7eff80046e88&gt;,
+ &#39;PageRemovePhoto&#39;: &lt;class ser.PageRemovePhoto at 0x7eff80046ae0&gt;,
+ &#39;PageRemoveRepin&#39;: &lt;class ser.PageRemoveRepin at 0x7eff80030ef0&gt;,
+ &#39;PageRepin&#39;: &lt;class ser.PageRepin at 0x7eff80030f58&gt;,
+ &#39;PageSearchItems&#39;: &lt;class ser.PageSearchItems at 0x7eff800492c0&gt;,
+ &#39;PageSearchPeople&#39;: &lt;class ser.PageSearchPeople at 0x7eff80049328&gt;,
+ &#39;PageSetPrivacy&#39;: &lt;class ser.PageSetPrivacy at 0x7eff80049050&gt;,
+ &#39;PageSetProfilePic&#39;: &lt;class ser.PageSetProfilePic at 0x7eff80046bb0&gt;,
+ &#39;PageShare&#39;: &lt;class ser.PageShare at 0x7eff80046db8&gt;,
+ &#39;PageSort&#39;: &lt;class ser.PageSort at 0x7eff80046c18&gt;,
+ &#39;PageSortDelete&#39;: &lt;class ser.PageSortDelete at 0x7eff80046ce8&gt;,
+ &#39;PageSortPut&#39;: &lt;class ser.PageSortPut at 0x7eff80046c80&gt;,
+ &#39;PageUnfollow&#39;: &lt;class ser.PageUnfollow at 0x7eff80046808&gt;,
+ &#39;PageUnfriend&#39;: &lt;class ser.PageUnfriend at 0x7eff80046738&gt;,
+ &#39;PageUnlike&#39;: &lt;class ser.PageUnlike at 0x7eff80046598&gt;,
+ &#39;PageUsers&#39;: &lt;class ser.PageUsers at 0x7eff80046600&gt;,
+ &#39;PageViewCategory&#39;: &lt;class ser.PageViewCategory at 0x7eff80046d50&gt;,
+ &#39;SEARCH_PINS&#39;: True,
+ &#39;__builtins__&#39;: {&#39;ArithmeticError&#39;: &lt;type &#39;exceptions.ArithmeticError&#39;&gt;,
+                  &#39;AssertionError&#39;: &lt;type &#39;exceptions.AssertionError&#39;&gt;,
+                  &#39;AttributeError&#39;: &lt;type &#39;exceptions.AttributeError&#39;&gt;,
+                  &#39;BaseException&#39;: &lt;type &#39;exceptions.BaseException&#39;&gt;,
+                  &#39;BufferError&#39;: &lt;type &#39;exceptions.BufferError&#39;&gt;,
+                  &#39;BytesWarning&#39;: &lt;type &#39;exceptions.BytesWarning&#39;&gt;,
+                  &#39;DeprecationWarning&#39;: &lt;type &#39;exceptions.DeprecationWarning&#39;&gt;,
+                  &#39;EOFError&#39;: &lt;type &#39;exceptions.EOFError&#39;&gt;,
+                  &#39;Ellipsis&#39;: Ellipsis,
+                  &#39;EnvironmentError&#39;: &lt;type &#39;exceptions.EnvironmentError&#39;&gt;,
+                  &#39;Exception&#39;: &lt;type &#39;exceptions.Exception&#39;&gt;,
+                  &#39;False&#39;: False,
+                  &#39;FloatingPointError&#39;: &lt;type &#39;exceptions.FloatingPointError&#39;&gt;,
+                  &#39;FutureWarning&#39;: &lt;type &#39;exceptions.FutureWarning&#39;&gt;,
+                  &#39;GeneratorExit&#39;: &lt;type &#39;exceptions.GeneratorExit&#39;&gt;,
+                  &#39;IOError&#39;: &lt;type &#39;exceptions.IOError&#39;&gt;,
+                  &#39;ImportError&#39;: &lt;type &#39;exceptions.ImportError&#39;&gt;,
+                  &#39;ImportWarning&#39;: &lt;type &#39;exceptions.ImportWarning&#39;&gt;,
+                  &#39;IndentationError&#39;: &lt;type &#39;exceptions.IndentationError&#39;&gt;,
+                  &#39;IndexError&#39;: &lt;type &#39;exceptions.IndexError&#39;&gt;,
+                  &#39;KeyError&#39;: &lt;type &#39;exceptions.KeyError&#39;&gt;,
+                  &#39;KeyboardInterrupt&#39;: &lt;type &#39;exceptions.KeyboardInterrupt&#39;&gt;,
+                  &#39;LookupError&#39;: &lt;type &#39;exceptions.LookupError&#39;&gt;,
+                  &#39;MemoryError&#39;: &lt;type &#39;exceptions.MemoryError&#39;&gt;,
+                  &#39;NameError&#39;: &lt;type &#39;exceptions.NameError&#39;&gt;,
+                  &#39;None&#39;: None,
+                  &#39;NotImplemented&#39;: NotImplemented,
+                  &#39;NotImplementedError&#39;: &lt;type &#39;exceptions.NotImplementedError&#39;&gt;,
+                  &#39;OSError&#39;: &lt;type &#39;exceptions.OSError&#39;&gt;,
+                  &#39;OverflowError&#39;: &lt;type &#39;exceptions.OverflowError&#39;&gt;,
+                  &#39;PendingDeprecationWarning&#39;: &lt;type &#39;exceptions.PendingDeprecationWarning&#39;&gt;,
+                  &#39;ReferenceError&#39;: &lt;type &#39;exceptions.ReferenceError&#39;&gt;,
+                  &#39;RuntimeError&#39;: &lt;type &#39;exceptions.RuntimeError&#39;&gt;,
+                  &#39;RuntimeWarning&#39;: &lt;type &#39;exceptions.RuntimeWarning&#39;&gt;,
+                  &#39;StandardError&#39;: &lt;type &#39;exceptions.StandardError&#39;&gt;,
+                  &#39;StopIteration&#39;: &lt;type &#39;exceptions.StopIteration&#39;&gt;,
+                  &#39;SyntaxError&#39;: &lt;type &#39;exceptions.SyntaxError&#39;&gt;,
+                  &#39;SyntaxWarning&#39;: &lt;type &#39;exceptions.SyntaxWarning&#39;&gt;,
+                  &#39;SystemError&#39;: &lt;type &#39;exceptions.SystemError&#39;&gt;,
+                  &#39;SystemExit&#39;: &lt;type &#39;exceptions.SystemExit&#39;&gt;,
+                  &#39;TabError&#39;: &lt;type &#39;exceptions.TabError&#39;&gt;,
+                  &#39;True&#39;: True,
+                  &#39;TypeError&#39;: &lt;type &#39;exceptions.TypeError&#39;&gt;,
+                  &#39;UnboundLocalError&#39;: &lt;type &#39;exceptions.UnboundLocalError&#39;&gt;,
+                  &#39;UnicodeDecodeError&#39;: &lt;type &#39;exceptions.UnicodeDecodeError&#39;&gt;,
+                  &#39;UnicodeEncodeError&#39;: &lt;type &#39;exceptions.UnicodeEncodeError&#39;&gt;,
+                  &#39;UnicodeError&#39;: &lt;type &#39;exceptions.UnicodeError&#39;&gt;,
+                  &#39;UnicodeTranslateError&#39;: &lt;type &#39;exceptions.UnicodeTranslateError&#39;&gt;,
+                  &#39;UnicodeWarning&#39;: &lt;type &#39;exceptions.UnicodeWarning&#39;&gt;,
+                  &#39;UserWarning&#39;: &lt;type &#39;exceptions.UserWarning&#39;&gt;,
+                  &#39;ValueError&#39;: &lt;type &#39;exceptions.ValueError&#39;&gt;,
+                  &#39;Warning&#39;: &lt;type &#39;exceptions.Warning&#39;&gt;,
+                  &#39;ZeroDivisionError&#39;: &lt;type &#39;exceptions.ZeroDivisionError&#39;&gt;,
+                  &#39;__debug__&#39;: True,
+                  &#39;__doc__&#39;: &quot;Built-in functions, exceptions, and other objects.\n\nNoteworthy: None is the `nil&#39; object; Ellipsis represents `...&#39; in slices.&quot;,
+                  &#39;__import__&#39;: &lt;built-in function __import__&gt;,
+                  &#39;__name__&#39;: &#39;__builtin__&#39;,
+                  &#39;__package__&#39;: None,
+                  &#39;abs&#39;: &lt;built-in function abs&gt;,
+                  &#39;all&#39;: &lt;built-in function all&gt;,
+                  &#39;any&#39;: &lt;built-in function any&gt;,
+                  &#39;apply&#39;: &lt;built-in function apply&gt;,
+                  &#39;basestring&#39;: &lt;type &#39;basestring&#39;&gt;,
+                  &#39;bin&#39;: &lt;built-in function bin&gt;,
+                  &#39;bool&#39;: &lt;type &#39;bool&#39;&gt;,
+                  &#39;buffer&#39;: &lt;type &#39;buffer&#39;&gt;,
+                  &#39;bytearray&#39;: &lt;type &#39;bytearray&#39;&gt;,
+                  &#39;bytes&#39;: &lt;type &#39;str&#39;&gt;,
+                  &#39;callable&#39;: &lt;built-in function callable&gt;,
+                  &#39;chr&#39;: &lt;built-in function chr&gt;,
+                  &#39;classmethod&#39;: &lt;type &#39;classmethod&#39;&gt;,
+                  &#39;cmp&#39;: &lt;built-in function cmp&gt;,
+                  &#39;coerce&#39;: &lt;built-in function coerce&gt;,
+                  &#39;compile&#39;: &lt;built-in function compile&gt;,
+                  &#39;complex&#39;: &lt;type &#39;complex&#39;&gt;,
+                  &#39;copyright&#39;: Copyright (c) 2001-2013 Python Software Foundation.
+All Rights Reserved.
+
+Copyright (c) 2000 BeOpen.com.
+All Rights Reserved.
+
+Copyright (c) 1995-2001 Corporation for National Research Initiatives.
+All Rights Reserved.
+
+Copyright (c) 1991-1995 Stichting Mathematisch Centrum, Amsterdam.
+All Rights Reserved.,
+                  &#39;credits&#39;:     Thanks to CWI, CNRI, BeOpen.com, Zope Corporation and a cast of thousands
+    for supporting Python development.  See www.python.org for more information.,
+                  &#39;delattr&#39;: &lt;built-in function delattr&gt;,
+                  &#39;dict&#39;: &lt;type &#39;dict&#39;&gt;,
+                  &#39;dir&#39;: &lt;built-in function dir&gt;,
+                  &#39;divmod&#39;: &lt;built-in function divmod&gt;,
+                  &#39;enumerate&#39;: &lt;type &#39;enumerate&#39;&gt;,
+                  &#39;eval&#39;: &lt;built-in function eval&gt;,
+                  &#39;execfile&#39;: &lt;built-in function execfile&gt;,
+                  &#39;exit&#39;: Use exit() or Ctrl-D (i.e. EOF) to exit,
+                  &#39;file&#39;: &lt;type &#39;file&#39;&gt;,
+                  &#39;filter&#39;: &lt;built-in function filter&gt;,
+                  &#39;float&#39;: &lt;type &#39;float&#39;&gt;,
+                  &#39;format&#39;: &lt;built-in function format&gt;,
+                  &#39;frozenset&#39;: &lt;type &#39;frozenset&#39;&gt;,
+                  &#39;getattr&#39;: &lt;built-in function getattr&gt;,
+                  &#39;globals&#39;: &lt;built-in function globals&gt;,
+                  &#39;hasattr&#39;: &lt;built-in function hasattr&gt;,
+                  &#39;hash&#39;: &lt;built-in function hash&gt;,
+                  &#39;help&#39;: Type help() for interactive help, or help(object) for help about object.,
+                  &#39;hex&#39;: &lt;built-in function hex&gt;,
+                  &#39;id&#39;: &lt;built-in function id&gt;,
+                  &#39;input&#39;: &lt;built-in function input&gt;,
+                  &#39;int&#39;: &lt;type &#39;int&#39;&gt;,
+                  &#39;intern&#39;: &lt;built-in function intern&gt;,
+                  &#39;isinstance&#39;: &lt;built-in function isinstance&gt;,
+                  &#39;issubclass&#39;: &lt;built-in function issubclass&gt;,
+                  &#39;iter&#39;: &lt;built-in function iter&gt;,
+                  &#39;len&#39;: &lt;built-in function len&gt;,
+                  &#39;license&#39;: Type license() to see the full license text,
+                  &#39;list&#39;: &lt;type &#39;list&#39;&gt;,
+                  &#39;locals&#39;: &lt;built-in function locals&gt;,
+                  &#39;long&#39;: &lt;type &#39;long&#39;&gt;,
+                  &#39;map&#39;: &lt;built-in function map&gt;,
+                  &#39;max&#39;: &lt;built-in function max&gt;,
+                  &#39;memoryview&#39;: &lt;type &#39;memoryview&#39;&gt;,
+                  &#39;min&#39;: &lt;built-in function min&gt;,
+                  &#39;next&#39;: &lt;built-in function next&gt;,
+                  &#39;object&#39;: &lt;type &#39;object&#39;&gt;,
+                  &#39;oct&#39;: &lt;built-in function oct&gt;,
+                  &#39;open&#39;: &lt;built-in function open&gt;,
+                  &#39;ord&#39;: &lt;built-in function ord&gt;,
+                  &#39;pow&#39;: &lt;built-in function pow&gt;,
+                  &#39;print&#39;: &lt;built-in function print&gt;,
+                  &#39;property&#39;: &lt;type &#39;property&#39;&gt;,
+                  &#39;quit&#39;: Use quit() or Ctrl-D (i.e. EOF) to exit,
+                  &#39;range&#39;: &lt;built-in function range&gt;,
+                  &#39;raw_input&#39;: &lt;built-in function raw_input&gt;,
+                  &#39;reduce&#39;: &lt;built-in function reduce&gt;,
+                  &#39;reload&#39;: &lt;built-in function reload&gt;,
+                  &#39;repr&#39;: &lt;built-in function repr&gt;,
+                  &#39;reversed&#39;: &lt;type &#39;reversed&#39;&gt;,
+                  &#39;round&#39;: &lt;built-in function round&gt;,
+                  &#39;set&#39;: &lt;type &#39;set&#39;&gt;,
+                  &#39;setattr&#39;: &lt;built-in function setattr&gt;,
+                  &#39;slice&#39;: &lt;type &#39;slice&#39;&gt;,
+                  &#39;sorted&#39;: &lt;built-in function sorted&gt;,
+                  &#39;staticmethod&#39;: &lt;type &#39;staticmethod&#39;&gt;,
+                  &#39;str&#39;: &lt;type &#39;str&#39;&gt;,
+                  &#39;sum&#39;: &lt;built-in function sum&gt;,
+                  &#39;super&#39;: &lt;type &#39;super&#39;&gt;,
+                  &#39;tuple&#39;: &lt;type &#39;tuple&#39;&gt;,
+                  &#39;type&#39;: &lt;type &#39;type&#39;&gt;,
+                  &#39;unichr&#39;: &lt;built-in function unichr&gt;,
+                  &#39;unicode&#39;: &lt;type &#39;unicode&#39;&gt;,
+                  &#39;vars&#39;: &lt;built-in function vars&gt;,
+                  &#39;xrange&#39;: &lt;type &#39;xrange&#39;&gt;,
+                  &#39;zip&#39;: &lt;built-in function zip&gt;},
+ &#39;__doc__&#39;: None,
+ &#39;__file__&#39;: &#39;/var/www/pin/ser.pyc&#39;,
+ &#39;__name__&#39;: &#39;ser&#39;,
+ &#39;__package__&#39;: None,
+ &#39;admin&#39;: &lt;module &#39;admin&#39; from &#39;/var/www/pin/admin.pyc&#39;&gt;,
+ &#39;all_categories&#39;: [],
+ &#39;api_request&#39;: &lt;function api_request at 0x13bba28&gt;,
+ &#39;api_server&#39;: &lt;module &#39;api_server&#39; from &#39;/var/www/pin/api_server.pyc&#39;&gt;,
+ &#39;app&#39;: &lt;web.application.application instance at 0x7eff8003d7e8&gt;,
+ &#39;auth&#39;: &lt;module &#39;mypinnings.auth&#39; from &#39;/var/www/pin/mypinnings/auth.pyc&#39;&gt;,
+ &#39;authenticate_user_email&#39;: &lt;function authenticate_user_email at 0x13b4d70&gt;,
+ &#39;authenticate_user_username&#39;: &lt;function authenticate_user_username at 0x13b4de8&gt;,
+ &#39;cStringIO&#39;: &lt;module &#39;cStringIO&#39; from &#39;/usr/local/lib/python2.7/lib-dynload/cStringIO.so&#39;&gt;,
+ &#39;cached_models&#39;: &lt;module &#39;mypinnings.cached_models&#39; from &#39;/var/www/pin/mypinnings/cached_models.pyc&#39;&gt;,
+ &#39;category_table&#39;: [&#39;&#39;,
+                    &#39;recommendations&#39;,
+                    &#39;bikes&#39;,
+                    &#39;cars&#39;,
+                    &#39;arts-collectibles&#39;,
+                    &#39;beauty&#39;,
+                    &#39;books&#39;,
+                    &#39;cell-phones&#39;,
+                    &#39;fashion&#39;,
+                    &#39;gadgets&#39;,
+                    &#39;jewelry&#39;,
+                    &#39;money&#39;,
+                    &#39;movies-and-music&#39;,
+                    &#39;shoes&#39;,
+                    &#39;travel&#39;,
+                    &#39;watches&#39;,
+                    &#39;wine-and-champagne&#39;],
+ &#39;connect_db&#39;: &lt;function connect_db at 0x1366398&gt;,
+ &#39;convert_to_id&#39;: &lt;function convert_to_id at 0x13bbaa0&gt;,
+ &#39;convert_to_logintoken&#39;: &lt;function convert_to_logintoken at 0x13bbb18&gt;,
+ &#39;csrf_protected&#39;: &lt;function csrf_protected at 0x7eff80048488&gt;,
+ &#39;db&#39;: &lt;web.db.PostgresDB instance at 0x137b710&gt;,
+ &#39;dbget&#39;: &lt;function dbget at 0x13935f0&gt;,
+ &#39;decimal&#39;: &lt;module &#39;decimal&#39; from &#39;/usr/local/lib/python2.7/decimal.pyc&#39;&gt;,
+ &#39;division&#39;: _Feature((2, 2, 0, &#39;alpha&#39;, 2), (3, 0, 0, &#39;alpha&#39;, 0), 8192),
+ &#39;email_exists&#39;: &lt;function email_exists at 0x13b4c08&gt;,
+ &#39;force_login&#39;: &lt;function force_login at 0x13b4b90&gt;,
+ &#39;form&#39;: &lt;module &#39;web.form&#39; from &#39;/usr/local/lib/python2.7/site-packages/web/form.pyc&#39;&gt;,
+ &#39;generate_salt&#39;: &lt;function generate_salt at 0x13b4aa0&gt;,
+ &#39;get_base_url&#39;: &lt;function get_base_url at 0x7eff80045aa0&gt;,
+ &#39;get_pins&#39;: &lt;function get_pins at 0x7eff80045488&gt;,
+ &#39;get_url_info&#39;: &lt;function get_url_info at 0x7eff80047050&gt;,
+ &#39;glob&#39;: &lt;module &#39;glob&#39; from &#39;/usr/local/lib/python2.7/glob.pyc&#39;&gt;,
+ &#39;hash&#39;: &lt;function hash at 0x7eff80036938&gt;,
+ &#39;hashlib&#39;: &lt;module &#39;hashlib&#39; from &#39;/usr/local/lib/python2.7/hashlib.pyc&#39;&gt;,
+ &#39;json&#39;: &lt;module &#39;json&#39; from &#39;/usr/local/lib/python2.7/json/__init__.pyc&#39;&gt;,
+ &#39;json_pins&#39;: &lt;function json_pins at 0x7eff80036cf8&gt;,
+ &#39;lmsg&#39;: &lt;function lmsg at 0x165c938&gt;,
+ &#39;logged_in&#39;: &lt;function logged_in at 0x13b4b18&gt;,
+ &#39;logger&#39;: &lt;logging.Logger object at 0x182ed90&gt;,
+ &#39;logging&#39;: &lt;module &#39;logging&#39; from &#39;/usr/local/lib/python2.7/logging/__init__.pyc&#39;&gt;,
+ &#39;login_user&#39;: &lt;function login_user at 0x13b4f50&gt;,
+ &#39;logout_user&#39;: &lt;function logout_user at 0x13bb050&gt;,
+ &#39;ltpl&#39;: &lt;function ltpl at 0x165c8c0&gt;,
+ &#39;make_notif&#39;: &lt;function make_notif at 0x7eff80036c08&gt;,
+ &#39;make_query&#39;: &lt;function make_query at 0x7eff800470c8&gt;,
+ &#39;make_tag&#39;: &lt;function make_tag at 0x7eff80036d70&gt;,
+ &#39;mypinnings&#39;: &lt;module &#39;mypinnings&#39; from &#39;/var/www/pin/mypinnings/__init__.pyc&#39;&gt;,
+ &#39;os&#39;: &lt;module &#39;os&#39; from &#39;/usr/local/lib/python2.7/os.pyc&#39;&gt;,
+ &#39;pin_utils&#39;: &lt;module &#39;mypinnings.pin_utils&#39; from &#39;/var/www/pin/mypinnings/pin_utils.pyc&#39;&gt;,
+ &#39;random&#39;: &lt;module &#39;random&#39; from &#39;/usr/local/lib/python2.7/random.pyc&#39;&gt;,
+ &#39;re&#39;: &lt;module &#39;re&#39; from &#39;/usr/local/lib/python2.7/re.pyc&#39;&gt;,
+ &#39;requests&#39;: &lt;module &#39;requests&#39; from &#39;/usr/local/lib/python2.7/site-packages/requests/__init__.pyc&#39;&gt;,
+ &#39;rs&#39;: &lt;function rs at 0x7eff80036b90&gt;,
+ &#39;sess&#39;: &lt;web.session.Session object at 0x1833ad0&gt;,
+ &#39;settings&#39;: &lt;module &#39;settings&#39; from &#39;/var/www/pin/settings.pyc&#39;&gt;,
+ &#39;subprocess&#39;: &lt;module &#39;subprocess&#39; from &#39;/usr/local/lib/python2.7/subprocess.pyc&#39;&gt;,
+ &#39;tpl&#39;: &lt;function tpl at 0x13bb6e0&gt;,
+ &#39;transform_name_to_url&#39;: &lt;function transform_name_to_url at 0x7eff80036c80&gt;,
+ &#39;urllib&#39;: &lt;module &#39;urllib&#39; from &#39;/usr/local/lib/python2.7/urllib.pyc&#39;&gt;,
+ &#39;urllib2&#39;: &lt;module &#39;urllib2&#39; from &#39;/usr/local/lib/python2.7/urllib2.pyc&#39;&gt;,
+ &#39;urls&#39;: (&#39;/api&#39;,
+          &lt;web.application.application instance at 0x182dcb0&gt;,
+          &#39;/facebook&#39;,
+          &lt;web.application.application instance at 0x166f3f8&gt;,
+          &#39;/google&#39;,
+          &lt;web.application.application instance at 0x16981b8&gt;,
+          &#39;/register_twitter&#39;,
+          &lt;web.application.application instance at 0x1810368&gt;,
+          &#39;/register&#39;,
+          &lt;web.application.application instance at 0x16682d8&gt;,
+          &#39;/pin&#39;,
+          &lt;web.application.application instance at 0x1810878&gt;,
+          &#39;/settings&#39;,
+          &lt;web.application.application instance at 0x1810ea8&gt;,
+          &#39;/&#39;,
+          &#39;PageIndex&#39;,
+          &#39;/(first-time)&#39;,
+          &#39;PageIndex&#39;,
+          &#39;/login&#39;,
+          &#39;PageLogin&#39;,
+          &#39;/reg-checkuser&#39;,
+          &#39;PageCheckUsername&#39;,
+          &#39;/reg-checkpw&#39;,
+          &#39;PageCheckPassword&#39;,
+          &#39;/reg-checkemail&#39;,
+          &#39;PageCheckEmail&#39;,
+          &#39;/activate&#39;,
+          &#39;PageActivate&#39;,
+          &#39;/resend-activation&#39;,
+          &#39;mypinnings.register.PageResendActivation&#39;,
+          &#39;/logout&#39;,
+          &#39;PageLogout&#39;,
+          &#39;/dashboard&#39;,
+          &#39;PageDashboard&#39;,
+          &#39;/lists/(\\d+)/items/?&#39;,
+          &#39;mypinnings.lists.ListItemsJson&#39;,
+          &#39;/lists&#39;,
+          &#39;PageBoards&#39;,
+          &#39;/browse&#39;,
+          &#39;PageBrowse&#39;,
+          &#39;/category/(.*)&#39;,
+          &#39;mypinnings.category_listing.PageCategory&#39;,
+          &#39;/new-list&#39;,
+          &#39;PageNewBoard&#39;,
+          &#39;/newaddpin&#39;,
+          &#39;NewPageAddPin&#39;,
+          &#39;/newaddpinform&#39;,
+          &#39;NewPageAddPinForm&#39;,
+          &#39;/add-from-website&#39;,
+          &#39;PageAddPinUrl&#39;,
+          &#39;/add-to-your-own-getlist/(\\d*)&#39;,
+          &#39;PageRepin&#39;,
+          &#39;/remove-from-own-getlist&#39;,
+          &#39;PageRemoveRepin&#39;,
+          &#39;/p/(.*)&#39;,
+          &#39;PagePin&#39;,
+          &#39;/messages&#39;,
+          &#39;PageMessages&#39;,
+          &#39;/newconvo/(\\d*)&#39;,
+          &#39;PageNewConvo&#39;,
+          &#39;/convo/(\\d*)&#39;,
+          &#39;PageConvo&#39;,
+          &#39;/follow/(\\d*)&#39;,
+          &#39;PageFollow&#39;,
+          &#39;/addfriend/(\\d*)&#39;,
+          &#39;PageAddFriend&#39;,
+          &#39;/preview&#39;,
+          &#39;PagePreview&#39;,
+          &#39;/like/(\\d*)&#39;,
+          &#39;PageLike&#39;,
+          &#39;/unlike/(\\d*)&#39;,
+          &#39;PageUnlike&#39;,
+          &#39;/users&#39;,
+          &#39;PageUsers&#39;,
+          &#39;/notifications&#39;,
+          &#39;PageNotifications&#39;,
+          &#39;/notif/(\\d*)&#39;,
+          &#39;PageNotif&#39;,
+          &#39;/categories/(.*?)/&#39;,
+          &#39;PageViewCategory&#39;,
+          &#39;/changebg&#39;,
+          &#39;PageChangeBG&#39;,
+          &#39;/bg/remove&#39;,
+          &#39;PageRemoveBg&#39;,
+          &#39;/changebgpos&#39;,
+          &#39;PageChangeBGPos&#39;,
+          &#39;/share/(\\d*)&#39;,
+          &#39;PageShare&#39;,
+          &#39;/followed-by/(\\d*)&#39;,
+          &#39;PageFollowedBy&#39;,
+          &#39;/following/(\\d*)&#39;,
+          &#39;PageFollowing&#39;,
+          &#39;/unfriend/(\\d*)&#39;,
+          &#39;PageUnfriend&#39;,
+          &#39;/cancelfr/(\\d*)&#39;,
+          &#39;PageUnfriend&#39;,
+          &#39;/acceptfr/(\\d*)&#39;,
+          &#39;PageAcceptFR&#39;,
+          &#39;/unfollow/(\\d*)&#39;,
+          &#39;PageUnfollow&#39;,
+          &#39;/.*?/photos&#39;,
+          &#39;PagePhotos&#39;,
+          &#39;/photos&#39;,
+          &#39;PagePhotos&#39;,
+          &#39;/newalbum&#39;,
+          &#39;PageNewAlbum&#39;,
+          &#39;/album/(\\d*)&#39;,
+          &#39;PageAlbum&#39;,
+          &#39;/album/(\\d*)/remove&#39;,
+          &#39;PageAlbum&#39;,
+          &#39;/newpic/(\\d*)&#39;,
+          &#39;PageNewPicture&#39;,
+          &#39;/photo/(\\d*)&#39;,
+          &#39;PagePhoto&#39;,
+          &#39;/photo/(\\d*)/remove&#39;,
+          &#39;PageRemovePhoto&#39;,
+          &#39;/photo/(\\d*)/default&#39;,
+          &#39;PageDefaultPhoto&#39;,
+          &#39;/setprofilepic/(\\d*)&#39;,
+          &#39;PageSetProfilePic&#39;,
+          &#39;/setprivacy/(\\d*)&#39;,
+          &#39;PageSetPrivacy&#39;,
+          &#39;/admin/input/&#39;,
+          &#39;mypinnings.data_loaders.PinLoaderPage&#39;,
+          &#39;/admin/input/pins/(\\d*)/?&#39;,
+          &#39;mypinnings.data_loaders.LoadersEditAPI&#39;,
+          &#39;/admin/input/update_pin/?&#39;,
+          &#39;mypinnings.data_loaders.UpdatePin&#39;,
+          &#39;/admin/input/pins/?&#39;,
+          &#39;mypinnings.data_loaders.LoadersEditAPI&#39;,
+          &#39;/admin/input/list&#39;,
+          &#39;mypinnings.data_loaders.PaginateLoadedItems&#39;,
+          &#39;/admin/input/change_pin_categories/?&#39;,
+          &#39;mypinnings.data_loaders.ChangePinsCategories&#39;,
+          &#39;/admin/input/change_page_size_for_loaded_items/?&#39;,
+          &#39;mypinnings.data_loaders.ChangePageSizeForLoadedItems&#39;,
+          &#39;/admin/input/change_filter_by_tag_for_loaded_items/?&#39;,
+          &#39;mypinnings.data_loaders.ChangeFilterByTagForLoadedItems&#39;,
+          &#39;/admin/input/change_filter_by_category_for_loaded_items/?&#39;,
+          &#39;mypinnings.data_loaders.ChangeFilterByCategoryForLoadedItems&#39;,
+          &#39;/admin/input/get_categories_for_items&#39;,
+          &#39;mypinnings.data_loaders.GetCategoriesForItems&#39;,
+          &#39;/admin&#39;,
+          &lt;web.application.application instance at 0x1822710&gt;,
+          &#39;/fbgm/(.*?)&#39;,
+          &#39;PageHax&#39;,
+          &#39;/connect&#39;,
+          &#39;PageConnect&#39;,
+          &#39;/profile/(\\d*)&#39;,
+          &#39;PageProfile&#39;,
+          &#39;/sort&#39;,
+          &#39;PageSort&#39;,
+          &#39;/sort/(\\d*)&#39;,
+          &#39;PageSort&#39;,
+          &#39;/sort/(\\d*)/(back)&#39;,
+          &#39;PageSort&#39;,
+          &#39;/sort/(\\d*)/(\\d*)&#39;,
+          &#39;PageSortPut&#39;,
+          &#39;/sortdelete/(\\d*)&#39;,
+          &#39;PageSortDelete&#39;,
+          &#39;/changeprofile&#39;,
+          &#39;PageChangeProfile&#39;,
+          &#39;/maintain/site/david/is/awesome&#39;,
+          &#39;PageDavid&#39;,
+          &#39;/search/items&#39;,
+          &#39;PageSearchItems&#39;,
+          &#39;/search/people&#39;,
+          &#39;PageSearchPeople&#39;,
+          &#39;/recover_password/?&#39;,
+          &#39;mypinnings.recover_password.PasswordRecoveryStart&#39;,
+          &#39;/recover_password_username_test/&#39;,
+          &#39;mypinnings.recover_password.UsernameOrEmailValidator&#39;,
+          &#39;/recover_password_sent/?&#39;,
+          &#39;mypinnings.recover_password.EmailSentPage&#39;,
+          &#39;/pwreset/(\\d*)/(\\d*)/(.*)/&#39;,
+          &#39;mypinnings.recover_password.PasswordReset&#39;,
+          &#39;/recover_password_complete/&#39;,
+          &#39;mypinnings.recover_password.RecoverPasswordComplete&#39;,
+          &#39;/getuserpins/(.*?)&#39;,
+          &#39;GetUserPins&#39;,
+          &#39;/(.*?)&#39;,
+          &#39;PageProfile2&#39;,
+          &#39;/(.*?)/(.*?)&#39;,
+          &#39;PageConnect2&#39;),
+ &#39;username_exists&#39;: &lt;function username_exists at 0x13b4c80&gt;,
+ &#39;valid_email&#39;: &lt;web.form.regexp instance at 0x1662710&gt;,
+ &#39;web&#39;: &lt;module &#39;web&#39; from &#39;/usr/local/lib/python2.7/site-packages/web/__init__.pyc&#39;&gt;}</div></td></tr>
+<tr><td>handle_class</td><td class="code"><div>&lt;function handle_class at 0x7eff801cbb90&gt;</div></td></tr>
+<tr><td>is_class</td><td class="code"><div>&lt;function is_class at 0x7eff801cbc80&gt;</div></td></tr>
+<tr><td>self</td><td class="code"><div>&lt;web.application.application instance at 0x186b7e8&gt;</div></td></tr>
+</tbody>
+</table>
+
+
+
+  </li>
+<li class="frame">
+<code>/usr/local/lib/python2.7/site-packages/web/application.py</code> in <code>handle</code>
+<div class="context" id="c139635834468328">
+<ol start="222" class="pre-context" id="pre139635834468328">
+<li onclick="toggle('pre139635834468328', 'post139635834468328')"></li>
+<li onclick="toggle('pre139635834468328', 'post139635834468328')">    def browser(self):</li>
+<li onclick="toggle('pre139635834468328', 'post139635834468328')">        import browser</li>
+<li onclick="toggle('pre139635834468328', 'post139635834468328')">        return browser.AppBrowser(self)</li>
+<li onclick="toggle('pre139635834468328', 'post139635834468328')"></li>
+<li onclick="toggle('pre139635834468328', 'post139635834468328')">    def handle(self):</li>
+<li onclick="toggle('pre139635834468328', 'post139635834468328')">        fn, args = self._match(self.mapping, web.ctx.path)</li>
+</ol>
+<ol start="229" class="context-line"><li onclick="toggle('pre139635834468328', 'post139635834468328')">        return self._delegate(fn, self.fvars, args) <span>...</span></li></ol>
+<ol start='230' class="post-context" id="post139635834468328">
+<li onclick="toggle('pre139635834468328', 'post139635834468328')">        </li>
+<li onclick="toggle('pre139635834468328', 'post139635834468328')">    def handle_with_processors(self):</li>
+<li onclick="toggle('pre139635834468328', 'post139635834468328')">        def process(processors):</li>
+<li onclick="toggle('pre139635834468328', 'post139635834468328')">            try:</li>
+<li onclick="toggle('pre139635834468328', 'post139635834468328')">                if processors:</li>
+<li onclick="toggle('pre139635834468328', 'post139635834468328')">                    p, processors = processors[0], processors[1:]</li>
+</ol>
+  </div>
+
+<div class="commands">
+<a href='#' onclick="return varToggle(this, '139635834468328')"><span>&#x25b6;</span> Local vars</a>
+
+</div>
+
+<table class="vars"
+id="v139635834468328"
+><thead><tr><th>Variable</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>args</td><td class="code"><div>[]</div></td></tr>
+<tr><td>fn</td><td class="code"><div>u&#39;PagePreview&#39;</div></td></tr>
+<tr><td>self</td><td class="code"><div>&lt;web.application.application instance at 0x186b7e8&gt;</div></td></tr>
+</tbody>
+</table>
+
+
+
+  </li>
+<li class="frame">
+<code>/usr/local/lib/python2.7/site-packages/web/application.py</code> in <code>process</code>
+<div class="context" id="c139635834467320">
+<ol start="231" class="pre-context" id="pre139635834467320">
+<li onclick="toggle('pre139635834467320', 'post139635834467320')">    def handle_with_processors(self):</li>
+<li onclick="toggle('pre139635834467320', 'post139635834467320')">        def process(processors):</li>
+<li onclick="toggle('pre139635834467320', 'post139635834467320')">            try:</li>
+<li onclick="toggle('pre139635834467320', 'post139635834467320')">                if processors:</li>
+<li onclick="toggle('pre139635834467320', 'post139635834467320')">                    p, processors = processors[0], processors[1:]</li>
+<li onclick="toggle('pre139635834467320', 'post139635834467320')">                    return p(lambda: process(processors))</li>
+<li onclick="toggle('pre139635834467320', 'post139635834467320')">                else:</li>
+</ol>
+<ol start="238" class="context-line"><li onclick="toggle('pre139635834467320', 'post139635834467320')">                    return self.handle() <span>...</span></li></ol>
+<ol start='239' class="post-context" id="post139635834467320">
+<li onclick="toggle('pre139635834467320', 'post139635834467320')">            except web.HTTPError:</li>
+<li onclick="toggle('pre139635834467320', 'post139635834467320')">                raise</li>
+<li onclick="toggle('pre139635834467320', 'post139635834467320')">            except (KeyboardInterrupt, SystemExit):</li>
+<li onclick="toggle('pre139635834467320', 'post139635834467320')">                raise</li>
+<li onclick="toggle('pre139635834467320', 'post139635834467320')">            except:</li>
+<li onclick="toggle('pre139635834467320', 'post139635834467320')">                print &gt;&gt; web.debug, traceback.format_exc()</li>
+</ol>
+  </div>
+
+<div class="commands">
+<a href='#' onclick="return varToggle(this, '139635834467320')"><span>&#x25b6;</span> Local vars</a>
+
+</div>
+
+<table class="vars"
+id="v139635834467320"
+><thead><tr><th>Variable</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>process</td><td class="code"><div>&lt;function process at 0x7eff64156140&gt;</div></td></tr>
+<tr><td>processors</td><td class="code"><div>[]</div></td></tr>
+<tr><td>self</td><td class="code"><div>&lt;web.application.application instance at 0x186b7e8&gt;</div></td></tr>
+</tbody>
+</table>
+
+
+
+  </li>
+  </ul>
+</div>
+
+<div id="requestinfo">
+<h2>Request information</h2>
+
+<h3>INPUT</h3>
+
+<table class="req"
+><thead><tr><th>Variable</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>_</td><td class="code"><div>&#39;1401424668337&#39;</div></td></tr>
+<tr><td>url</td><td class="code"><div>&#39;http://www.dianxitea.com/news.php?styleid=2&amp;id=3575&#39;</div></td></tr>
+</tbody>
+</table>
+
+
+
+
+<h3 id="cookie-info">COOKIES</h3>
+
+<table class="req"
+><thead><tr><th>Variable</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>logintoken</td><td class="code"><div>&#39;P1PZbJ0CVq&#39;</div></td></tr>
+<tr><td>seriesid</td><td class="code"><div>&#39;1Cbyw7UGMh&#39;</div></td></tr>
+<tr><td>user_id</td><td class="code"><div>&#39;1&#39;</div></td></tr>
+<tr><td>webpy_session_id</td><td class="code"><div>&#39;589d29cd6157c03507461a0665d0a5fb1f58af6c&#39;</div></td></tr>
+</tbody>
+</table>
+
+
+
+
+<h3 id="meta-info">META</h3>
+
+<table class="req"
+><thead><tr><th>Variable</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>app_stack</td><td class="code"><div>[&lt;web.application.application instance at 0x186b7e8&gt;]</div></td></tr>
+<tr><td>fullpath</td><td class="code"><div>u&#39;/preview?url=http%3A%2F%2Fwww.dianxitea.com%2Fnews.php%3Fstyleid%3D2%26id%3D3575&amp;_=1401424668337&#39;</div></td></tr>
+<tr><td>headers</td><td class="code"><div>[]</div></td></tr>
+<tr><td>home</td><td class="code"><div>u&#39;http://192.168.0.22:8080&#39;</div></td></tr>
+<tr><td>homedomain</td><td class="code"><div>u&#39;http://192.168.0.22:8080&#39;</div></td></tr>
+<tr><td>homepath</td><td class="code"><div>u&#39;&#39;</div></td></tr>
+<tr><td>host</td><td class="code"><div>u&#39;192.168.0.22:8080&#39;</div></td></tr>
+<tr><td>ip</td><td class="code"><div>u&#39;192.168.0.2&#39;</div></td></tr>
+<tr><td>method</td><td class="code"><div>u&#39;GET&#39;</div></td></tr>
+<tr><td>output</td><td class="code"><div>u&#39;&#39;</div></td></tr>
+<tr><td>path</td><td class="code"><div>u&#39;/preview&#39;</div></td></tr>
+<tr><td>protocol</td><td class="code"><div>u&#39;http&#39;</div></td></tr>
+<tr><td>query</td><td class="code"><div>u&#39;?url=http%3A%2F%2Fwww.dianxitea.com%2Fnews.php%3Fstyleid%3D2%26id%3D3575&amp;_=1401424668337&#39;</div></td></tr>
+<tr><td>realhome</td><td class="code"><div>u&#39;http://192.168.0.22:8080&#39;</div></td></tr>
+<tr><td>status</td><td class="code"><div>&#39;200 OK&#39;</div></td></tr>
+</tbody>
+</table>
+
+
+
+
+<h3 id="meta-info">ENVIRONMENT</h3>
+
+<table class="req"
+><thead><tr><th>Variable</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>ACTUAL_SERVER_PROTOCOL</td><td class="code"><div>&#39;HTTP/1.1&#39;</div></td></tr>
+<tr><td>HTTP_ACCEPT</td><td class="code"><div>&#39;text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&#39;</div></td></tr>
+<tr><td>HTTP_ACCEPT_ENCODING</td><td class="code"><div>&#39;gzip,deflate,sdch&#39;</div></td></tr>
+<tr><td>HTTP_ACCEPT_LANGUAGE</td><td class="code"><div>&#39;ru,en-US;q=0.8,en;q=0.6&#39;</div></td></tr>
+<tr><td>HTTP_CONNECTION</td><td class="code"><div>&#39;keep-alive&#39;</div></td></tr>
+<tr><td>HTTP_COOKIE</td><td class="code"><div>&#39;seriesid=1Cbyw7UGMh; logintoken=P1PZbJ0CVq; user_id=1; webpy_session_id=589d29cd6157c03507461a0665d0a5fb1f58af6c&#39;</div></td></tr>
+<tr><td>HTTP_HOST</td><td class="code"><div>&#39;192.168.0.22:8080&#39;</div></td></tr>
+<tr><td>HTTP_USER_AGENT</td><td class="code"><div>&#39;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/34.0.1847.116 Chrome/34.0.1847.116 Safari/537.36&#39;</div></td></tr>
+<tr><td>PATH_INFO</td><td class="code"><div>&#39;/preview&#39;</div></td></tr>
+<tr><td>QUERY_STRING</td><td class="code"><div>&#39;url=http%3A%2F%2Fwww.dianxitea.com%2Fnews.php%3Fstyleid%3D2%26id%3D3575&amp;_=1401424668337&#39;</div></td></tr>
+<tr><td>REMOTE_ADDR</td><td class="code"><div>&#39;192.168.0.2&#39;</div></td></tr>
+<tr><td>REMOTE_PORT</td><td class="code"><div>&#39;52148&#39;</div></td></tr>
+<tr><td>REQUEST_METHOD</td><td class="code"><div>&#39;GET&#39;</div></td></tr>
+<tr><td>REQUEST_URI</td><td class="code"><div>&#39;/preview?url=http%3A%2F%2Fwww.dianxitea.com%2Fnews.php%3Fstyleid%3D2%26id%3D3575&amp;_=1401424668337&#39;</div></td></tr>
+<tr><td>SCRIPT_NAME</td><td class="code"><div>&#39;&#39;</div></td></tr>
+<tr><td>SERVER_NAME</td><td class="code"><div>&#39;localhost&#39;</div></td></tr>
+<tr><td>SERVER_PORT</td><td class="code"><div>&#39;8080&#39;</div></td></tr>
+<tr><td>SERVER_PROTOCOL</td><td class="code"><div>&#39;HTTP/1.1&#39;</div></td></tr>
+<tr><td>SERVER_SOFTWARE</td><td class="code"><div>&#39;CherryPy/3.2.0 Server&#39;</div></td></tr>
+<tr><td>wsgi.errors</td><td class="code"><div>&lt;open file &#39;&lt;stderr&gt;&#39;, mode &#39;w&#39; at 0x7eff957cf1e0&gt;</div></td></tr>
+<tr><td>wsgi.input</td><td class="code"><div>&lt;web.wsgiserver.KnownLengthRFile object at 0x7eff80176690&gt;</div></td></tr>
+<tr><td>wsgi.multiprocess</td><td class="code"><div>False</div></td></tr>
+<tr><td>wsgi.multithread</td><td class="code"><div>True</div></td></tr>
+<tr><td>wsgi.run_once</td><td class="code"><div>False</div></td></tr>
+<tr><td>wsgi.url_scheme</td><td class="code"><div>&#39;http&#39;</div></td></tr>
+<tr><td>wsgi.version</td><td class="code"><div>(1, 0)</div></td></tr>
+</tbody>
+</table>
+
+
+
+</div>
+
+<div id="explanation">
+  <p>
+    You're seeing this error because you have <code>web.config.debug</code>
+    set to <code>True</code>. Set that to <code>False</code> if you don't want to see this.
+  </p>
+</div>
+
+</body>
+</html>
