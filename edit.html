@@ -7,6 +7,10 @@
     <link rel="stylesheet" type="text/css" href="/style.css" />
 </head>
 <body>
+<nav>
+    <a href="upload.html">upload</a>
+    <a href="index.html">list</a>
+</nav>
 <article>
     <div id="container"></div>
     <table id="source"></table>
@@ -93,14 +97,15 @@
                 }, 'text');
             });
     $(function() {
-        $('<button>Comment</button>').prependTo(document.body)
+        var $nav = $('nav');
+        $('<button>Comment</button>').prependTo($nav)
                 .click(function() {
                     comment($('<div class="comment" contenteditable="true"></div>')
                             .css('top', (scrollY + 30) + 'px')
                             .prependTo('#container')
                             .click().focus());
                 });
-        $('<button id="save">Save</button>').prependTo(document.body)
+        $('<button id="save">Save</button>').prependTo($nav)
                 .click(function() {
                     var $doc = document.implementation.createHTMLDocument(filename);
                     $('link').clone().appendTo($doc.head);

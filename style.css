@@ -38,13 +38,9 @@ div.comment {
     height: 100%;
 }
 
-button {
+nav {
     position: fixed;
     z-index: 1;
-}
-
-#save {
-    left: 100px;
 }
 
 pre {

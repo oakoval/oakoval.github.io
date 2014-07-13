@@ -11,6 +11,8 @@ http.createServer(function(req, res) {
             call(data);
     }
 
+    if ('/' == req.url)
+        req.url = '/index.html';
     var file = req.url.slice(1);
     switch (req.method) {
         default:
