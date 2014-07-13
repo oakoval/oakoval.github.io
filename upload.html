@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload</title>
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+</head>
+<body>
+<input type="text" id="filename" />
+<input type="file" id="file" />
+<input type="submit" id="upload" value="Upload" />
+<pre id="source" contenteditable="true"></pre>
+<script>
+    $('#file').change(function() {
+        $('#filename').val(this.files[0].name);
+        var reader = new FileReader();
+        reader.onloadend = function(e) {
+            $('#source').html(e.target.result);
+        };
+        reader.readAsText(this.files[0]);
+    });
+    $('#upload').click(function(e) {
+        e.preventDefault();
+        $.post('/code/' + $('#filename').val(), $('#source').html(), function() {
+            location = '/edit.html#' + $('#filename').val();
+        });
+    });
+</script>
+</body>
+</html>

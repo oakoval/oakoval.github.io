@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+</head>
+<body>
+<article>
+    <div id="container"></div>
+    <table id="source"></table>
+</article>
+<script>
+    function encodeHTML(str) {
+        str = str.replace(/</g, '&lt;');
+        str = str.replace(/>/g, '&gt;');
+        return str;
+    }
+
+    function comment($div) {
+        function get_lines(line_numbers) {
+            line_numbers = JSON.parse(line_numbers);
+            return $('tr').filter(function(i) {
+                return line_numbers.indexOf(i + 1) >= 0;
+            })
+        }
+
+        $div.click(function() {
+            var lines = $('tr.selected');
+            var line_numbers = lines.find('td:first-child').get()
+                    .map(function(td) {
+                        return parseInt(td.innerHTML);
+                    });
+            line_numbers = JSON.stringify(line_numbers);
+            $('.comment.selected')
+                    .attr('data-lines', line_numbers)
+                    .removeClass('selected');
+            lines.removeClass('selected').addClass('accepted');
+            line_numbers = $(this)
+                    .addClass('selected')
+                    .attr('data-lines');
+            if (!line_numbers)
+                return;
+            get_lines(line_numbers)
+                    .removeClass('accepted')
+                    .addClass('selected');
+        })
+                .keyup(function(e) {
+                    // Shift+Delete
+                    if (e.shiftKey && 46 == e.keyCode) {
+                        this.parentNode.removeChild(this);
+                        get_lines($(this).attr('data-lines'))
+                            .removeClass('selected')
+                            .removeClass('accepted');
+                    }
+                })
+                .draggable({axis:'y', snap:'tr'});
+        return $div;
+    }
+
+    function line() {
+        if (this.classList.contains('selected'))
+            this.classList.remove('selected');
+        else
+            this.classList.add('selected');
+    }
+
+    var filename = location.hash.slice(1);
+    $.get('/review/' + filename + '.html', function(data) {
+        $('article').empty();
+        data = new DOMParser().parseFromString(data, 'text/html');
+        data = $(data);
+        data.find('.comment').attr('contenteditable', 'true');
+        data.find('article').children()
+                .appendTo('article');
+        comment($('.comment'));
+        $('tr').click(line);
+    })
+            .error(function() {
+                $.get('/code/' + filename, function(data) {
+                    data = data.split('\n');
+                    for(var i=0; i<data.length; i++) {
+                        var $number = $('<td/>').html(i + 1);
+                        var $code = $('<pre/>').html(encodeHTML(data[i]));
+                        $code = $('<td/>').append($code);
+                        $('<tr></tr>')
+                                .click(line)
+                                .append($number)
+                                .append($code)
+                                .appendTo(source);
+                    }
+                }, 'text');
+            });
+    $(function() {
+        $('<button>Comment</button>').prependTo(document.body)
+                .click(function() {
+                    comment($('<div class="comment" contenteditable="true"></div>')
+                            .css('top', (scrollY + 30) + 'px')
+                            .prependTo('#container')
+                            .click().focus());
+                });
+        $('<button id="save">Save</button>').prependTo(document.body)
+                .click(function() {
+                    var $doc = document.implementation.createHTMLDocument(filename);
+                    $('link').clone().appendTo($doc.head);
+                    $('article').clone().appendTo($doc.body);
+                    $($doc.body).find('.comment').removeAttr('contenteditable');
+                    $($doc.body).find('tr.selected').removeClass('selected').addClass('accepted');
+                    $($doc.body).find('.comment.selected').removeClass('selected');
+                    $.post('/review/' + filename + '.html', $doc.documentElement.outerHTML);
+                });
+    })
+</script>
+</body>
+</html>

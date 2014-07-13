@@ -1,0 +1,52 @@
+#source {
+    position: absolute;
+    display: inline-block;
+    -webkit-user-select: none;
+    font-family: "Courier New", courier, monospace;
+    border-collapse: collapse;
+}
+
+tr > td:first-child {
+    text-align: right;
+    border-right: 1px solid grey;
+}
+
+td {
+    padding: 0 2mm;
+}
+
+.selected {
+    background-color: yellow;
+}
+
+.accepted {
+    background-color: greenyellow;
+}
+
+div.comment {
+    position: absolute;
+    display: block;
+    border: 1px solid black;
+    padding: 1mm;
+    min-height: 10px;
+    width: 460px;
+}
+
+#container {
+    display: inline-block;
+    width: 480px;
+    height: 100%;
+}
+
+button {
+    position: fixed;
+    z-index: 1;
+}
+
+#save {
+    left: 100px;
+}
+
+pre {
+    margin: 0;
+}
