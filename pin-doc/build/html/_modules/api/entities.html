@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>api.entities &mdash; mypinnings 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="mypinnings 1.0 documentation" href="../../index.html" />
+    <link rel="up" title="Module code" href="../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../index.html">mypinnings 1.0 documentation</a> &raquo;</li>
+          <li><a href="../index.html" accesskey="U">Module code</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <h1>Source code for api.entities</h1><div class="highlight"><pre>
+<span class="kn">import</span> <span class="nn">web</span>
+<span class="kn">from</span> <span class="nn">mypinnings.database</span> <span class="kn">import</span> <span class="n">connect_db</span>
+<span class="kn">from</span> <span class="nn">api.utils</span> <span class="kn">import</span> <span class="n">photo_id_to_url</span>
+<span class="kn">from</span> <span class="nn">api.models.user</span> <span class="kn">import</span> <span class="n">User</span>
+
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">or_</span>
+
+<span class="n">db</span> <span class="o">=</span> <span class="n">connect_db</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="UserProfile"><a class="viewcode-back" href="../../api.html#api.entities.UserProfile">[docs]</a><span class="k">class</span> <span class="nc">UserProfile</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Object responsible for obtaining user related information and data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;id&#39;</span><span class="p">,</span> <span class="s">&#39;name&#39;</span><span class="p">,</span> <span class="s">&#39;about&#39;</span><span class="p">,</span> <span class="s">&#39;city&#39;</span><span class="p">,</span> <span class="s">&#39;country&#39;</span><span class="p">,</span> <span class="s">&#39;hometown&#39;</span><span class="p">,</span>
+              <span class="s">&#39;about&#39;</span><span class="p">,</span> <span class="s">&#39;email&#39;</span><span class="p">,</span> <span class="s">&#39;pic&#39;</span><span class="p">,</span> <span class="s">&#39;website&#39;</span><span class="p">,</span> <span class="s">&#39;facebook&#39;</span><span class="p">,</span>
+              <span class="s">&#39;twitter&#39;</span><span class="p">,</span> <span class="s">&#39;getlist_privacy_level&#39;</span><span class="p">,</span> <span class="s">&#39;private&#39;</span><span class="p">,</span> <span class="s">&#39;bg&#39;</span><span class="p">,</span>
+              <span class="s">&#39;bgx&#39;</span><span class="p">,</span> <span class="s">&#39;bgy&#39;</span><span class="p">,</span> <span class="s">&#39;show_views&#39;</span><span class="p">,</span> <span class="s">&#39;views&#39;</span><span class="p">,</span> <span class="s">&#39;username&#39;</span><span class="p">,</span> <span class="s">&#39;zip&#39;</span><span class="p">,</span>
+              <span class="s">&#39;linkedin&#39;</span><span class="p">,</span> <span class="s">&#39;gplus&#39;</span><span class="p">,</span> <span class="s">&#39;activation&#39;</span><span class="p">,</span> <span class="s">&#39;is_pin_loader&#39;</span><span class="p">,</span> <span class="s">&#39;bg_resized_url&#39;</span><span class="p">,</span>
+              <span class="s">&#39;headerbgx&#39;</span><span class="p">,</span> <span class="s">&#39;headerbgy&#39;</span><span class="p">]</span>
+
+    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="UserProfile.prepare_fields"><a class="viewcode-back" href="../../api.html#api.entities.UserProfile.prepare_fields">[docs]</a>    <span class="k">def</span> <span class="nf">prepare_fields</span><span class="p">():</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Appends users. to each field, for inner sql queries</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">user_fields</span> <span class="o">=</span> <span class="s">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s">&quot;users.</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">field</span><span class="p">)</span>
+                                 <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">UserProfile</span><span class="o">.</span><span class="n">fields</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">user_fields</span>
+</div>
+    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="UserProfile.format_birthday"><a class="viewcode-back" href="../../api.html#api.entities.UserProfile.format_birthday">[docs]</a>    <span class="k">def</span> <span class="nf">format_birthday</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Composes birthday response, returning year, day and month</span>
+<span class="sd">        as separate response fields</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">user</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;birthday&#39;</span><span class="p">):</span>
+            <span class="n">response</span><span class="p">[</span><span class="s">&#39;birthday_year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">user</span><span class="p">[</span><span class="s">&#39;birthday&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">year</span>
+            <span class="n">response</span><span class="p">[</span><span class="s">&#39;birthday_day&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">user</span><span class="p">[</span><span class="s">&#39;birthday&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">day</span>
+            <span class="n">response</span><span class="p">[</span><span class="s">&#39;birthday_month&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">user</span><span class="p">[</span><span class="s">&#39;birthday&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">month</span>
+        <span class="k">return</span> <span class="n">response</span>
+</div>
+    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="UserProfile.query_user"><a class="viewcode-back" href="../../api.html#api.entities.UserProfile.query_user">[docs]</a>    <span class="k">def</span> <span class="nf">query_user</span><span class="p">(</span><span class="n">profile</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns all profile fields specified by fields section</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c"># import ipdb; ipdb.set_trace()</span>
+        <span class="c"># query = db.select(&#39;users&#39;, vars={&#39;username&#39;: profile,</span>
+        <span class="c">#                       &#39;id&#39;: user_id},</span>
+        <span class="c">#                       where=&quot;username=$username or id=$id&quot;)</span>
+        <span class="c"># user = web.ctx.orm.query(User).filter(User.id == user_id).first()</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">ctx</span><span class="o">.</span><span class="n">orm</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">User</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+            <span class="n">or_</span><span class="p">(</span><span class="n">User</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">User</span><span class="o">.</span><span class="n">username</span> <span class="o">==</span> <span class="n">profile</span><span class="p">)</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">user</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="c"># if len(query) &gt; 0:</span>
+        <span class="c">#     user = query.list()[0]</span>
+        <span class="c">#     user[&#39;pic&#39;] = photo_id_to_url(user[&#39;pic&#39;])</span>
+        <span class="c"># else:</span>
+        <span class="c">#     return False</span>
+        <span class="c"># import ipdb; ipdb.set_trace()</span>
+        <span class="c"># response = {field: user.getattr(field) for field in UserProfile.fields}</span>
+        <span class="c"># response = UserProfile.format_birthday(user, response)</span>
+        <span class="c"># return response</span>
+        
+        <span class="k">return</span> <span class="n">user</span>
+</div>
+    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="UserProfile.query_following"><a class="viewcode-back" href="../../api.html#api.entities.UserProfile.query_following">[docs]</a>    <span class="k">def</span> <span class="nf">query_following</span><span class="p">(</span><span class="n">profile_owner</span><span class="p">,</span> <span class="n">current_user</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        A bit complex query which returns all users whom current user is following</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">vars</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;id&#39;</span><span class="p">:</span> <span class="n">profile_owner</span><span class="p">,</span> <span class="s">&#39;user_id&#39;</span><span class="p">:</span> <span class="n">current_user</span><span class="p">}</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="s">&#39;&#39;&#39;</span>
+<span class="s">        select *, f2.follow &lt;&gt; 0 is_following from users</span>
+<span class="s">        join      follows f1 on f1.follow = users.id</span>
+<span class="s">        left join follows f2 on f2.follow = users.id and f2.follower = $user_id</span>
+<span class="s">        where f1.follower = $id; &#39;&#39;&#39;</span>  <span class="c">#% (UserProfile.prepare_fields())</span>
+
+        <span class="n">results</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span><span class="nb">vars</span><span class="p">)</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">results</span>
+</div>
+    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="UserProfile.query_followed_by"><a class="viewcode-back" href="../../api.html#api.entities.UserProfile.query_followed_by">[docs]</a>    <span class="k">def</span> <span class="nf">query_followed_by</span><span class="p">(</span><span class="n">profile_owner</span><span class="p">,</span> <span class="n">current_user</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        A bit complex query which returns all users who</span>
+<span class="sd">        are following the current user</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">vars</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;id&#39;</span><span class="p">:</span> <span class="n">profile_owner</span><span class="p">,</span> <span class="s">&#39;user_id&#39;</span><span class="p">:</span> <span class="n">current_user</span><span class="p">}</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="s">&#39;&#39;&#39;</span>
+<span class="s">        select *, f2.follower &lt;&gt; 0 is_following from users</span>
+<span class="s">        join follows f1 on f1.follower = users.id</span>
+<span class="s">        left join follows f2 on f2.follow = users.id and f2.follower = $user_id</span>
+<span class="s">        where f1.follow = $id;&#39;&#39;&#39;</span> <span class="c">#% (UserProfile.prepare_fields())</span>
+
+        <span class="n">results</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span><span class="nb">vars</span><span class="p">)</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">results</span></div></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../index.html">mypinnings 1.0 documentation</a> &raquo;</li>
+          <li><a href="../index.html" >Module code</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, mygetlist.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

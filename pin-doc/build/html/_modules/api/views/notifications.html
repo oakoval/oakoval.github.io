@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>api.views.notifications &mdash; mypinnings 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="mypinnings 1.0 documentation" href="../../../index.html" />
+    <link rel="up" title="Module code" href="../../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../index.html">mypinnings 1.0 documentation</a> &raquo;</li>
+          <li><a href="../../index.html" accesskey="U">Module code</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <h1>Source code for api.views.notifications</h1><div class="highlight"><pre>
+<span class="kn">import</span> <span class="nn">web</span>
+
+<span class="kn">from</span> <span class="nn">api.utils</span> <span class="kn">import</span> <span class="n">api_response</span><span class="p">,</span> <span class="n">save_api_request</span>
+<span class="kn">from</span> <span class="nn">api.views.base</span> <span class="kn">import</span> <span class="n">BaseAPI</span>
+
+<span class="kn">from</span> <span class="nn">mypinnings.database</span> <span class="kn">import</span> <span class="n">connect_db</span><span class="p">,</span> <span class="n">dbget</span>
+
+<span class="n">db</span> <span class="o">=</span> <span class="n">connect_db</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="Notification"><a class="viewcode-back" href="../../../api.views.html#api.views.notifications.Notification">[docs]</a><span class="k">class</span> <span class="nc">Notification</span><span class="p">(</span><span class="n">BaseAPI</span><span class="p">):</span>
+<div class="viewcode-block" id="Notification.POST"><a class="viewcode-back" href="../../../api.views.html#api.views.notifications.Notification.POST">[docs]</a>    <span class="k">def</span> <span class="nf">POST</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return list of user notifications sorted by timestamp</span>
+<span class="sd">        depeds on user logintoken</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">request_data</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">input</span><span class="p">()</span>
+        <span class="n">save_api_request</span><span class="p">(</span><span class="n">request_data</span><span class="p">)</span>
+
+        <span class="n">logintoken</span> <span class="o">=</span> <span class="n">request_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;logintoken&#39;</span><span class="p">)</span>
+        <span class="n">csid_from_client</span> <span class="o">=</span> <span class="n">request_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;csid_from_client&#39;</span><span class="p">)</span>
+        <span class="n">user_status</span><span class="p">,</span> <span class="n">user</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">authenticate_by_token</span><span class="p">(</span><span class="n">logintoken</span><span class="p">)</span>
+
+        <span class="c"># User id contains error code</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">user_status</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">user</span>
+
+        <span class="n">csid_from_server</span> <span class="o">=</span> <span class="n">user</span><span class="p">[</span><span class="s">&#39;seriesid&#39;</span><span class="p">]</span>
+
+        <span class="n">notification_list</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s">&#39;notifs&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&quot;user_id&quot;</span><span class="p">:</span> <span class="n">user</span><span class="p">[</span><span class="s">&#39;id&#39;</span><span class="p">]},</span>
+            <span class="n">where</span><span class="o">=</span><span class="s">&#39;user_id=$user_id&#39;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s">&quot;timestamp DESC&quot;</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">notification_list</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
+
+        <span class="n">response</span> <span class="o">=</span> <span class="n">api_response</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span>
+                                <span class="n">csid_from_client</span><span class="o">=</span><span class="n">csid_from_client</span><span class="p">,</span>
+                                <span class="n">csid_from_server</span><span class="o">=</span><span class="n">csid_from_server</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">response</span>
+
+</div></div>
+<div class="viewcode-block" id="CreateNotification"><a class="viewcode-back" href="../../../api.views.html#api.views.notifications.CreateNotification">[docs]</a><span class="k">class</span> <span class="nc">CreateNotification</span><span class="p">(</span><span class="n">BaseAPI</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Responsible for notifications creation</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="CreateNotification.POST"><a class="viewcode-back" href="../../../api.views.html#api.views.notifications.CreateNotification.POST">[docs]</a>    <span class="k">def</span> <span class="nf">POST</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Example usage:</span>
+<span class="sd">        curl --data &quot;csid_from_client=11&amp;user_id=78&amp;msg=message&amp;url=some_url&quot; \</span>
+<span class="sd">        http://localhost:8080/api/notification/add</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">request_data</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">input</span><span class="p">()</span>
+        <span class="n">csid_from_client</span> <span class="o">=</span> <span class="n">request_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;csid_from_client&#39;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s">&#39;notifs&#39;</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="n">request_data</span><span class="p">[</span><span class="s">&quot;user_id&quot;</span><span class="p">],</span>
+                  <span class="n">message</span><span class="o">=</span><span class="n">request_data</span><span class="p">[</span><span class="s">&quot;msg&quot;</span><span class="p">],</span>
+                  <span class="n">link</span><span class="o">=</span><span class="n">request_data</span><span class="p">[</span><span class="s">&quot;url&quot;</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">api_response</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s">&quot;status&quot;</span><span class="p">:</span> <span class="s">&quot;success&quot;</span><span class="p">},</span>
+                            <span class="n">csid_from_client</span><span class="o">=</span><span class="n">csid_from_client</span><span class="p">,</span>
+                            <span class="n">csid_from_server</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
+</div></div>
+<div class="viewcode-block" id="GetNotification"><a class="viewcode-back" href="../../../api.views.html#api.views.notifications.GetNotification">[docs]</a><span class="k">class</span> <span class="nc">GetNotification</span><span class="p">(</span><span class="n">BaseAPI</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Allows to get individual notifications</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="GetNotification.POST"><a class="viewcode-back" href="../../../api.views.html#api.views.notifications.GetNotification.POST">[docs]</a>    <span class="k">def</span> <span class="nf">POST</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">notification_id</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Method responsible for retuning individual notifications</span>
+
+<span class="sd">        :args: logintoken, csid_from_client, notification_id.</span>
+<span class="sd">        :returns: notification_or_404</span>
+<span class="sd">        :to_test: curl --data &quot;csid_from_client=1&amp;logintoken=zs4jxj0yM2&quot;\</span>
+<span class="sd">        http://localhost:8080/api/notification/177</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">request_data</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">input</span><span class="p">()</span>
+        <span class="n">save_api_request</span><span class="p">(</span><span class="n">request_data</span><span class="p">)</span>
+
+        <span class="n">logintoken</span> <span class="o">=</span> <span class="n">request_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;logintoken&#39;</span><span class="p">)</span>
+        <span class="n">csid_from_client</span> <span class="o">=</span> <span class="n">request_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;csid_from_client&#39;</span><span class="p">)</span>
+        <span class="n">user_status</span><span class="p">,</span> <span class="n">user</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">authenticate_by_token</span><span class="p">(</span><span class="n">logintoken</span><span class="p">)</span>
+
+        <span class="c"># User id contains error code</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">user_status</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">api_response</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">{},</span> <span class="n">status</span><span class="o">=</span><span class="mi">405</span><span class="p">,</span>
+                                <span class="n">error_code</span><span class="o">=</span><span class="s">&quot;User was not found&quot;</span><span class="p">)</span>
+
+        <span class="n">csid_from_server</span> <span class="o">=</span> <span class="n">user</span><span class="p">[</span><span class="s">&#39;seriesid&#39;</span><span class="p">]</span>
+        <span class="n">notif</span> <span class="o">=</span> <span class="n">dbget</span><span class="p">(</span><span class="s">&#39;notifs&#39;</span><span class="p">,</span> <span class="n">notification_id</span><span class="p">)</span>
+
+        <span class="c"># Do not allow to read notification related to other users</span>
+        <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">notif</span><span class="o">.</span><span class="n">user_id</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">id</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">api_response</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">{},</span> <span class="n">status</span><span class="o">=</span><span class="mi">405</span><span class="p">,</span>
+                                <span class="n">error_code</span><span class="o">=</span><span class="s">&quot;Access denied&quot;</span><span class="p">)</span>
+
+        <span class="c"># Remove notification which was already reviewed</span>
+        <span class="n">db</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s">&#39;notifs&#39;</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="s">&#39;id = $id&#39;</span><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span><span class="p">{</span><span class="s">&#39;id&#39;</span><span class="p">:</span> <span class="n">notification_id</span><span class="p">})</span>
+        <span class="k">return</span> <span class="n">api_response</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">notif</span><span class="p">,</span>
+                            <span class="n">csid_from_client</span><span class="o">=</span><span class="n">csid_from_client</span><span class="p">,</span>
+                            <span class="n">csid_from_server</span><span class="o">=</span><span class="n">csid_from_server</span><span class="p">)</span></div></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../index.html">mypinnings 1.0 documentation</a> &raquo;</li>
+          <li><a href="../../index.html" >Module code</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, mygetlist.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>
