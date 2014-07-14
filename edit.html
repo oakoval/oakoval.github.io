@@ -10,6 +10,7 @@
 <nav>
     <a href="upload.html">upload</a>
     <a href="index.html">list</a>
+    <label id="info"></label>
 </nav>
 <article>
     <div id="container"></div>
@@ -70,6 +71,15 @@
             this.classList.add('selected');
     }
 
+    function inform(message, color) {
+        info.innerHTML = message;
+        info.style.backgroundColor = color || 'yellowgreen';
+        setTimeout(function() {
+            info.innerHTML = '';
+            info.style.backgroundColor = 'transparent';
+        }, 4000);
+    }
+
     var filename = location.hash.slice(1);
     $.get('/review/' + filename + '.html', function(data) {
         $('article').empty();
@@ -113,7 +123,13 @@
                     $($doc.body).find('.comment').removeAttr('contenteditable');
                     $($doc.body).find('tr.selected').removeClass('selected').addClass('accepted');
                     $($doc.body).find('.comment.selected').removeClass('selected');
-                    $.post('/review/' + filename + '.html', $doc.documentElement.outerHTML);
+                    $.post('/review/' + filename + '.html', $doc.documentElement.outerHTML,
+                            function() {
+                                inform('Saved');
+                            })
+                            .error(function() {
+                                alert('You can save only on Node.js hosting');
+                            });
                 });
     })
 </script>

@@ -46,3 +46,8 @@ nav {
 pre {
     margin: 0;
 }
+
+#info {
+    display: inline;
+    padding: 1mm;
+}
