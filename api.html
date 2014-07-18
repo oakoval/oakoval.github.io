@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style type="text/css">
+        code {
+            margin: 0 1mm
+        }
+        code:before {
+            content: '/api';
+            color: darkgray;
+        }
+        code:after {
+            content: ' -';
+            color: darkgray;
+        }
+        i {
+            margin: 0 1mm;
+            color: blue;
+        }
+        em {
+            color: red;
+            margin: 0 1mm;
+        }
+        .method {
+        }
+        .method:after {
+            content: ' HTTP method';
+            color: lightgray;
+        }
+    </style>
+</head>
+<body>
+    <dl>
+        <dt><code>/auth</code>authorization</dt>
+        <dd>
+            <div class="method">POST</div>
+            <ul>
+                <li>email<i>string</i></li>
+                <li>password<i>string</i></li>
+            </ul>
+            <div>response data:</div>
+            <ul>
+                <li>user_id<i>int</i></li>
+                <li>username<i>string</i></li>
+            </ul>
+        </dd>
+        <dt><code>/image/categorize</code>changing category of pin</dt>
+        <dd>
+            <div class="method">POST</div>
+            <ul>
+                <li>image_id<i>int</i></li>
+                <li>category_id_list<i>array of int</i><em>list of categories for pin</em></li>
+            </ul>
+            <div>response data:</div>
+            <ul>
+                <li>image_id<i>int</i></li>
+            </ul>
+        </dd>
+        <dt><code>/image/query</code>getting all pins from a given board</dt>
+        <dd>
+            <div class="method">POST</div>
+            <ul>
+                <li>logintoken<i>string</i></li>
+                <li>query_type<i>string</i><em>is not used</em></li>
+                <li>query_params<i>array of int</i>array of images id<em>is not required</em></li>
+            </ul>
+            <div>response data - array of images:</div>
+            <ul>
+                <li>product_url<i>url</i></li>
+                <li>like_count<i>int</i></li>
+                <li>image_202_height<i>int</i></li>
+                <li>repin<i></i></li>
+                <li>board_id<i>int</i></li>
+                <li>user_id<i>int</i></li>
+                <li>tags<i></i></li>
+                <li>image_width<i>int</i></li>
+                <li>id<i>int</i></li>
+                <li>image_212_height<i>int</i></li>
+                <li>user_pic<i></i></li>
+                <li>user_name<i></i></li>
+                <li>category<i></i></li>
+                <li>description<i></i></li>
+                <li>cat_name<i></i></li>
+                <li>views<i></i></li>
+                <li>timestamp<i></i></li>
+                <li>price<i></i></li>
+                <li>image_202_url<i>url</i></li>
+                <li>user_username<i></i></li>
+                <li>link<i>url</i></li>
+                <li>price_range<i></i></li>
+                <li>name<i></i></li>
+                <li>repin_count<i></i></li>
+                <li>image_height<i></i></li>
+                <li>image_url<i>url</i></li>
+                <li>image_212_url<i>url</i></li>
+                <li>external_id<i>int</i></li>
+            </ul>
+        </dd>
+        <dt><code>/image/query-board</code>getting all pins from a given board</dt>
+        <dd>
+            <div class="method">POST</div>
+            <ul>
+                <li>username<i>string</i></li>
+                <li>board_name<i>int</i><em>is required but value is may be empty</em></li>
+            </ul>
+            <!--div>response data:</div>
+            <ul>
+                <li>user_id<i>int</i></li>
+                <li>username<i>string</i></li>
+            </ul-->
+        </dd>
+        <dt><code>/image/query/category</code>receiving pins by category</dt>
+        <dd>
+            <div class="method">POST</div>
+            <ul>
+                <li>logintoken<i>base64</i></li>
+                <li>query_type<i>all | new | range</i>optional</li>
+                <li>category_id_list<i>array of int</i><em>list of categories for pin</em></li>
+            </ul>
+            <div>response data:</div>
+            <ul>
+                <li>image_id_list<i>array of int</i>list of images id</li>
+            </ul>
+        </dd>
+        <dt><code>/profile/userinfo/get</code>get profile information</dt>
+        <dd>
+            <div class="method">POST</div>
+            <ul>
+                <li>logintoken<i>base64</i></li>
+                <li>csid_from_client<i>int</i><em>is required but value is doesn't matter and may be empty</em></li>
+            </ul>
+            <!--div>response data:</div>
+            <ul>
+                <li>user_id<i>int</i></li>
+                <li>username<i>string</i></li>
+            </ul-->
+        </dd>
+        <!--dt><code>/signup/register</code>Registration</dt>
+        <dd>
+            <div>POST</div>
+            <ul>
+            </ul>
+            <div>response data:</div>
+            <ul>
+            </ul>
+        </dd-->
+        <dt>Response</dt>
+        <dd>
+            <ul>
+                <li>status<i>int</i>HTTP status</li>
+                <li>error_code<i>string</i></li>
+                <li>t_id</li>
+                <li>s_version_id</li>
+                <li>sid_from_client</li>
+                <li>csid_from_server</li>
+                <li>client_token</li>
+                <li>notifications</li>
+                <li>data</li>
+            </ul>
+        </dd>
+    </dl>
+</body>
+</html>

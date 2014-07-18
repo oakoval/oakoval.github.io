@@ -49,3 +49,18 @@ http.createServer(function(req, res) {
     }
 })
 .listen(8080);
+
+function alog() {
+    console.log(arguments);
+}
+
+$.ajax({
+    url: "http://oakoval.no-ip.org/api/auth",
+    type: 'POST',
+    success: alog
+});
+
+$.post("http://oakoval.no-ip.org/api/auth", {
+    email: 'testuser@gmail.com',
+    password: 'pass123'
+}, alog);
