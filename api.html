@@ -2,9 +2,50 @@
 <html>
 <head>
     <title></title>
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.11.0/themes/black-tie/jquery-ui.css" />
+    <script>
+        function openMethod() {
+            var hash = location.hash.slice(1);
+            $('dt code').each(function(i, el) {
+                if (hash == el.innerHTML) {
+                    $('dl').accordion({active: i});
+                    hash = null;
+                }
+            })
+
+            if (hash)
+                $('dt').each(function(i, el) {
+                    if (hash == $(el).text())
+                        $('dl').accordion({active: i});
+                });
+        }
+
+        $(function() {
+            $('dl').accordion({
+                collapsible: true,
+                heightStyle: "content",
+                active: -1,
+                activate: function(e, ui) {
+                    var method = ui.newHeader.find('code').html();
+                    if (!method)
+                        method = ui.newHeader.text();
+                    history.pushState(null, method, '#' + method);
+                }
+            });
+            $('dd').each(function(_, el) {
+                if($(el).find('em').length)
+                    el.previousElementSibling.appendChild($('<span>\u26A0</span>')[0]);
+            });
+            if (location.hash)
+                openMethod();
+            $(window).on('hashchange', openMethod);
+        });
+    </script>
     <style type="text/css">
         code {
-            margin: 0 1mm
+            margin-right: 1mm;
         }
         code:before {
             content: '/api';
@@ -28,6 +69,10 @@
             content: ' HTTP method';
             color: lightgray;
         }
+        span {
+            margin: 0 1mm;
+            color: orange;
+        }
     </style>
 </head>
 <body>
@@ -45,25 +90,27 @@
                 <li>username<i>string</i></li>
             </ul>
         </dd>
+<!------------------------------------------------------------------------------------->
         <dt><code>/image/categorize</code>changing category of pin</dt>
         <dd>
             <div class="method">POST</div>
             <ul>
                 <li>image_id<i>int</i></li>
-                <li>category_id_list<i>array of int</i><em>list of categories for pin</em></li>
+                <li>category_id_list<i>array of int</i>list of categories for pin</li>
             </ul>
             <div>response data:</div>
             <ul>
                 <li>image_id<i>int</i></li>
             </ul>
         </dd>
+<!------------------------------------------------------------------------------------->
         <dt><code>/image/query</code>getting all pins from a given board</dt>
         <dd>
             <div class="method">POST</div>
             <ul>
-                <li>logintoken<i>string</i></li>
                 <li>query_type<i>string</i><em>is not used</em></li>
                 <li>query_params<i>array of int</i>array of images id<em>is not required</em></li>
+                <li>logintoken<i>string</i></li>
             </ul>
             <div>response data - array of images:</div>
             <ul>
@@ -97,6 +144,7 @@
                 <li>external_id<i>int</i></li>
             </ul>
         </dd>
+<!------------------------------------------------------------------------------------->
         <dt><code>/image/query-board</code>getting all pins from a given board</dt>
         <dd>
             <div class="method">POST</div>
@@ -110,41 +158,168 @@
                 <li>username<i>string</i></li>
             </ul-->
         </dd>
+<!------------------------------------------------------------------------------------->
         <dt><code>/image/query/category</code>receiving pins by category</dt>
         <dd>
             <div class="method">POST</div>
             <ul>
                 <li>logintoken<i>base64</i></li>
                 <li>query_type<i>all | new | range</i>optional</li>
-                <li>category_id_list<i>array of int</i><em>list of categories for pin</em></li>
+                <li>category_id_list<i>array of int</i>list of categories for pin</li>
             </ul>
             <div>response data:</div>
             <ul>
                 <li>image_id_list<i>array of int</i>list of images id</li>
             </ul>
         </dd>
-        <dt><code>/profile/userinfo/get</code>get profile information</dt>
+<!------------------------------------------------------------------------------------->
+        <dt><code>/image/query/get_by_hashtags</code>receiving pins by hashtag</dt>
+        <dd>
+            <div class="method">POST</div>
+            <ul>
+                <li>hashtag<i>string</i><em>may be empty</em></li>
+                <li>page<i>int</i><em>if page is not set then response are all pins in category without paging</em></li>
+                <li>items_per_page<i>int</i>default 10 if page is set</li>
+            </ul>
+            <div>response data:</div>
+            <ul>
+                <li>image_id_list<i>array of int</i>list of images id</li>
+            </ul>
+        </dd>
+<!------------------------------------------------------------------------------------->
+        <dt><code>/image/query/hashtags</code>get hashtags of pin</dt>
+        <dd>
+            <div class="method">POST</div>
+            <ul>
+                <li>image_id<i>int</i></li>
+                <li>logintoken<i>base64</i></li>
+            </ul>
+            <div>response data:</div>
+            <ul>
+                <li>image_id<i>int</i></li>
+                <li>hashtag_list<i>array of string</i></li>
+            </ul>
+        </dd>
+<!------------------------------------------------------------------------------------->
+        <dt><code>/profile/userinfo/boards</code>getting boards of a given user</dt>
+        <dd>
+            <div class="method">POST</div>
+            <em>Exception: relation "boards_followers" does not exist</em>
+        </dd>
+<!------------------------------------------------------------------------------------->
+        <dt><code>/profile/userinfo/info</code>get profile information</dt>
+        <dd>
+            <div class="method">POST</div>
+            <ul>
+                <li>username<i>string</i></li>
+                <li>logintoken<i>base64</i></li>
+                <li>csid_from_client<i>int</i><em>is required but value is doesn't matter and may be empty</em></li>
+            </ul>
+            <div>response data:</div>
+            <ul>
+                <li>username<i>string</i></li>
+                <li>website<i>url</i></li>
+                <li>name<i>string</i></li>
+                <li>headerbgy<i>int</i></li>
+                <li>headerbgx<i>int</i></li>
+                <li>timestamp<i>int</i>unix time</li>
+                <li>email<i>string</i></li>
+                <li>id<i>int</i></li>
+            </ul>
+        </dd>
+<!------------------------------------------------------------------------------------->
+        <dt><code>/profile/userinfo/get</code>get own profile information</dt>
         <dd>
             <div class="method">POST</div>
             <ul>
                 <li>logintoken<i>base64</i></li>
                 <li>csid_from_client<i>int</i><em>is required but value is doesn't matter and may be empty</em></li>
             </ul>
-            <!--div>response data:</div>
+            <div>response data:</div>
+            <ul>
+                <li>username<i>string</i></li>
+                <li>website<i>url</i></li>
+                <li>name<i>string</i></li>
+                <li>headerbgy<i>int</i></li>
+                <li>headerbgx<i>int</i></li>
+                <li>timestamp<i>int</i>unix time</li>
+                <li>email<i>string</i></li>
+                <li>id<i>int</i></li>
+            </ul>
+        </dd>
+<!------------------------------------------------------------------------------------->
+        <dt><code>/profile/userinfo/get_pictures</code>get photos of user</dt>
+        <dd>
+            <div class="method">POST</div>
             <ul>
                 <li>user_id<i>int</i></li>
-                <li>username<i>string</i></li>
-            </ul-->
-        </dd>
-        <!--dt><code>/signup/register</code>Registration</dt>
-        <dd>
-            <div>POST</div>
-            <ul>
             </ul>
             <div>response data:</div>
             <ul>
+                <li>liked<i></i></li>
+                <li>original_url<i></i></li>
+                <li>album_id<i></i></li>
+                <li>comments<i></i></li>
+                <li>id<i></i></li>
+                <li>album_cover<i></i></li>
+                <li>likes<i></i></li>
+                <li>resized_url<i></i></li>
+                <li>likes_count<i></i></li>
             </ul>
-        </dd-->
+        </dd>
+<!------------------------------------------------------------------------------------->
+        <dt><code>/profile/userinfo/pins</code>getting pins of a given user</dt>
+        <dd>
+            <div class="method">POST</div>
+            <ul>
+                <li>user_id<i>int</i></li>
+            </ul>
+            <div>response data:</div>
+            <ul>
+                <li>pins_list<i>array of pin</i>
+                    <ul>
+                        <li>description<i></i></li>
+                        <li>views<i></i></li>
+                        <li>image_212_height<i></i></li>
+                        <li>price<i></i></li>
+                        <li>image_202_url<i></i></li>
+                        <li>product_url<i></i></li>
+                        <li>user_username<i></i></li>
+                        <li>like_count<i></i></li>
+                        <li>link<i></i></li>
+                        <li>image_202_height<i></i></li>
+                        <li>price_range<i></i></li>
+                        <li>repin<i></i></li>
+                        <li>board_id<i></i></li>
+                        <li>user_id<i></i></li>
+                        <li>name<i></i></li>
+                        <li>privacy<i></i></li>
+                        <li>external_id<i></i></li>
+                        <li>tags<i></i></li>
+                        <li>image_width<i></i></li>
+                        <li>id<i></i></li>
+                        <li>image_height<i></i></li>
+                        <li>user_pic<i></i></li>
+                        <li>image_212_url<i></i></li>
+                        <li>timestamp<i></i></li>
+                        <li>tsv<i></i></li>
+                        <li>image_url<i></i></li>
+                        <li>repin_count<i></i></li>
+                        <li>user_name<i></i></li>
+                    </ul>
+                </li>
+                <li>total<i>int</i></li>
+                <li>total_owned<i>int</i></li>
+            </ul>
+        </dd>
+<!------------------------------------------------------------------------------------->
+        <!--<dt><code>/signup/register</code>Registration</dt>-->
+        <!--<dd>-->
+            <!--<div>POST</div>-->
+            <!--<ul>-->
+            <!--</ul>-->
+        <!--</dd>-->
+<!------------------------------------------------------------------------------------->
         <dt>Response</dt>
         <dd>
             <ul>
@@ -156,7 +331,13 @@
                 <li>csid_from_server</li>
                 <li>client_token</li>
                 <li>notifications</li>
-                <li>data</li>
+                <li>data
+                    <ul>
+                        <li>items_per_page<i>int</i></li>
+                        <li>page<i>int</i></li>
+                        <li>pages_count<i>int</i></li>
+                    </ul>
+                </li>
             </ul>
         </dd>
     </dl>
