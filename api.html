@@ -201,6 +201,18 @@
             </ul>
         </dd>
 <!------------------------------------------------------------------------------------->
+        <dt>
+            <code>/profile/userinfo/album_default_picture</code>sets picture as default album cover</dt>
+        <dd>
+            <div class="method">POST</div>
+            <ul>
+                <li>picture_id<i>int</i><em>happens exception if picture_id is not set</em></li>
+                <li>logintoken<i>base64</i></li>
+            </ul>
+            <div>response data:</div>
+            <em>doesn't return error if picture_id is incorrect</em>
+        </dd>
+<!------------------------------------------------------------------------------------->
         <dt><code>/profile/userinfo/boards</code>getting boards of a given user</dt>
         <dd>
             <div class="method">POST</div>
@@ -310,6 +322,111 @@
                 </li>
                 <li>total<i>int</i></li>
                 <li>total_owned<i>int</i></li>
+            </ul>
+        </dd>
+<!------------------------------------------------------------------------------------->
+        <dt>
+            <code>/social/social/query/conversations</code>returns a list of conversations</dt>
+        <dd>
+            <div class="method">POST</div>
+            <ul>
+                <li>logintoken<i>base64</i></li>
+            </ul>
+            <div>response data:</div>
+            <ul>
+                <li>conversations<i>array</i>
+                    <ul>
+                        <li>id<i>int</i></li>
+                        <li>id1<i>int</i></li>
+                        <li>id2<i>int</i></li>
+                    </ul>
+                </li>
+            </ul>
+        </dd>
+<!------------------------------------------------------------------------------------->
+        <dt><code>/social/query/(followed-by|following)</code>following or followed by current user</dt>
+        <dd>
+            <div class="method">POST</div>
+            <ul>
+                <li>user_id<i>int</i><em>does not respond error "400 Bad Request" if user_id is not set</em></li>
+                <li>logintoken<i>base64</i></li>
+                <li>csid_from_client<i>base64</i>happens exception if csid_from_client is not set, but it may be empty</li>
+            </ul>
+            <div>response data:</div>
+            <ul>
+                <li>pins_list<i>array of users</i>
+                    <ul>
+                        <li>username<i></i></li>
+                        <li>locale<i></i></li>
+                        <li>hometown<i></i></li>
+                        <li>twitter<i></i></li>
+                        <li>linkedin<i></i></li>
+                        <li>follower<i></i></li>
+                        <li>is_following<i></i></li>
+                        <li>pic_id<i></i></li>
+                        <li>follow<i></i></li>
+                        <li>id<i></i></li>
+                        <li>pw_hash<i></i></li>
+                        <li>bg_resized_url<i></i></li>
+                        <li>zip<i></i></li>
+                        <li>views<i></i></li>
+                        <li>bg_original_url<i></i></li>
+                        <li>pw_salt<i></i></li>
+                        <li>tsv<i></i></li>
+                        <li>city<i></i></li>
+                        <li>website<i></i></li>
+                        <li>headerbgy<i></i></li>
+                        <li>headerbgx<i></i></li>
+                        <li>timestamp<i></i></li>
+                        <li>activation<i></i></li>
+                        <li>getlist_privacy_level<i></i></li>
+                        <li>about<i></i></li>
+                        <li>birthday<i></i></li>
+                        <li>facebook<i></i></li>
+                        <li>private<i></i></li>
+                        <li>bg_id<i></i></li>
+                        <li>seriesid<i></i></li>
+                        <li>gplus<i></i></li>
+                        <li>logintoken<i></i></li>
+                        <li>name<i></i></li>
+                        <li>country<i></i></li>
+                        <li>email<i></i></li>
+                        <li>show_views<i></i></li>
+                        <li>is_pin_loader<i></i></li>
+                        <li>bgx<i></i></li>
+                        <li>bgy<i></i></li>
+                        <li>login_source<i></i></li>
+                    </ul>
+                </li>
+            </ul>
+        </dd>
+<!------------------------------------------------------------------------------------->
+        <dt>
+            <code>/social/query/messages</code>get messages from conversation</dt>
+        <dd>
+            <div class="method">POST</div>
+            <ul>
+                <li>conversation_id<i>int</i></li>
+                <li>logintoken<i>base64</i></li>
+            </ul>
+            <div>response data:</div>
+            <ul>
+                <li>conversation<i></i>
+                    <ul>
+                        <li>user_id<i></i></li>
+                        <li>id<i></i></li>
+                        <li>name<i></i></li>
+                    </ul>
+                </li>
+                <li>messages<i>array</i>
+                    <ul>
+                        <li>content<i></i></li>
+                        <li>convo_id<i></i></li>
+                        <li>sender<i></i></li>
+                        <li>id<i></i></li>
+                        <li>name<i></i></li>
+                    </ul>
+                </li>
             </ul>
         </dd>
 <!------------------------------------------------------------------------------------->
