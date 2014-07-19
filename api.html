@@ -35,12 +35,18 @@
                 }
             });
             $('dd').each(function(_, el) {
-                if($(el).find('em').length)
-                        el.previousElementSibling.appendChild(
-                                $(el).find('em.error').length
-                                        ? $('<span class="error">\u2620</span>')[0]
-                                        : $('<span>\u26A0</span>')[0]
-                        );
+                var $el = $(el);
+                if ($el.text().indexOf('logintoken') >=0)
+                    el.previousElementSibling.appendChild($('<img src="img/key.png">')[0]);
+//                $el.find('ul:first-child li').each(function(i, e) {
+//
+//                });
+                if($el.find('em').length)
+                        el.previousElementSibling.appendChild($(
+                                $el.find('em.error').length
+                                        ? '<span class="error">\u2620</span>'
+                                        : '<span>\u26A0</span>'
+                                )[0]);
             });
             if (location.hash)
                 openMethod();
@@ -73,9 +79,10 @@
             content: ' HTTP method';
             color: lightgray;
         }
-        span {
-            margin: 0 1mm;
+        span, dt img {
+            margin-left: 1mm;
             color: orange;
+            vertical-align: middle;
         }
         span.error {
             color: red;
@@ -333,6 +340,16 @@
             </ul>
         </dd>
 <!------------------------------------------------------------------------------------->
+        <dt><code>/profile/updateviews/&lt;username&gt;</code>increment views count</dt>
+        <dd>
+            <div class="method">POST</div>
+            <em class="error">doesn't not increment views</em>
+            <ul>
+                <li>csid_from_client<i></i></li>
+                <li>logintoken<i>base64</i></li>
+            </ul>
+        </dd>
+<!------------------------------------------------------------------------------------->
         <dt>
             <code>/profile/userinfo/album_default_picture</code>sets picture as default album cover</dt>
         <dd>
@@ -457,6 +474,35 @@
             </ul>
         </dd>
 <!------------------------------------------------------------------------------------->
+        <dt><code>/profile/userinfo/remove_pic</code>remove picture and save changes in database</dt>
+        <dd>
+            <div class="method">POST</div>
+            <ul>
+                <li>logintoken<i>base64</i></li>
+                <li>picture_id<i>int</i><em>doesn't check</em></li>
+            </ul>
+        </dd>
+<!------------------------------------------------------------------------------------->
+        <dt><code>/profile/userinfo/upload_bg</code>upload profile background and save it in database</dt>
+        <dd>
+            <div class="method">POST</div>
+            <em class="error">throw exception</em>
+            <ul>
+                <li>logintoken<i>base64</i></li>
+                <li>file<i></i></li>
+            </ul>
+        </dd>
+<!------------------------------------------------------------------------------------->
+        <dt><code>/profile/userinfo/upload_pic</code>upload profile picture and save it in database</dt>
+        <dd>
+            <div class="method">POST</div>
+            <em class="error">throw exception</em>
+            <ul>
+                <li>logintoken<i>base64</i></li>
+                <li>file<i></i></li>
+            </ul>
+        </dd>
+<!------------------------------------------------------------------------------------->
         <dt><code>/query/notification</code>list of user notifications sorted by timestamp</dt>
         <dd>
             <div class="method">POST</div>
@@ -532,6 +578,38 @@
     "mars", "mens", "milk", "music", "mark"
 ]</pre>
             </div>
+        </dd>
+<!------------------------------------------------------------------------------------->
+        <dt><code>/social/picture/add_comment</code>adds comment to picture</dt>
+        <dd>
+            <em class="error">throws exception: insert or update on table "picture_comments" violates foreign key constraint "picture_comments_picture_id_fkey" DETAIL: Key (picture_id)=(6656) is not present in table "pictures"</em>
+            <div>POST</div>
+            <ul>
+                <li>picture_id<i>int</i></li>
+                <li>comment<i>string</i></li>
+                <li>logintoken<i>base64</i></li>
+            </ul>
+        </dd>
+<!------------------------------------------------------------------------------------->
+        <dt><code>/social/picture/like_dislike</code>like or dislike picture</dt>
+        <dd>
+            <em class="error">throws exception: insert or update on table "picture_comments" violates foreign key constraint "picture_comments_picture_id_fkey" DETAIL: Key (picture_id)=(6656) is not present in table "pictures"</em>
+            <div>POST</div>
+            <ul>
+                <li>picture_id<i>int</i></li>
+                <li>logintoken<i>base64</i></li>
+            </ul>
+        </dd>
+<!------------------------------------------------------------------------------------->
+        <dt><code>/social/pin/like-unlike</code>like or dislike picture</dt>
+        <dd>
+            <div>POST</div>
+            <ul>
+                <li>pin_id<i>int</i></li>
+                <li>logintoken<i>base64</i></li>
+            </ul>
+            <div>response</div>
+            <em>returns success even pin_id doesn't exists</em>
         </dd>
 <!------------------------------------------------------------------------------------->
         <dt><code>/social/poup</code>share pins to social network</dt>
