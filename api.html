@@ -73,6 +73,10 @@
             margin: 0 1mm;
             color: orange;
         }
+        .ui-accordion-header {
+            height: 1em;
+            padding-top: 0 !important;
+        }
     </style>
 </head>
 <body>
@@ -88,6 +92,25 @@
             <ul>
                 <li>user_id<i>int</i></li>
                 <li>username<i>string</i></li>
+            </ul>
+        </dd>
+<!------------------------------------------------------------------------------------->
+        <dt><code>/categories/get</code>receiving list of categories</dt>
+        <dd>
+            <div>POST</div>
+            <div>No parameters</div>
+            <div>response data:</div>
+            <ul>
+                <li>categories_list<i>array</i>
+                    <ul>
+                        <li>name<i></i></li>
+                        <li>parent<i></i></li>
+                        <li>is_default_sub_category<i></i></li>
+                        <li>position<i></i></li>
+                        <li>id<i></i></li>
+                        <li>slug<i></i></li>
+                    </ul>
+                </li>
             </ul>
         </dd>
 <!------------------------------------------------------------------------------------->
@@ -198,6 +221,50 @@
             <ul>
                 <li>image_id<i>int</i></li>
                 <li>hashtag_list<i>array of string</i></li>
+            </ul>
+        </dd>
+<!------------------------------------------------------------------------------------->
+        <dt><code>/image/upload</code>temporary store image</dt>
+        <dd>
+            <em>throws exception</em>
+            <div class="method">POST</div>
+            <ul>
+                <li>image_file<i>file</i></li>
+                <li>image_title<i>string</i></li>
+                <li>image_descr<i>string</i>description</li>
+            </ul>
+        </dd>
+<!------------------------------------------------------------------------------------->
+        <dt><code>/notification/add</code>create notification</dt>
+        <dd>
+            <div class="method">POST</div>
+            <em>happens exception if one of the parameters is not set</em>
+            <ul>
+                <li>user_id<i>int</i></li>
+                <li>msg<i>string</i></li>
+                <li>url<i></i></li>
+            </ul>
+            <div>response data:</div>
+            <ul>
+                <li>status<i></i></li>
+            </ul>
+        </dd>
+<!------------------------------------------------------------------------------------->
+        <dt><code>/notification/(?P&lt;notification_id&gt;\d+)</code>get notification</dt>
+        <dd>
+            <div class="method">POST</div>
+            <ul>
+                <li>logintoken<i>base64</i></li>
+            </ul>
+            <div>response data:</div>
+            <ul>
+                <li>fr<i>boolean</i></li>
+                <li>fr_id<i>int</i></li>
+                <li>id<i>int</i></li>
+                <li>user_id<i>int</i></li>
+                <li>link<i>url</i></li>
+                <li>timestamp<i>int</i>unix time</li>
+                <li>message<i>string</i></li>
             </ul>
         </dd>
 <!------------------------------------------------------------------------------------->
@@ -325,8 +392,84 @@
             </ul>
         </dd>
 <!------------------------------------------------------------------------------------->
-        <dt>
-            <code>/social/social/query/conversations</code>returns a list of conversations</dt>
+        <dt><code>/query/notification</code>list of user notifications sorted by timestamp</dt>
+        <dd>
+            <div class="method">POST</div>
+            <ul>
+                <li>logintoken<i>base64</i></li>
+            </ul>
+            <div>response data<i>array</i></div>
+            <ul>
+                <li>fr<i>boolean</i></li>
+                <li>fr_id<i>int</i></li>
+                <li>id<i>int</i></li>
+                <li>user_id<i>int</i></li>
+                <li>link<i>url</i></li>
+                <li>timestamp<i>int</i>unix time</li>
+                <li>message<i>string</i></li>
+            </ul>
+        </dd>
+<!------------------------------------------------------------------------------------->
+        <dt><code>/search/items</code>search pins</dt>
+        <dd>
+            <div>POST</div>
+            <ul>
+                <li>query<i>string</i></li>
+                <li>page<i>int</i>optional</li>
+                <li>items_per_page<i>int</i>optional</li>
+            </ul>
+            <div>response data:</div>
+            <ul>
+                <li>image_id_list<i>array of int</i></li>
+            </ul>
+        </dd>
+<!------------------------------------------------------------------------------------->
+        <dt><code>/search/people</code>search users</dt>
+        <dd>
+            <div>POST</div>
+            <ul>
+                <li>q<i>string</i></li>
+                <li>page<i>int</i>optional</li>
+                <li>items_per_page<i>int</i>optional</li>
+            </ul>
+            <div>response data:</div>
+            <ul>
+                <li>users<i>array</i>
+                    <ul>
+                        <li>username<i>string</i></li>
+                        <li>is_following<i>boolean</i></li>
+                        <li>id<i>int</i></li>
+                        <li>rank<i>float</i></li>
+                        <li>name<i>string</i></li>
+                    </ul>
+                </li>
+            </ul>
+        </dd>
+<!------------------------------------------------------------------------------------->
+        <dt><code>/search/suggest</code>search suggestions</dt>
+        <dd>
+            <div>GET</div>
+            <ul>
+                <li>q<i>string</i></li>
+            </ul>
+            <div>response<i>array of ([string, string] & string)</i>returns username and name pair and string suggestions</div>
+            <div>for example, for request <pre>http://oakoval.no-ip.org/api/search/suggest?q=m</pre> respond is:
+                <pre>[
+    ["mac", "Mehboob Ahmed Chowdhury"],
+    ["macg", "Mehboob Chowdhury"],
+    ["maksTest", "maks"],
+    ["maksTest", "maks"],
+    ["maksTest", "maks"],
+    ["maksTest2", "Vasja Ios"],
+    ["maksTestdfgdfg", "maksssw"],
+    ["maksTestfghgj", "maksfsdfw"],
+    ["max.djuliy", "Max Djuliy"],
+    "mars", "mens", "milk", "music", "mark"
+]</pre>
+            </div>
+        </dd>
+<!------------------------------------------------------------------------------------->
+        <dt><code>/social/social/query/conversations</code>returns a list of conversations</dt>
         <dd>
             <div class="method">POST</div>
             <ul>
@@ -401,8 +544,7 @@
             </ul>
         </dd>
 <!------------------------------------------------------------------------------------->
-        <dt>
-            <code>/social/query/messages</code>get messages from conversation</dt>
+        <dt><code>/social/query/messages</code>get messages from conversation</dt>
         <dd>
             <div class="method">POST</div>
             <ul>
@@ -427,6 +569,22 @@
                         <li>name<i></i></li>
                     </ul>
                 </li>
+            </ul>
+        </dd>
+<!------------------------------------------------------------------------------------->
+        <dt><code>/websearch/images</code>images websearch</dt>
+        <dd>
+            <div>GET</div>
+            <ul>
+                <li>q<i>string</i></li>
+            </ul>
+            <div>response<i>array</i></div>
+            <ul>
+                <li>url<i>url</i>website</li>
+                <li>image<i>url</i>original image url</li>
+                <li>desc<i>string</i>description</li>
+                <li>thumb<i>url</i>thumbnail image url</li>
+                <li>title<i>string</i>title (from alternative text) for image</li>
             </ul>
         </dd>
 <!------------------------------------------------------------------------------------->
