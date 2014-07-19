@@ -36,7 +36,11 @@
             });
             $('dd').each(function(_, el) {
                 if($(el).find('em').length)
-                    el.previousElementSibling.appendChild($('<span>\u26A0</span>')[0]);
+                        el.previousElementSibling.appendChild(
+                                $(el).find('em.error').length
+                                        ? $('<span class="error">\u2620</span>')[0]
+                                        : $('<span>\u26A0</span>')[0]
+                        );
             });
             if (location.hash)
                 openMethod();
@@ -72,6 +76,9 @@
         span {
             margin: 0 1mm;
             color: orange;
+        }
+        span.error {
+            color: red;
         }
         .ui-accordion-header {
             height: 1em;
@@ -127,13 +134,38 @@
             </ul>
         </dd>
 <!------------------------------------------------------------------------------------->
+        <dt><code>/image/follow-board</code>change pin properties</dt>
+        <dd>
+            <em class="error">throws exception: relation "boards_followers" does not exist</em>
+            <!--<em>throws exception when parameters is incorrect</em>-->
+            <!--<div class="method">POST</div>-->
+            <!--<ul>-->
+                <!--<li>user_id<i>int</i></li>-->
+            <!--</ul>-->
+        </dd>
+<!------------------------------------------------------------------------------------->
+        <dt><code>/image/mp</code>change pin properties</dt>
+        <dd>
+            <div class="method">POST</div>
+            <ul>
+                <li>image_id<i>int</i></li>
+                <li>image_title<i>string</i>pin name</li>
+                <li>image_desc<i>string</i></li>
+                <li>product_url<i>url</i></li>
+                <li>link<i>url</i></li>
+                <li>price_range<i></i></li>
+                <li>board_id<i></i></li>
+                <li>logintoken<i>base64</i></li>
+            </ul>
+        </dd>
+<!------------------------------------------------------------------------------------->
         <dt><code>/image/query</code>getting all pins from a given board</dt>
         <dd>
             <div class="method">POST</div>
             <ul>
                 <li>query_type<i>string</i><em>is not used</em></li>
                 <li>query_params<i>array of int</i>array of images id<em>is not required</em></li>
-                <li>logintoken<i>string</i></li>
+                <li>logintoken<i>base64</i></li>
             </ul>
             <div>response data - array of images:</div>
             <ul>
@@ -226,7 +258,7 @@
 <!------------------------------------------------------------------------------------->
         <dt><code>/image/upload</code>temporary store image</dt>
         <dd>
-            <em>throws exception</em>
+            <em class="error">throws exception</em>
             <div class="method">POST</div>
             <ul>
                 <li>image_file<i>file</i></li>
@@ -268,6 +300,39 @@
             </ul>
         </dd>
 <!------------------------------------------------------------------------------------->
+        <dt><code>/profile/mgl</code>change list of user products: sharing, add, remover</dt>
+        <dd>
+            <div class="method">POST</div>
+            <ul>
+                <li>image_id_remove_list<i>array of int</i></li>
+                <li>image_id_share_list<i>array of int</i></li>
+                <li>image_id_add_list<i>array of int</i></li>
+                <li>logintoken<i>base64</i></li>
+            </ul>
+            <div>response data:</div>
+            <ul>
+                <li>added<i>array of int</i></li>
+                <li>shared<i>array of int</i></li>
+                <li>removed<i>array of int</i></li>
+            </ul>
+        </dd>
+<!------------------------------------------------------------------------------------->
+        <dt><code>/profile/pwd</code>change user password and get/store new logintoken</dt>
+        <dd>
+            <div class="method">POST</div>
+            <em>it is not possible to change logintoken</em>
+            <ul>
+                <li>old_password<i>string</i></li>
+                <li>new_password<i>string</i></li>
+                <li>new_password2<i>string</i></li>
+                <li>logintoken<i>base64</i></li>
+            </ul>
+            <div>response:</div>
+            <em>error_code duplicates response stored as stringified json</em>
+            <ul>
+            </ul>
+        </dd>
+<!------------------------------------------------------------------------------------->
         <dt>
             <code>/profile/userinfo/album_default_picture</code>sets picture as default album cover</dt>
         <dd>
@@ -283,7 +348,7 @@
         <dt><code>/profile/userinfo/boards</code>getting boards of a given user</dt>
         <dd>
             <div class="method">POST</div>
-            <em>Exception: relation "boards_followers" does not exist</em>
+            <em class="error">Exception: relation "boards_followers" does not exist</em>
         </dd>
 <!------------------------------------------------------------------------------------->
         <dt><code>/profile/userinfo/info</code>get profile information</dt>
@@ -469,7 +534,18 @@
             </div>
         </dd>
 <!------------------------------------------------------------------------------------->
-        <dt><code>/social/social/query/conversations</code>returns a list of conversations</dt>
+        <dt><code>/social/poup</code>share pins to social network</dt>
+        <dd>
+            <div>POST</div>
+            <ul>
+                <li>share_list<i>array of int</i></li>
+                <li>social_network<i>facebook | linkedin</i></li>
+                <li>access_token<i></i><em>there are no need</em></li>
+                <li>logintoken<i>base64</i></li>
+            </ul>
+        </dd>
+<!------------------------------------------------------------------------------------->
+        <dt><code>/social/query/conversations</code>returns a list of conversations</dt>
         <dd>
             <div class="method">POST</div>
             <ul>
@@ -570,6 +646,19 @@
                     </ul>
                 </li>
             </ul>
+        </dd>
+<!------------------------------------------------------------------------------------->
+        <dt><code>/social/query/message_to_conversation</code>sends message to conversation</dt>
+        <dd>
+            <div class="method">POST</div>
+            <ul>
+                <li>conversation_id_list<i>array of int</i></li>
+                <li>content<i>string</i></li>
+                <li>logintoken<i>base64</i></li>
+            </ul>
+            <!--<div>response data:</div>-->
+            <!--<ul>-->
+            <!--</ul>-->
         </dd>
 <!------------------------------------------------------------------------------------->
         <dt><code>/websearch/images</code>images websearch</dt>
