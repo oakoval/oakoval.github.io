@@ -170,8 +170,8 @@
         <dd>
             <div class="method">POST</div>
             <ul>
-                <li>query_type<i>string</i><em>is not used</em></li>
-                <li>query_params<i>array of int</i>array of images id<em>is not required</em></li>
+                <li>query_type<i>string</i></li>
+                <li>query_params<i>array of int</i>array of images id</li>
                 <li>logintoken<i>base64</i></li>
             </ul>
             <div>response data - array of images:</div>
@@ -212,13 +212,21 @@
             <div class="method">POST</div>
             <ul>
                 <li>username<i>string</i></li>
-                <li>board_name<i>int</i><em>is required but value is may be empty</em></li>
+                <li>board_name<i>string</i>start of board name string</li>
             </ul>
-            <!--div>response data:</div>
+            <div>response data:</div>
             <ul>
-                <li>user_id<i>int</i></li>
-                <li>username<i>string</i></li>
-            </ul-->
+                <li>img_ids<i>array of int</i>images id</li>
+                <li>borad<i>array</i>
+                    <ul>
+                        <li>id<i>int</i></li>
+                        <li>user_id<i>int</i></li>
+                        <li>public<i>boolean</i></li>
+                        <li>name<i>string</i></li>
+                        <li>description<i>string</i></li>
+                    </ul>
+                </li>
+            </ul>
         </dd>
 <!------------------------------------------------------------------------------------->
         <dt><code>/image/query/category</code>receiving pins by category</dt>
@@ -239,8 +247,8 @@
         <dd>
             <div class="method">POST</div>
             <ul>
-                <li>hashtag<i>string</i><em>may be empty</em></li>
-                <li>page<i>int</i><em>if page is not set then response are all pins in category without paging</em></li>
+                <li>hashtag<i>string</i></li>
+                <li>page<i>int</i><!--em>if page is not set then response are all pins in category without paging</em--></li>
                 <li>items_per_page<i>int</i>default 10 if page is set</li>
             </ul>
             <div>response data:</div>
@@ -265,7 +273,7 @@
 <!------------------------------------------------------------------------------------->
         <dt><code>/image/upload</code>temporary store image</dt>
         <dd>
-            <em class="error">throws exception</em>
+            <!--<em class="error">throws exception</em>-->
             <div class="method">POST</div>
             <ul>
                 <li>image_file<i>file</i></li>
@@ -277,7 +285,6 @@
         <dt><code>/notification/add</code>create notification</dt>
         <dd>
             <div class="method">POST</div>
-            <em>happens exception if one of the parameters is not set</em>
             <ul>
                 <li>user_id<i>int</i></li>
                 <li>msg<i>string</i></li>
@@ -285,7 +292,7 @@
             </ul>
             <div>response data:</div>
             <ul>
-                <li>status<i></i></li>
+                <li>status<i>success</i></li>
             </ul>
         </dd>
 <!------------------------------------------------------------------------------------->
@@ -327,23 +334,18 @@
         <dt><code>/profile/pwd</code>change user password and get/store new logintoken</dt>
         <dd>
             <div class="method">POST</div>
-            <em>it is not possible to change logintoken</em>
+            <!--<em>it is not possible to change logintoken</em>-->
             <ul>
                 <li>old_password<i>string</i></li>
                 <li>new_password<i>string</i></li>
                 <li>new_password2<i>string</i></li>
                 <li>logintoken<i>base64</i></li>
             </ul>
-            <div>response:</div>
-            <em>error_code duplicates response stored as stringified json</em>
-            <ul>
-            </ul>
         </dd>
 <!------------------------------------------------------------------------------------->
         <dt><code>/profile/updateviews/&lt;username&gt;</code>increment views count</dt>
         <dd>
             <div class="method">POST</div>
-            <em class="error">doesn't not increment views</em>
             <ul>
                 <li>csid_from_client<i></i></li>
                 <li>logintoken<i>base64</i></li>
@@ -355,11 +357,9 @@
         <dd>
             <div class="method">POST</div>
             <ul>
-                <li>picture_id<i>int</i><em>happens exception if picture_id is not set</em></li>
+                <li>picture_id<i>int</i></li>
                 <li>logintoken<i>base64</i></li>
             </ul>
-            <div>response data:</div>
-            <em>doesn't return error if picture_id is incorrect</em>
         </dd>
 <!------------------------------------------------------------------------------------->
         <dt><code>/profile/userinfo/boards</code>getting boards of a given user</dt>
@@ -374,7 +374,7 @@
             <ul>
                 <li>username<i>string</i></li>
                 <li>logintoken<i>base64</i></li>
-                <li>csid_from_client<i>int</i><em>is required but value is doesn't matter and may be empty</em></li>
+                <li>csid_from_client<i>int</i><!--em>is required but value is doesn't matter and may be empty</em--></li>
             </ul>
             <div>response data:</div>
             <ul>
@@ -394,7 +394,7 @@
             <div class="method">POST</div>
             <ul>
                 <li>logintoken<i>base64</i></li>
-                <li>csid_from_client<i>int</i><em>is required but value is doesn't matter and may be empty</em></li>
+                <li>csid_from_client<i>int</i><!--em>is required but value is doesn't matter and may be empty</em--></li>
             </ul>
             <div>response data:</div>
             <ul>
@@ -479,14 +479,14 @@
             <div class="method">POST</div>
             <ul>
                 <li>logintoken<i>base64</i></li>
-                <li>picture_id<i>int</i><em>doesn't check</em></li>
+                <li>picture_id<i>int</i></li>
             </ul>
         </dd>
 <!------------------------------------------------------------------------------------->
         <dt><code>/profile/userinfo/upload_bg</code>upload profile background and save it in database</dt>
         <dd>
             <div class="method">POST</div>
-            <em class="error">throw exception</em>
+            <!--<em class="error">throw exception</em>-->
             <ul>
                 <li>logintoken<i>base64</i></li>
                 <li>file<i></i></li>
@@ -496,7 +496,7 @@
         <dt><code>/profile/userinfo/upload_pic</code>upload profile picture and save it in database</dt>
         <dd>
             <div class="method">POST</div>
-            <em class="error">throw exception</em>
+            <!--<em class="error">throw exception</em>-->
             <ul>
                 <li>logintoken<i>base64</i></li>
                 <li>file<i></i></li>
@@ -582,7 +582,6 @@
 <!------------------------------------------------------------------------------------->
         <dt><code>/social/picture/add_comment</code>adds comment to picture</dt>
         <dd>
-            <em class="error">throws exception: insert or update on table "picture_comments" violates foreign key constraint "picture_comments_picture_id_fkey" DETAIL: Key (picture_id)=(6656) is not present in table "pictures"</em>
             <div>POST</div>
             <ul>
                 <li>picture_id<i>int</i></li>
@@ -593,7 +592,6 @@
 <!------------------------------------------------------------------------------------->
         <dt><code>/social/picture/like_dislike</code>like or dislike picture</dt>
         <dd>
-            <em class="error">throws exception: insert or update on table "picture_comments" violates foreign key constraint "picture_comments_picture_id_fkey" DETAIL: Key (picture_id)=(6656) is not present in table "pictures"</em>
             <div>POST</div>
             <ul>
                 <li>picture_id<i>int</i></li>
@@ -608,8 +606,6 @@
                 <li>pin_id<i>int</i></li>
                 <li>logintoken<i>base64</i></li>
             </ul>
-            <div>response</div>
-            <em>returns success even pin_id doesn't exists</em>
         </dd>
 <!------------------------------------------------------------------------------------->
         <dt><code>/social/poup</code>share pins to social network</dt>
@@ -618,7 +614,7 @@
             <ul>
                 <li>share_list<i>array of int</i></li>
                 <li>social_network<i>facebook | linkedin</i></li>
-                <li>access_token<i></i><em>there are no need</em></li>
+                <li>access_token<i></i><!--em>there are no need</em--></li>
                 <li>logintoken<i>base64</i></li>
             </ul>
         </dd>
@@ -645,7 +641,7 @@
         <dd>
             <div class="method">POST</div>
             <ul>
-                <li>user_id<i>int</i><em>does not respond error "400 Bad Request" if user_id is not set</em></li>
+                <li>user_id<i>int</i></li>
                 <li>logintoken<i>base64</i></li>
                 <li>csid_from_client<i>base64</i>happens exception if csid_from_client is not set, but it may be empty</li>
             </ul>
