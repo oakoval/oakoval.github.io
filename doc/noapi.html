@@ -5,38 +5,50 @@
     <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="//code.jquery.com/ui/1.11.0/jquery-ui.min.js"></script>
     <link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.11.0/themes/black-tie/jquery-ui.css" />
-    <title></title>
-    <script>
-        var base_url = 'https://github.com/mygetlist/pin/blob/e8d7757fc7b0800fddee76642c302fb13383ad4a/';
-        function linkify(start, el) {
-            var text = el.text().trim();
-            var url = start + text;
-            el.empty();
-            $('<a target="_blank"></a>')
-                    .attr('href', url)
-                    .text(text)
-                    .appendTo(el);
-            return el;
+    <script src="noapi.js"></script>
+    <style type="text/css">
+        .ui-accordion-header {
+            height: 1em;
+            padding-top: 0 !important;
         }
-
-        $(document).ready(function() {
-            $('dt').each(function(_, dt) {
-                dt = $(dt);
-                var url = base_url + dt.text();
-//                linkify(base_url, dt);
-                dt.next('dd').find('tr').each(function(_, row) {
-                    row = $(row);
-                    var cell = row.find('td:first-child');
-                    linkify(url + '#L', cell)
-                });
-            });
-            $('dl').accordion();
-        });
-
-    </script>
+    </style>
 </head>
 <body>
 <dl>
+    <dt>admin.py</dt>
+    <dd>
+        <table>
+            <tr><td>125</td><td>PageRelationships.GET</td></tr>
+            <tr><td>136</td><td>PageRelationships.GET</td></tr>
+            <tr><td>215</td><td>PageSearchResults.GET</td></tr>
+            <tr><td>224</td><td>PageUser.GET</td></tr>
+            <tr><td>242</td><td>PageUser.GET</td></tr>
+            <tr><td>263</td><td>PageCloseUser.GET</td></tr>
+            <tr><td>264</td><td>PageCloseUser.GET</td></tr>
+            <tr><td>265</td><td>PageCloseUser.GET</td></tr>
+            <tr><td>266</td><td>PageCloseUser.GET</td></tr>
+            <tr><td>267</td><td>PageCloseUser.GET</td></tr>
+            <tr><td>268</td><td>PageCloseUser.GET</td></tr>
+            <tr><td>269</td><td>PageCloseUser.GET</td></tr>
+            <tr><td>270</td><td>PageCloseUser.GET</td></tr>
+            <tr><td>271</td><td>PageCloseUser.GET</td></tr>
+            <tr><td>272</td><td>PageCloseUser.GET</td></tr>
+            <tr><td>273</td><td>PageCloseUser.GET</td></tr>
+            <tr><td>274</td><td>PageCloseUser.GET</td></tr>
+            <tr><td>275</td><td>PageCloseUser.GET</td></tr>
+            <tr><td>277</td><td>PageCloseUser.GET</td></tr>
+            <tr><td>317</td><td>PageEditUser.GET</td></tr>
+            <tr><td>318</td><td>PageEditUser.GET</td></tr>
+            <tr><td>346</td><td>PageEditUser.POST</td></tr>
+            <tr><td>352</td><td>PageEditUser.email_exists</td></tr>
+            <tr><td>369</td><td>PageEditUser.create_user</td></tr>
+            <tr><td>380</td><td>PageEditUser.username_exists</td></tr>
+            <tr><td>467</td><td>ChangeUserPicture.update_profile_picture</td></tr>
+            <tr><td>471</td><td>ChangeUserPicture.update_profile_picture</td></tr>
+            <tr><td>472</td><td>ChangeUserPicture.update_profile_picture</td></tr>
+            <tr><td>490</td><td>ChangeUserPicture.update_profile_picture</td></tr>
+        </table>
+    </dd>
     <dt>ser.py</dt>
     <dd>
         <table>
@@ -66,12 +78,7 @@
             <tr><td>1970</td><td>PageViewCategory</td></tr>
             <tr><td>1999</td><td>PageShare</td></tr>
             <tr><td>2095</td><td>PageRemoveBg</td></tr>
-            <tr><td></td><td></td></tr>
-        </table>
-    </dd>
-    <dt></dt>
-    <dd>
-        <table>
+            <tr><td>2112</td><td>PageChangeBGPos</td></tr>
             <tr><td></td><td></td></tr>
         </table>
     </dd>
