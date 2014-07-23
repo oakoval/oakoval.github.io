@@ -2,57 +2,10 @@
 <html>
 <head>
     <title></title>
-    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.11.0/themes/black-tie/jquery-ui.css" />
-    <script>
-        function openMethod() {
-            var hash = location.hash.slice(1);
-            $('dt code').each(function(i, el) {
-                if (hash == el.innerHTML) {
-                    $('dl').accordion({active: i});
-                    hash = null;
-                }
-            })
-
-            if (hash)
-                $('dt').each(function(i, el) {
-                    if (hash == $(el).text())
-                        $('dl').accordion({active: i});
-                });
-        }
-
-        $(function() {
-            $('dl').accordion({
-                collapsible: true,
-                heightStyle: "content",
-                active: -1,
-                activate: function(e, ui) {
-                    var method = ui.newHeader.find('code').html();
-                    if (!method)
-                        method = ui.newHeader.text();
-                    history.pushState(null, method, '#' + method);
-                }
-            });
-            $('dd').each(function(_, el) {
-                var $el = $(el);
-                if ($el.text().indexOf('logintoken') >=0)
-                    el.previousElementSibling.appendChild($('<img src="img/key.png">')[0]);
-//                $el.find('ul:first-child li').each(function(i, e) {
-//
-//                });
-                if($el.find('em').length)
-                        el.previousElementSibling.appendChild($(
-                                $el.find('em.error').length
-                                        ? '<span class="error">\u2620</span>'
-                                        : '<span>\u26A0</span>'
-                                )[0]);
-            });
-            if (location.hash)
-                openMethod();
-            $(window).on('hashchange', openMethod);
-        });
-    </script>
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="//code.jquery.com/ui/1.11.0/jquery-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.11.0/themes/black-tie/jquery-ui.css" />
+    <script src="ui.js" ></script>
     <style type="text/css">
         code {
             margin-right: 1mm;
@@ -75,7 +28,7 @@
         }
         .method {
         }
-        .method:after {
+            .method:after {
             content: ' HTTP method';
             color: lightgray;
         }
@@ -91,9 +44,17 @@
             height: 1em;
             padding-top: 0 !important;
         }
+
+        #query_form {
+            display: none;
+        }
     </style>
 </head>
 <body>
+<form id="query_form">
+    <input type="submit" />
+</form>
+
     <dl>
         <dt><code>/auth</code>authorization</dt>
         <dd>

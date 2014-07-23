@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="//code.jquery.com/ui/1.11.0/jquery-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.11.0/themes/black-tie/jquery-ui.css" />
+    <title></title>
+    <script>
+        var base_url = 'https://github.com/mygetlist/pin/blob/e8d7757fc7b0800fddee76642c302fb13383ad4a/';
+        function linkify(start, el) {
+            var text = el.text().trim();
+            var url = start + text;
+            el.empty();
+            $('<a target="_blank"></a>')
+                    .attr('href', url)
+                    .text(text)
+                    .appendTo(el);
+            return el;
+        }
+
+        $(document).ready(function() {
+            $('dt').each(function(_, dt) {
+                dt = $(dt);
+                var url = base_url + dt.text();
+//                linkify(base_url, dt);
+                dt.next('dd').find('tr').each(function(_, row) {
+                    row = $(row);
+                    var cell = row.find('td:first-child');
+                    linkify(url + '#L', cell)
+                });
+            });
+            $('dl').accordion();
+        });
+
+    </script>
+</head>
+<body>
+<dl>
+    <dt>ser.py</dt>
+    <dd>
+        <table>
+            <tr><td>381</td><td>PageLogin.POST</td></tr>
+            <tr><td>612</td><td>PageRemoveRepin.GET</td></tr>
+            <tr><td>678</td><td>PageRepin.POST</td></tr>
+            <tr><td>803</td><td>PagePin.GET</td></tr>
+            <tr><td>863</td><td>get_pins</td></tr>
+            <tr><td>907</td><td>PageProfile.GET</td></tr>
+            <tr><td>915</td><td>PageConnect2.GET</td></tr>
+            <tr><td>1166</td><td>PageFollow.GET</td></tr>
+            <tr><td>1235</td><td>PageNewConvo.GET</td></tr>
+            <tr><td>1517</td><td>PageUnfriend</td></tr>
+            <tr><td>1528</td><td>PageAcceptFR</td></tr>
+            <tr><td>1539</td><td>PageUnfollow</td></tr>
+            <tr><td>1546</td><td>PageHax</td></tr>
+            <tr><td>1554</td><td>PagePhotos</td></tr>
+            <tr><td>1573</td><td>PageNewAlbum.POST</td></tr>
+            <tr><td>1586</td><td>PageAlbum</td></tr>
+            <tr><td>1654</td><td>PageNewPicture.GET</td></tr>
+            <tr><td>1664</td><td>PageNewPicture.POST</td></tr>
+            <tr><td>1681</td><td>PagePhoto.GET</td></tr>
+            <tr><td>1887</td><td>PageSetProfilePic.GET</td></tr>
+            <tr><td>1907</td><td>PageSort</td></tr>
+            <tr><td>1933</td><td>PageSortPut</td></tr>
+            <tr><td>1941</td><td>PageSortDelete</td></tr>
+            <tr><td>1970</td><td>PageViewCategory</td></tr>
+            <tr><td>1999</td><td>PageShare</td></tr>
+            <tr><td>2095</td><td>PageRemoveBg</td></tr>
+            <tr><td></td><td></td></tr>
+        </table>
+    </dd>
+    <dt></dt>
+    <dd>
+        <table>
+            <tr><td></td><td></td></tr>
+        </table>
+    </dd>
+    <dt></dt>
+    <dd>
+        <table>
+            <tr><td></td><td></td></tr>
+        </table>
+    </dd>
+    <dt></dt>
+    <dd>
+        <table>
+            <tr><td></td><td></td></tr>
+        </table>
+    </dd>
+    <dt></dt>
+    <dd>
+        <table>
+            <tr><td></td><td></td></tr>
+        </table>
+    </dd>
+</dl>
+</body>
+</html>
